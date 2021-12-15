@@ -19,7 +19,7 @@ a:hover {
   	background-position: center;	
 }
 .background.mainpage {
-	background-image: url("/img/quiet_kid/cover.png");
+	background-image: url("/img/quiet_kid/cover.jpg");
 	filter: brightness(0.4);
 }
 .background.quiet-kid {
