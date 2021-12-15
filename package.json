@@ -1,0 +1,20 @@
+{
+  "name": "@hutsku/armelmusic",
+  "version": "0.0.1",
+  "description": "test site web",
+  "author": "Hutsku",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:/Hutsku/NodeWeb.git"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}

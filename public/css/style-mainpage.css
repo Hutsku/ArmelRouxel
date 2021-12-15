@@ -1,0 +1,162 @@
+
+html { /* body won't work ¯\_(ツ)_/¯ */
+  scroll-snap-type: y mandatory;
+}
+
+/*a {
+	color: #a5692a !important;
+}
+a:hover {
+	opacity: 0.8;
+}*/
+
+.background {
+	height: 100vh;
+	width: 100%;
+	position: fixed;
+	background-size: cover;
+	background-attachment: fixed;
+  	background-position: center;	
+}
+.background.mainpage {
+	background-image: url("/img/quiet_kid/cover.png");
+	filter: brightness(0.4);
+}
+.background.quiet-kid {
+	background-image: url("/img/quiet_kid/IMG_7221.jpg");
+	filter: brightness(0.4);
+}
+.background.another-light-out {
+	background-image: url("/img/another_light_out/cover.jpg");
+	filter: brightness(0.4);
+}
+.background.reach-that-light {
+	background-image: url("/img/reach_that_light/cover-breathe.jpg");
+	filter: brightness(0.4);
+}
+
+.mainpage-menu, .mainpage-grid > div {
+	height: 100vh;
+	scroll-snap-align: start;
+	align-items: center;
+}
+.mainpage-grid img, .gallery img {
+	transition: 0.5s;
+}
+.mainpage-grid img:hover, .gallery img:hover {
+	cursor: pointer;
+	transform: scale(1.03);
+}
+
+.footer {
+	min-height: 60px;
+}
+
+.header {
+	position: relative;
+	z-index: 1;
+
+	padding: 70px;
+}
+.head-title {
+	color: #a5692a;
+	font-size: 60px;
+	filter:  drop-shadow(0 0 10px black);
+}
+.head-subtitle {
+	color: lightgrey;
+	font-size: 20px;
+}
+
+.title {
+	color: white;
+	font-size: 27px;
+	opacity: 0.9;
+}
+
+.album-desc, .album-tracklist {
+	color: grey;
+	letter-spacing: +1px;
+	line-height: 1.8;
+	opacity: 0.9;
+	text-align: justify;
+}
+.track-title {
+	font-size: 20px;
+}
+.album-title {
+	color: black;
+	font-size: 30px;
+}
+.album-date {
+	color: grey
+}
+.album-about, .track-about {
+	color: white;
+	font-size: 14px;
+	text-transform: none;
+	text-align: justify;
+}
+.album-tracklist span {
+	cursor: pointer;
+	color: lightgrey;
+	height: 35px;
+	display: inline-block;
+}
+.album-tracklist span:hover {
+	color: white;
+}
+
+.making-of {
+	color: white;
+	text-transform: none;
+	text-align: justify;
+	font-size: 16px;
+
+	letter-spacing: +1px;
+	line-height: 1.8;
+	opacity: 0.9;
+}
+
+.track-desc {
+	color: black;
+	letter-spacing: +1px;
+	line-height: 1.8;
+	opacity: 0.9;
+}
+
+.grey {
+	color: lightgrey;
+}
+
+/* =============== MODAL ============== */
+
+.modal {
+	padding-right: 0;
+	padding: 35px;
+}
+.album-detail .modal-dialog {
+	margin:  0;
+	max-width: 100%;
+}
+.track-detail .modal-dialog {
+	max-width: 50%;
+}
+.track-detail .carousel-inner {
+	min-height: 500px;
+}
+.carousel-control-prev {
+	left: -100px;
+}
+.carousel-control-next {
+	right: -100px;
+}
+
+.modal-body {
+	padding: 0;
+}
+.modal-backdrop.show {
+    opacity: 0.8;
+}
+
+/* ==================================== */

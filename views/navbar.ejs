@@ -1,0 +1,258 @@
+
+<!-- BREAKPOINT : MEDIUM -->
+
+<nav class="navbar fixed-top navbar-expand-md navbar-dark shadow d-flex">
+    <!-- Toggle Menu when navbar is collapsed -->
+    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand" href="/">
+        <img class="" src="/img/logo_blanc.png">
+    </a>
+
+    <!--
+    <form class="form-inline my-2 mw-100 d-none d-md-block" id="searchForm">
+        <button class="btn color-white fas fa-search" type="submit"></button>
+        <input class="" type="search" placeholder="Search" aria-label="Search" action="/search" method="POST">
+    </form>-->
+
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="dropdown nav-item">
+                <a class="nav-link dropdown-toggle" href="#" id="shopDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Shop </a>
+                <div class="dropdown-menu dropdown-menu-right w-auto" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/shop">Tous les articles</a>
+                    <div class="dropdown-divider d-none d-md-block"></div>
+                    <a class="dropdown-item" href="/shop/clothe">Vêtements</a>
+                    <a class="dropdown-item" href="/shop/accessory">Accessoires</a>
+                    <!--<a class="dropdown-item" href="/shop/print">Prints</a>-->
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/lookbook">Lookbook</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/kezako">Qui sommes-nous ?</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://linktr.ee/StrangeDay" target="_blank">Radio</a>
+            </li>
+            <li class="dropdown nav-item">
+                <a class="nav-link dropdown-toggle" href="#" id="infoDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Infos </a>
+                <div class="dropdown-menu dropdown-menu-right w-auto" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/contact">Contact</a>
+                    <a class="dropdown-item" href="/faq">FAQ</a>
+                </div>
+            </li>
+            <li class="nav-item d-md-none">
+                <a class="nav-link" href="/cart"> Voir le panier <i class="fa fa-shopping-cart"></i></a>
+            </li>
+            <!---------------------------------->
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal"> 
+                    Se connecter <i class="fa fa-sign-in-alt"></i>
+                </a>
+            </li>
+            <li class="dropdown nav-item d-none d-md-block">
+                <a class="nav-link dropdown-toggle cart-dropdown" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>0</span>
+                    <i class="fa fa-shopping-cart"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="navbarDropdownMenuLink">
+                    <div class="cart-pannel container">
+                            <div class="cart-empty row align-items-center"> 
+                                <span class="m-5 col"> Aucun produit dans le panier ...</span>
+                            </div>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- MODAL CONNEXION -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Se connecter</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body pt-4 pb-2">
+                <form action="/login" method="post" class="log-pannel offset-2 col-8 offset-2">
+                    <div class="form-group form-row">
+                        <input type="text" placeholder="Adresse email" class="form-control" name="email">
+                        <div class="invalid-feedback">Veuillez rentrer une adresse email valide</div>
+                    </div>
+
+                    <div class="form-group form-row">
+                        <input type="password" placeholder="Mot de passe" class="form-control" name="password">
+                        <div class="invalid-feedback">Veuillez rentrer un mot de passe valide</div>
+                    </div>
+
+                    <div class="form-check form-row">
+                        <!--<input class="form-check-input" type="checkbox" id="logRemember" name="newsletter" value="yes">
+                        <label for="logRemember">Rester connecté</label>-->
+                    </div>
+                    <div class="form-row">
+                        <button type="submit" class="btn btn-log w-100" data-dismiss="">Se connecter</button>
+                    </div>
+                    <small> <a href="/forgot-password">Mot de passe oublié</a> </small>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <span class="text-center w-100"> Pas encore inscrit ?  <a href="/subscribe">Créer un compte !</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Import JS Bootstrap dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!-- Import Font Awesome -->
+<script src="https://kit.fontawesome.com/5f21f19d3f.js"></script>
+
+<script type="text/javascript">
+    /* On efface les cookies de session pour les notifications */
+    $.post("/resetNotif");
+
+    /* Erreur à afficher pour le login */
+    $('form[action="/login"]').submit(function () {
+        var emailInput = $('.log-pannel input[type="text"]');
+        var passwordInput = $('.log-pannel input[type="password"]');
+
+        // On check les erreurs et on ajoute la classe en consequant
+        if (!emailInput.val()) {
+            emailInput.removeClass('is-valid').addClass('is-invalid');
+            return false;
+        } else {
+            emailInput.removeClass('is-invalid').addClass('is-valid');
+        }
+        if (!passwordInput.val()) {
+            passwordInput.removeClass('is-valid').addClass('is-invalid');
+            return false;
+        } else {
+            passwordInput.removeClass('is-invalid').addClass('is-valid');
+        }
+
+        $.post("/login", {
+            email: emailInput.val(),
+            password: passwordInput.val()
+        })
+        .done( function (data) {
+            console.log(data)
+            if (data == "badEmail") {
+                emailInput.removeClass('is-valid').addClass('is-invalid');
+            }
+            else if (data == "badPassword") {
+                passwordInput.removeClass('is-valid').addClass('is-invalid');
+            }
+            else {
+                location.reload();
+            }
+        });
+
+        return false; // on execute pas le submit normal
+    });
+
+    function updateCart(cart) {
+        $('.cart-dropdown span').text(cart.nb_products); // On met à jour l'indicateur du panier
+        $('div.cart-pannel').empty() // On vide l'ancien panier pour le refaire
+
+        // On configure le panier
+        $('div.cart-pannel').append(
+        `<div class="cart-total p-3 d-flex justify-content-between">
+                <div class="cart-total-title">
+                    <big>TOTAL</big>
+                    <small>(TTC - Hors livraison)</small>
+                </div>
+                <span class="cart-total-price">${cart.subtotal_cost}€</span>
+            </div>
+            <div class="cart-check pb-3 row justify-content-center">
+                <a href="/cart" class="btn btn-secondary btn-sm col-4">Voir le panier</a>
+                </form>
+            </div>`);
+
+        // On ajoute les produit au panier...
+        for (product of cart.products) {
+            // On ajoute la ligne de produit à la fenêtre
+            $('div.cart-total').before(
+            `<div class="cart-product row align-items-center" product_id="${product.id}" product_option="${product.option}"> 
+                <img class="p-2 col-3" src="/img/${product.img}">
+                <div class="col">
+                    <a href="/product/${product.id}" class="cart-product-name">
+                        ${product.name} ${product.option}
+                    </a>
+                    <span class="ml-2">x</span>
+                    <span class="qty">${product.cart_qty}</span>
+                </div>
+                <span class="cart-product-price col-3">${product.price}€</span>
+                <form class="form-remove-cart col-1" action="/remove-cart" method="post" product_id="${product.id}" product_option="${product.option}">
+                    <button type="submit" name="remove-cart" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </form>
+            </div>`);
+        }
+
+        // On ajoute l'evenement de suppression des objets du panier
+        $(`.cart-product form`).submit(function () {
+            var product_id = $(this).attr('product_id');
+            var product_option = $(this).attr('product_option');
+            var nb = parseInt($('.cart-dropdown span').text());
+            var div_empty = `<div class="cart-empty row align-items-center"> 
+                                    <span class="m-5 col"> Aucun produit dans le panier ...</span>
+                                </div>`
+
+            $.post("/remove-cart", {
+                id: product_id, 
+                option: product_option
+            })
+            .done(function (data) {
+                // on modifie le panier dynamiquement
+                updateCart(data);
+
+                // s'il n'y a plus rien dans le panier, on supprime le total et on ajoute le texte de vide
+                if (!data.products.length) {
+                    $('.cart-pannel').empty();
+                    $('.cart-pannel').append(div_empty);
+                }
+            });
+            return false; // on n'execute pas le submit normal
+        });
+    }
+
+    // Pour supprimer un objet du panier
+    $('form.form-remove-cart').submit(function () {
+        var product_id = $(this).attr('product_id');
+        var product_option = $(this).attr('product_option');
+        var div_empty = `<div class="cart-empty row align-items-center"> 
+                        <span class="m-5 col"> Aucun produit dans le panier ...</span>
+                    </div>`
+        $.post("/remove-cart", {
+            id: product_id, 
+            option: product_option
+        })
+        .done(function (data) {
+            // on modifie le panier dynamiquement
+            updateCart(data);
+
+            // s'il n'y a plus rien dans le panier, on supprime le total et on ajoute le texte de vide
+            if (!data.products.length) {
+                $('.cart-pannel').empty();
+                $('.cart-pannel').append(div_empty);
+            }
+        });
+        return false; // on n'execute pas le submit normal
+    });
+</script>
