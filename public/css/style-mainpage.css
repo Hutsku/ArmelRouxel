@@ -11,7 +11,7 @@ a:hover {
 }*/
 
 .background {
-	height: 110vh;
+	height: 100%;
 	width: 100%;
 	position: fixed;
 	background-size: cover;
