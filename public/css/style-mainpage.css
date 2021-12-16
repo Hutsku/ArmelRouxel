@@ -54,6 +54,9 @@ a:hover {
 	html {
   		scroll-snap-type: none;
 	}
+	#quietKid {
+		flex-direction: column;
+	}
 	#anotherLightOut {
 		flex-direction: column-reverse;
 	}
@@ -185,6 +188,9 @@ a:hover {
 @media (max-width: 768px) {
 	.modal {
 		padding: 10px;
+	}
+	.track-detail .modal-dialog {
+		max-width: 100%;
 	}
 	.carousel-control-prev {
 		left: 0;
