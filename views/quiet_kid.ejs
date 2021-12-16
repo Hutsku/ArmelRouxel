@@ -41,10 +41,10 @@
             </div>
             <div class="container">
                 <div class="row m-0">
-                    <div class="col-5 p-0">
+                    <div class="col-md-5 p-0">
                         <img class="d-block w-100" src="/img/quiet_kid/cover.jpg">
                     </div>
-                    <div class="album-desc col-7 pl-5">
+                    <div class="album-desc col-md-7 pl-md-5 p-0 mt-4 mt-md-0">
                         <div class="row m-0">
                             <span class="title">À propos de Quiet Kid ...</span>
                         </div>
@@ -62,8 +62,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row m-0 mt-5">
-                    <div class="col-5 p-0">
+                <div class="row m-0 mt-4">
+                    <div class="col-md-5 p-0">
                         <div class="row m-0">
                             <span class="title">Écouter l'album</span>
                         </div>
@@ -71,7 +71,7 @@
                             <iframe src="https://open.spotify.com/embed/album/5e6T5rzC5VTlCUPZlnvFNf?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                         </div>
                     </div>
-                    <div class="album-desc col-7 pl-5">
+                    <div class="album-desc col-md-7 pl-md-5 p-0 mt-4 mt-md-0">
                         <div class="row m-0">
                             <span class="title">Vidéos</span>
                         </div>
@@ -81,9 +81,9 @@
                     </div>
                 </div>
             </div>
-            <div class="container mt-5">
+            <div class="container mt-4">
                 <div class="row m-0">
-                    <div class="col">
+                    <div class="col p-0">
                         <div class="row m-0">
                             <span class="title">Photos</span>
                         </div>
@@ -93,7 +93,7 @@
                     <div class="gallery col p-0">
                         <div class="row m-0">
                             <% for (var i=0; i < gallery.length; i++) { %>
-                                <div class="col-2 p-2" data-toggle="modal" data-target="#galleryModal" data-i="<%= i %>">
+                                <div class="col-4 col-md-2 p-2" data-toggle="modal" data-target="#galleryModal" data-i="<%= i %>">
                                     <img class="d-block w-100" src="/img/quiet_kid/<%= gallery[i] %>">
                                 </div>
                             <% } %>
@@ -122,7 +122,7 @@
 
             <!-- ==================================== MODAL =================================== -->
 
-            <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryLabel" aria-hidden="true">
+            <div class="modal fade gallery" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="col modal-body" style="text-transform:none; font-weight: 500;">
@@ -132,7 +132,7 @@
                             
                             <div class="row m-0">
                                 <div class="carousel-container d-flex">
-                                    <div id="carouselGallery" class="carousel slide d-none d-md-block" data-ride="carousel">
+                                    <div id="carouselGallery" class="carousel slide" data-ride="carousel">
                                         <div class="carousel-inner">
                                         <% for (var i=0; i < gallery.length; i++) { %>
                                             <div class="carousel-item <% if (!i) { %> active <% } %>">

@@ -36,9 +36,10 @@ a:hover {
 }
 
 .mainpage-menu, .mainpage-grid > div {
-	height: 100vh;
-	scroll-snap-align: start;
+	display: flex;
+	min-height: 100vh;
 	align-items: center;
+	scroll-snap-align: start;
 }
 .mainpage-grid img, .gallery img {
 	transition: 0.5s;
@@ -46,6 +47,22 @@ a:hover {
 .mainpage-grid img:hover, .gallery img:hover {
 	cursor: pointer;
 	transform: scale(1.03);
+}
+
+/* MOBILE GRID */
+@media (max-width: 768px) {
+	html {
+  		scroll-snap-type: none;
+	}
+	#anotherLightOut {
+		flex-direction: column-reverse;
+	}
+	#reachThatLight {
+		flex-direction: column;
+	}
+	.mainpage-grid > div {
+		min-height: 0;
+	}
 }
 
 .footer {
@@ -56,7 +73,8 @@ a:hover {
 	position: relative;
 	z-index: 1;
 
-	padding: 70px;
+	padding-top: 70px;
+	padding-bottom: 70px;
 }
 .head-title {
 	color: #a5692a;
@@ -70,7 +88,7 @@ a:hover {
 
 .title {
 	color: white;
-	font-size: 27px;
+	font-size: 26px;
 	opacity: 0.9;
 }
 
@@ -132,9 +150,14 @@ a:hover {
 /* =============== MODAL ============== */
 
 .modal {
+	align-items: center;
 	padding-right: 0;
 	padding: 35px;
 }
+.modal.gallery.show {
+	display: flex !important;
+}
+
 .album-detail .modal-dialog {
 	margin:  0;
 	max-width: 100%;
@@ -157,6 +180,18 @@ a:hover {
 }
 .modal-backdrop.show {
     opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+	.modal {
+		padding: 10px;
+	}
+	.carousel-control-prev {
+		left: 0;
+	}
+	.carousel-control-next {
+		right: 0;
+	}
 }
 
 /* ==================================== */
