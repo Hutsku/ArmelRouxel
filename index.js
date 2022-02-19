@@ -23,6 +23,7 @@ function app_init () {
 
     app.use(express.static(__dirname + '/public'));
     app.use('/scripts', express.static(__dirname + '/node_modules/'));
+    app.use('/modules', express.static(__dirname));
     app.use('/static', express.static(__dirname + '/public'));
     app.set('view engine', 'ejs');  
 
@@ -38,13 +39,33 @@ app_init();
 console.log('Création des routes POST et GET')
 app.get('/', function(req, res) {
     // Renvoit par défaut vers la page principale
-    res.redirect('/mainpage');
+    res.redirect('/blogs');
 })
 
-.get('/mainpage', function(req, res) {
+// ------------------ BLOGS PROGRAMATION -------------------
+
+.get('/blogs', function(req, res) {
+    res.render('blogs/noise_exp.ejs');
+})
+
+.get('/demo/map_generator', function(req, res) {
+    res.render('blogs/map_generator.ejs');
+})
+
+.get('/demo/marbles', function(req, res) {
+    res.render('blogs/marbles.ejs');
+})
+
+.get('/demo/clouds', function(req, res) {
+    res.render('blogs/clouds.ejs');
+})
+
+// ------------------ MUSIQUE ------------------------------
+
+.get('/music', function(req, res) {
     let gallery_qk = fs.readdirSync('./public/img/quiet_kid');
     let gallery_alo = fs.readdirSync('./public/img/another_light_out');
-    res.render('mainpage.ejs', {
+    res.render('music/mainpage_music.ejs', {
         session: req.session,
         gallery_qk: gallery_qk,
         gallery_alo: gallery_alo
@@ -53,31 +74,31 @@ app.get('/', function(req, res) {
 
 .get('/quiet_kid', function(req, res) {
     let gallery = fs.readdirSync('./public/img/quiet_kid');
-    res.render('quiet_kid.ejs', {
+    res.render('music/quiet_kid.ejs', {
         session: req.session,
         gallery: gallery
     });
 })
 .get('/makingof_quiet_kid', function(req, res) {
-    res.render('makingof_qk.ejs', {
+    res.render('music/makingof_qk.ejs', {
         session: req.session,
     });
 })
 .get('/another_light_out', function(req, res) {
     let gallery = fs.readdirSync('./public/img/another_light_out');
-    res.render('another_light_out.ejs', {
+    res.render('music/another_light_out.ejs', {
         session: req.session,
         gallery: gallery
     });
 })
 .get('/makingof_reach_that_light_out', function(req, res) {
-    res.render('makingof_rtl.ejs', {
+    res.render('music/makingof_rtl.ejs', {
         session: req.session,
     });
 })
 .get('/reach_that_light', function(req, res) {
     let gallery = fs.readdirSync('./public/img/reach_that_light');
-    res.render('reach_that_light.ejs', {
+    res.render('music/reach_that_light.ejs', {
         session: req.session,
         gallery: gallery
     });
@@ -96,5 +117,5 @@ app.use(function(req, res, next){
 });
 
 // On ouvre le serveur sur le port 8080
-console.log('Ouverture du serveur sur le port 8080')
+console.log('Ouverture du serveur sur le port 8081')
 app.listen(8081, 'localhost');

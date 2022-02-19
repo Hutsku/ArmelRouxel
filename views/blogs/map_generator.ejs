@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Import CSS Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Import custom CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/style-blogs.css">
+
+        <title>Demo</title>
+    </head>
+ 
+    <body>
+        <main class="m-5">
+            <div class="mainContainer">
+                <div class="canvasContainer">
+                    <div id="c1" style="position: relative;">
+                        <canvas id="color" width="400" height="400"></canvas>
+                        <div class="d-none loader-container align-items-center justify-content-center">
+                            Génération de la carte
+                        <div class="loader ml-3"></div>
+                    </div>
+                    </div>
+                    <div id="c2">
+                        <canvas id="grey" width="400" height="400" moz-opaque></canvas>
+                    </div>                    
+                </div>
+                <div class="slideContainer col-3">
+                    <span class="title"> Préset de carte </span>
+                    <select class="form-control my-2" id="preset">
+                        <option value="normal" selected> Basique </option>
+                        <option value="archipelagos"> Archipelles </option>
+                        <option value="landmass"> Continents </option>
+                    </select>
+
+                    <span class='mt-3 title'> Options de génération </span>
+                    <div class="form-check my-1">
+                        <input class="form-check-input" type="checkbox" value="1" id="trees" checked="true">
+                        <label class="form-check-label" for="continuous"> Arbres </label>
+                    </div>
+                    <div class="form-check my-1">
+                        <input class="form-check-input" type="checkbox" value="1" id="continuous">
+                        <label class="form-check-label" for="continuous"> Carte cyclique </label>
+                    </div>
+                    <div class="form-check my-1">
+                        <input class="form-check-input" type="checkbox" value="1" id="temp">
+                        <label class="form-check-label" for="temp"> Temperature </label>
+                    </div>
+
+                    <span class='mt-3 title'> Algorithmes de traitement </span>
+                    <div class="form-check my-1">
+                        <input class="form-check-input" type="radio" name="mapType" id="normal" value="normal" checked>
+                        <label class="form-check-label" for="normal"> Normal </label>
+                    </div>
+                    <div class="form-check my-1">
+                        <input class="form-check-input" type="radio" name="mapType" id="island" value="island">
+                        <label class="form-check-label" for="normal"> Island </label>
+                    </div>
+                    <div class="form-check my-1">
+                        <input class="form-check-input" type="radio" name="mapType" id="grand_lac" value="grand_lac">
+                        <label class="form-check-label" for="normal"> Lac Central </label>
+                    </div>
+                    <div class="form-check my-1">
+                        <input class="form-check-input" type="radio" name="mapType" id="surround_sea" value="surround_sea">
+                        <label class="form-check-label" for="temp"> Bordure Mer </label>
+                    </div>
+                    <div class="form-check my-1">
+                        <input class="form-check-input" type="radio" name="mapType" id="surround_land" value="surround_land">
+                        <label class="form-check-label" for="temp"> Bordure Terre </label>
+                    </div>
+
+                    <span class="mt-3 mb-2 title"> Variables de génération </span>
+                    <span class="subtitle"> Fréquence <span class="displayValue" id="dv1">(4)</span></span>
+                    <input type="range" min="1" max="20" value="4" class="slider mt-2 mb-4" id="freqSlide">
+                    <span class="subtitle"> Octaves <span class="displayValue" id="dv2">(8)</span></span>
+                    <input type="range" min="1" max="10" value="8" class="slider mt-2 mb-4" id="octSlide">
+                    <span class="subtitle"> Redistribution <span class="displayValue" id="dv3">(1)</span></span>
+                    <input type="range" min="0" max="5" value="1" class="slider mt-2 mb-4" id="distSlide">
+
+                    <div class="text-center">
+                        <button class="generate btn btn-primary mt-3">Générer</button>
+                    </div>
+                </div>
+            </div>
+            
+
+        </main>
+    </body>
+
+    <!-- Import JS Bootstrap dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kchapelier/poisson-disk-sampling@2.2.2/build/poisson-disk-sampling.min.js"></script>
+    <script type="module" src="/modules/map_generator.js"></script>
+
+</html>

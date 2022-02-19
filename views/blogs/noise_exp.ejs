@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Import CSS Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Import custom CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/style-blogs.css">
+
+        <title>Demo</title>
+    </head>
+ 
+    <body>
+        <main class="my-5">
+            <div class="mainTitle text-center mb-3"> Les fonctions de "bruit" et leurs applications </div>
+            <div class="mainContainer">
+                <div class="left-section col"></div>
+
+                <div class="middle-section col-7">
+                    <div class="textContent">
+                        <div class="title pt-3" id="h1-1"> Introduction </div>
+                        <p> Pour être honnête avec vous, la génération procedurale a toujours été un domaine qui m'a passioné dès que j'ai commencé à faire de l'informatique. Imaginez-vous à ma place quand j'étais encore petit: rentrer de l'école et sitôt le cartable jeté dans sur son lit, allumer en vitesse l'ordinateur familiale pour lancer une partie de votre jeu préféré "Minecraft". Voir <b>un monde complet, infini et coherent</b> se créer sous vos yeux encore innocents, un monde total à explorer, toujours similaire et pourtant si différent à chaque fois.</p>
+                        <p> Mais vous êtes-vous jamais demandé comment cela marchait ? Comment un "simple" code pouvait générer des mondes complètement coherent, et qui ressemble au notre (oui bon, ça reste des cube mais nous nous sommes compris) ? En tout cas ça a été mon cas, et dès que j'ai découvert le merveilleux monde de la programmation, j'ai aussitôt essayé de comprendre ça.</p>
+                        <p> Bon néanmoins, aussi passionant soit le sujet (j'en ferai peut-être un blog dessus un de ces jours qui sait) ici <b>nous allons parler des "bruit"</b>, communement appelé "Noise" en anglais, une des techniques permettant, entre autre, de générer ce genre de carte aléatoire.</p>
+
+                        <div class="img-gallery my-4">
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <img class="w-100" src="/img/noise1D.png">
+                                </div>
+                                <div class="container text-center p-2">
+                                    <span class="w-100"> De l'aléatoire ... </span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <img class="w-100" src="/img/noise.png">
+                                </div>
+                                <div class="container text-center p-2">
+                                    <span class="w-100"> ... naît le bruit ... </span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <img class="w-100" src="/img/map.png">
+                                </div>
+                                <div class="container text-center p-2">
+                                    <span class="w-100"> ... puis un monde ! </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="title pt-3" id="h1-2"> Entendons-nous sur le Bruit </div>
+                        <p> Alors je sais ce que vous pensez: quel est le rapport entre du bruit et une magnifique map de Minecraft ? Déjà entendons-nous sur la signification du mot bruit: ici je ne parle pas du hurlement du bébé au restaurant vous brisant les oreilles ou de la douce mélodie émanant du marteau piqueur, je parle ici de sa signification plus générale. <b> Un bruit est un signal parasite, une donnée indesirable qui perturbe l'analyse de notre environnement </b>. Quelqu'un qui parle à coté de vous quand vous essayez de communiquer avec votre ami est un bruit. Le gresillement des écouteurs quand vous écoutez votre musique favorite est aussi un bruit. En soit, il n'est pas forcément dénué d'interêt, mais dans le cas présent il vous gène.</p>
+
+                        <p>Et là je vous vois encore venir "Ok mais je ne vois toujours pas le rapport entre ça et Minecraft". Pas si vite, vous allez finir par comprendre (je l'espère) avant la fin de mon blog. mais retenez bien une chose <b>on peut faire naître du chaos la plus belle des harmonies</b> et ici ça sera bien le cas.</p>
+
+                        <div class="title pt-3" id="h1-3"> De l'aléatoire nait la beauté </div>
+                        <p> Bon alors, après 2 paragraphes de blabla introductifs on va enfin entrer dans le vif du sujet, je sais que vous n'en pouvez plus d'attendre. Fixons-nous l'objectif suivant: <b>génerer une carte cohérente avec des creux, des plaines et des montagnes !</b></p>
+                        <p> Tout d'abord comme expliqué tout à l'heure il va nous falloir créer des valeurs aléatoire, et quand je dis créer ce n'est pas avec une formule magique, on va le construire nous même avec des fonctions mathematiques relativement simple. Partons donc d'une fonction simple, un sinus, qui sera suffisant pour notre exemple.<br/>
+                        Un sinus produit de jolies courbes, comme de belles collines. On peut faire varier leur taille en jouant sur la "fréquence" de la sinusoide ou bien leur amplitude. Testez sur le cadre ci-dessous !</p>
+
+                        <div class="exempleContainer row my-4">
+                            <div class="canvasContainer col">
+                                <canvas id="sin1" width="400" height="150" moz-opaque></canvas>
+                            </div>
+                            <div class="slideContainer col">
+                                <span> Fréquence </span>
+                                <input type="range" min="1" max="50" value="5" class="slider mt-2 mb-4" id="freqSlide1">
+                                <span> Amplitude </span>
+                                <input type="range" min="0" max="100" value="50" class="slider mt-2 mb-4" id="ampSlide">
+                            </div>
+                        </div>
+
+                        <p> Effectivement avec un peu d'imagination on peut y voir des collines, ou des montagnes selon votre humeur, mais tout cela semble bien lisse et un peu trop repetitif ce n'est pas du tout naturel ... N'y a-t-il point un moyen d'ajouter un peu de variation ? Eheh, c'est precisément là que ça devient interessant: pour faire varier nos jolies courbes, on va <b>rajouter d'autres courbes</b> par dessus, eh oui ! Mais attention, de fréquence et d'amplitudes différentes evidemment, chacune déphasée l'une de l'autre.<br/>
+                        Chaque couche suppplémentaire est appelé une <b>octave</b> et influe sur le "grain" de la courbe. Je vous laisse là encore experimenter sur le cadre ci-dessous pour bien vous rendre compte de l'influence des octave sur notre bruit.</p>
+
+                        <div class="exempleContainer row my-4">
+                            <div class="canvasContainer col">
+                                <canvas id="sin2" width="400" height="150" moz-opaque></canvas>
+                            </div>
+                            <div class="slideContainer col">
+                                <span> Octave <span class="displayValue" id="o1">(1)</span> </span>
+                                <input type="range" min="1" max="8" value="3" class="slider mt-2 mb-4" id="octSlide1">
+                            </div>
+                        </div>
+
+                        <div class="title pt-3" id="h1-4"> Tout est plus Simplex !</div>
+                        <p> Bien maintenant que vous avez compris les bases de la génération d'un bruit on va pouvoir appliquer ça sur un <b>plan 2D</b> ce qui va être autrement plus interessant pour notre objectif final. Sur les exemples précédants nous avons utilisé une simple sinusoide comme base de notre bruit, mais cette fonction a ses limite. Toutefois, nous ne sommes pas limité à ces fonctions et d'ailleurs pour la suite nous allons utiliser ce qu'on appel un <b>Bruit de Perlin</b> (perlin's noise) ou sa version améliorée les <b> Simplex Noise</b>. Je ne vais pas vous détailler le fonctionnement d'un tel algorithme, mais retenez que vous allez obtenir des jolies gradients similaires au sinus mais de manière non périodique et applicable à plusieurs dimension facilement.</p>
+
+                        <p> Là encore on peut influer sur sa fréquence ou son amplitude. On remarquera d'ailleurs qu'augmenter la fréquence tend un donner un effet de-zoom, et à très haute fréquence on obtiens un schéma ressemblant au "bruit blanc" des anciennes TV.</p>
+                        <div class="exempleContainer row my-4">
+                            <div class="canvasContainer col">
+                                <canvas id="perl1" width="400" height="250" moz-opaque></canvas>
+                            </div>
+                            <div class="slideContainer col">
+                                <span> Fréquence </span>
+                                <input type="range" min="1" max="20" value="3" class="slider mt-2 mb-4" id="freqSlide2">
+                            </div>
+                        </div>
+
+                        <p> Comment ? Si on peut aussi rajouter des octaves à notre bruit en 2D ? Mais bien sûr ! De manière général on peut dire que <b>la fréquence influe sur le zoom du bruit tandis que les octaves quant à elles influent sur la précision</b>. N'en abusons pas tout de même: plus vous mettez d'octave plus cela créer de couches à générer et donc <b>augmente le temps de calcul</b>. De plus vous l'avez peut-être déjà remarqué sur l'exemple linéaire mais ajouter trop d'octave à tendance à "applatir" la courbe. Certes on gagne du grain mais on perd également de plus en plus de vue nos grande colline, tout finis par s'uniformiser, comme l'érosion sur une montagne.</p>
+
+                        <div class="exempleContainer row my-4">
+                            <div class="canvasContainer col">
+                                <canvas id="perl2" width="400" height="250" moz-opaque></canvas>
+                            </div>
+                            <div class="slideContainer col">
+                                <span> Fréquence </span>
+                                <input type="range" min="1" max="20" value="3" class="slider mt-2 mb-4" id="freqSlide3">
+                                <span> Octave <span class="displayValue" id="o2">(1)</span> </span>
+                                <input type="range" min="1" max="8" value="3" class="slider mt-2 mb-4" id="octSlide2">
+                            </div>
+                        </div>
+
+                        <div class="title pt-3" id="h1-5"> Et maintenant ?</div>
+                        <p> Et maintenant, qu'est ce qu'il nous reste à faire ? Eh bien ... c'est tout. Notre bruit est là, il n'y a techniquement plus rien à faire. À vrai dire, il y a d'autres transformation que l'on peut faire sur notre bruit, pour accentuer les creux par exemple ou complètement transformer nos gradients mais je n'en parlerai pas ici.</p>
+                        <p> La seule chose qui nous reste à faire c'est de mettre en application ce magnifique bruit par diverses méthode. La plus intuitive serait de traiter directement le bruit 2D que nous avons comme un <b>niveau d'altitude</b> par exemple pour la transformer en carte comme montré ci-dessous, mais ce n'est pas la seule manière. J'ai pour cela mis en ligne quelques <b>démo techniques</b> de ce que l'on peut obtenir avec ces bruits, allant de la simple carte aléatoire à la simulation d'une nuée de billes en passant par des sortes de nuages évoluant dynamiquement. Chaque démo est agrémenté d'une petite explication technique de son fonctionnement pour les plus nerd d'entre vous, c'est pas génial ?</p>
+
+                        <div class="demo-link my-4">
+                            <div class="col-4">
+                                <div class="link-img text-center">
+                                    <a class="link-img" href="/demo/map_generator">
+                                        <img class="w-100" src="/img/map.png">
+                                    </a>
+                                </div>
+                                <div class="link-name p-2">
+                                    <div class="container text-center">
+                                        <a class="w-100" href="/demo/map_generator"> Générateur de carte</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="link-img text-center">
+                                    <a class="link-img" href="/demo/marbles">
+                                        <img class="w-100" src="/img/marbles.png">
+                                    </a>
+                                </div>
+                                <div class="link-name p-2">
+                                    <div class="container text-center">
+                                        <a class="w-100" href="/demo/marbles"> Nuée de billes</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="link-img text-center">
+                                    <a class="link-img" href="/demo/clouds">
+                                        <img class="w-100" src="/img/clouds.png">
+                                    </a>
+                                </div>
+                                <div class="link-name p-2">
+                                    <div class="container text-center">
+                                        <a class="w-100" href="/demo/clouds"> Nuages dynamiques</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-section col">
+                    <div class="toc sticky-top sticky-offset">
+                        <div class="title pt-3"> Sommaire </div>
+                        <ul>
+                            <li><a href="#h1-1"> Introduction </a></li>
+                            <li><a href="#h1-2"> Entendons-nous sur le Bruit </a></li>
+                            <li><a href="#h1-3"> De l'aléatoire nait la beauté </a></li>
+                            <li><a href="#h1-4"> Tout est plus Simplex ! </a></li>
+                            <li><a href="#h1-5"> Et maintenant ? </a></li>
+                        </li>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <!-- Import JS Bootstrap dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kchapelier/poisson-disk-sampling@2.2.2/build/poisson-disk-sampling.min.js"></script>
+    <script type="module" src="/modules/noise_exp.js"></script>
+
+</html>

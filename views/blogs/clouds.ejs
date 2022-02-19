@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Import CSS Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Import custom CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/style-blogs.css">
+
+        <title>Demo</title>
+    </head>
+ 
+    <body>
+        <main class="m-5">
+            <div class="mainContainer">
+                <div class="canvasContainer">
+                    <!--<canvas id="color" width="400" height="400"></canvas>-->
+                    <canvas id="grey" width="400" height="400" moz-opaque></canvas>
+                    <canvas id="curve" width="400" height="200" style="height: 200px;" moz-opaque></canvas>
+                </div>
+                <div class="slideContainer col-3">
+                    <span> Résolution <span class="displayValue" id="dv1">(3)</span></span>
+                    <input type="range" min="3" max="15" value="3" class="slider mt-2 mb-4" id="resSlide">
+                    <span> Vitesse <span class="displayValue" id="dv0">(5)</span></span>
+                    <input type="range" min="0" max="50" value="10" class="slider mt-2 mb-4" id="speedSlide">
+                    <span> Fréquence <span class="displayValue" id="dv2">(1)</span></span>
+                    <input type="range" min="1" max="20" value="1" class="slider mt-2 mb-4" id="freqSlide">
+                    <span> Octaves <span class="displayValue" id="dv3">(5)</span></span>
+                    <input type="range" min="1" max="10" value="5" class="slider mt-2 mb-4" id="octSlide">
+                    <!--<span> Redistribution <span class="displayValue" id="dv4">(1)</span></span>
+                    <input type="range" min="0" max="5" value="1" class="slider mt-2 mb-4" id="distSlide">-->
+
+                    <div class="form-check my-1">
+                        <input class="form-check-input" type="checkbox" value="1" id="continuous" checked="true">
+                        <label class="form-check-label" for="continuous"> Symetrie cylindrique </label>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="reset btn btn-primary mt-3">Réinitialiser</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <!-- Import JS Bootstrap dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kchapelier/poisson-disk-sampling@2.2.2/build/poisson-disk-sampling.min.js"></script>
+    <script type="module" src="/modules/clouds.js"></script>
+
+</html>
