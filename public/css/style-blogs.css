@@ -13,6 +13,48 @@ body {
     text-transform: uppercase;
     font-size: 30px;
     font-weight: 700;
+
+    background-color: #72a7b8;
+    color: white;
+    text-shadow: 2px 2px 5px gray;
+}
+.mainTitle a {
+    color: white;
+}
+.mainTitle i {
+    position: absolute;
+    left: 25px;
+    top: 30px;
+}
+
+.blog-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.blog-box, .demo-box {
+    position: relative;
+    width: 200px;
+    overflow: hidden;
+}
+.blog-box .link-name a, .demo-box .link-name a {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.demo-link, .img-gallery {
+    display: flex;
+    justify-content: space-around;
+}
+.link-img {
+    overflow: hidden;
+}
+.link-img img {
+    transition: 0.3s;
+}
+.link-img img:hover {
+    transform:  scale(1.05);
 }
 
 .textContent p {
@@ -35,7 +77,6 @@ canvas {
 .mainContainer {
     display:  flex;
     justify-content: center;
-    flex-direction: row;
 
     /*width: 700px;*/
     /*margin: auto;*/
@@ -69,22 +110,51 @@ button {
     width: 200px;
 }
 
-.demo-link, .img-gallery {
-    display: flex;
-    justify-content: space-around;
-}
-.demo-link .link-img {
-    overflow: hidden;
-}
-.demo-link .link-img img {
-    transition: 0.3s;
-}
-.demo-link .link-img img:hover {
-    transform:  scale(1.1);
-}
-
 .toc ul {
     line-height: 35px;
+    list-style: decimal;
+}
+
+/* ================= Tolltip ============== */
+
+.blog-box i, .demo-box i {
+}
+
+.tooltips {
+    position: absolute;
+    display: inline-block;
+    cursor: pointer;
+
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+
+    font-size: 25px;
+    color: #fbfbfb;
+}
+
+/* Tooltip text */
+.tooltips .tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: grey;
+
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltips:hover .tooltiptext {
+    visibility: visible;
 }
 
 /* ================= spinner ============== */

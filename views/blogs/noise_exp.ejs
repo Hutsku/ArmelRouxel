@@ -14,14 +14,14 @@
     </head>
  
     <body>
-        <main class="my-5">
-            <div class="mainTitle text-center mb-3"> Les fonctions de "bruit" et leurs applications </div>
+        <main class="mb-5">
+            <div class="mainTitle text-center p-4"> <a href="/blogs"><i class="fas fa-home"></i></a> Les fonctions de "bruit" et leurs applications </div>
             <div class="mainContainer">
-                <div class="left-section col"></div>
+                <div class="left-section col d-none d-md-block"></div>
 
-                <div class="middle-section col-7">
+                <div class="middle-section col col-md-7">
                     <div class="textContent">
-                        <div class="title pt-3" id="h1-1"> Introduction </div>
+                        <div class="title pt-5" id="h1-1"> Introduction </div>
                         <p> Pour être honnête avec vous, la génération procedurale a toujours été un domaine qui m'a passioné dès que j'ai commencé à faire de l'informatique. Imaginez-vous à ma place quand j'étais encore petit: rentrer de l'école et sitôt le cartable jeté dans sur son lit, allumer en vitesse l'ordinateur familiale pour lancer une partie de votre jeu préféré "Minecraft". Voir <b>un monde complet, infini et coherent</b> se créer sous vos yeux encore innocents, un monde total à explorer, toujours similaire et pourtant si différent à chaque fois.</p>
                         <p> Mais vous êtes-vous jamais demandé comment cela marchait ? Comment un "simple" code pouvait générer des mondes complètement coherent, et qui ressemble au notre (oui bon, ça reste des cube mais nous nous sommes compris) ? En tout cas ça a été mon cas, et dès que j'ai découvert le merveilleux monde de la programmation, j'ai aussitôt essayé de comprendre ça.</p>
                         <p> Bon néanmoins, aussi passionant soit le sujet (j'en ferai peut-être un blog dessus un de ces jours qui sait) ici <b>nous allons parler des "bruit"</b>, communement appelé "Noise" en anglais, une des techniques permettant, entre autre, de générer ce genre de carte aléatoire.</p>
@@ -120,8 +120,12 @@
                         <p> Et maintenant, qu'est ce qu'il nous reste à faire ? Eh bien ... c'est tout. Notre bruit est là, il n'y a techniquement plus rien à faire. À vrai dire, il y a d'autres transformation que l'on peut faire sur notre bruit, pour accentuer les creux par exemple ou complètement transformer nos gradients mais je n'en parlerai pas ici.</p>
                         <p> La seule chose qui nous reste à faire c'est de mettre en application ce magnifique bruit par diverses méthode. La plus intuitive serait de traiter directement le bruit 2D que nous avons comme un <b>niveau d'altitude</b> par exemple pour la transformer en carte comme montré ci-dessous, mais ce n'est pas la seule manière. J'ai pour cela mis en ligne quelques <b>démo techniques</b> de ce que l'on peut obtenir avec ces bruits, allant de la simple carte aléatoire à la simulation d'une nuée de billes en passant par des sortes de nuages évoluant dynamiquement. Chaque démo est agrémenté d'une petite explication technique de son fonctionnement pour les plus nerd d'entre vous, c'est pas génial ?</p>
 
-                        <div class="demo-link my-4">
-                            <div class="col-4">
+                        <div class="blog-section my-4 justify-content-between">
+                            <div class="demo-box shadow rounded mb-4">
+                                <div class="tooltips">
+                                    <i class="fas fa-microchip mr-2"></i>
+                                    <span class="tooltiptext">Démo</span>
+                                </div>
                                 <div class="link-img text-center">
                                     <a class="link-img" href="/demo/map_generator">
                                         <img class="w-100" src="/img/map.png">
@@ -133,7 +137,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="demo-box shadow rounded mb-4">
+                                <div class="tooltips">
+                                    <i class="fas fa-microchip mr-2"></i>
+                                    <span class="tooltiptext">Démo</span>
+                                </div>
                                 <div class="link-img text-center">
                                     <a class="link-img" href="/demo/marbles">
                                         <img class="w-100" src="/img/marbles.png">
@@ -145,7 +153,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="demo-box shadow rounded mb-4">
+                                <div class="tooltips">
+                                    <i class="fas fa-microchip mr-2"></i>
+                                    <span class="tooltiptext">Démo</span>
+                                </div>
                                 <div class="link-img text-center">
                                     <a class="link-img" href="/demo/clouds">
                                         <img class="w-100" src="/img/clouds.png">
@@ -161,9 +173,9 @@
                     </div>
                 </div>
 
-                <div class="right-section col">
+                <div class="right-section col d-none d-md-block">
                     <div class="toc sticky-top sticky-offset">
-                        <div class="title pt-3"> Sommaire </div>
+                        <div class="title pt-5"> Sommaire </div>
                         <ul>
                             <li><a href="#h1-1"> Introduction </a></li>
                             <li><a href="#h1-2"> Entendons-nous sur le Bruit </a></li>
@@ -182,6 +194,9 @@
     <!-- Import JS Bootstrap dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kchapelier/poisson-disk-sampling@2.2.2/build/poisson-disk-sampling.min.js"></script>
+    <!-- Import Font Awesome -->
+    <script src="https://kit.fontawesome.com/5f21f19d3f.js"></script>
+    
     <script type="module" src="/modules/noise_exp.js"></script>
 
 </html>

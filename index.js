@@ -45,6 +45,10 @@ app.get('/', function(req, res) {
 // ------------------ BLOGS PROGRAMATION -------------------
 
 .get('/blogs', function(req, res) {
+    res.render('blogs/mainpage_blogs.ejs');
+})
+
+.get('/blogs/noise', function(req, res) {
     res.render('blogs/noise_exp.ejs');
 })
 

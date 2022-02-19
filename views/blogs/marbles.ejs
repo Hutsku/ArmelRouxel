@@ -14,14 +14,15 @@
     </head>
  
     <body>
-        <main class="m-5">
-            <div class="mainContainer">
+        <main class="mb-5">
+            <div class="mainTitle text-center p-4"> <a href="/blogs"><i class="fas fa-home"></i></a> Démo - Nuée de billes </div>
+            <div class="mainContainer flex-column flex-md-row pt-5">
                 <div class="canvasContainer">
                     <!--<canvas id="color" width="400" height="400"></canvas>-->
                     <canvas id="grey" width="400" height="400" moz-opaque></canvas>
                     <canvas id="curve" width="400" height="200" style="height: 200px;" moz-opaque></canvas>
                 </div>
-                <div class="slideContainer col-3">
+                <div class="slideContainer col col-md-3">
                     <span> Vitesse <span class="displayValue" id="dv1">(5)</span></span>
                     <input type="range" min="0" max="100" value="5" class="slider mt-2 mb-4" id="speedSlide">
                     <span> Fréquence <span class="displayValue" id="dv2">(3)</span></span>
@@ -45,5 +46,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kchapelier/poisson-disk-sampling@2.2.2/build/poisson-disk-sampling.min.js"></script>
     <script type="module" src="/modules/marbles.js"></script>
+
+    <!-- Import Font Awesome -->
+    <script src="https://kit.fontawesome.com/5f21f19d3f.js"></script>
 
 </html>

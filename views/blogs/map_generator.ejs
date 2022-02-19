@@ -14,21 +14,22 @@
     </head>
  
     <body>
-        <main class="m-5">
-            <div class="mainContainer">
+        <main class="mb-5">
+            <div class="mainTitle text-center p-4"> <a href="/blogs"><i class="fas fa-home"></i></a> Démo - Générateur de cartes </div>
+            <div class="mainContainer flex-column flex-md-row pt-5">
                 <div class="canvasContainer">
                     <div id="c1" style="position: relative;">
                         <canvas id="color" width="400" height="400"></canvas>
                         <div class="d-none loader-container align-items-center justify-content-center">
                             Génération de la carte
-                        <div class="loader ml-3"></div>
+                            <div class="loader ml-3"></div>
+                        </div>
                     </div>
-                    </div>
-                    <div id="c2">
+                    <div class="d-none d-md-block" id="c2">
                         <canvas id="grey" width="400" height="400" moz-opaque></canvas>
                     </div>                    
                 </div>
-                <div class="slideContainer col-3">
+                <div class="slideContainer col col-md-3">
                     <span class="title"> Préset de carte </span>
                     <select class="form-control my-2" id="preset">
                         <option value="normal" selected> Basique </option>
@@ -94,5 +95,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kchapelier/poisson-disk-sampling@2.2.2/build/poisson-disk-sampling.min.js"></script>
     <script type="module" src="/modules/map_generator.js"></script>
+
+    <!-- Import Font Awesome -->
+    <script src="https://kit.fontawesome.com/5f21f19d3f.js"></script>
 
 </html>

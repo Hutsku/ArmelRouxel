@@ -115,6 +115,7 @@ function changeSlider(speed, freq, oct, balls) {
     $('#dv4').text(`(${balls})`);
 }
 
+changeSlider(5, 5, 1, 100)
 $('#speedSlide').on('input', function() {
     speed = this.value * (10**-5);
     $('#dv1').text(`(${this.value})`);
@@ -151,7 +152,7 @@ $('button.reset').click(function() {
     speed = 5 * (10**-5);
     grid.frequence = 3;
     grid.octaves = 1;
-    changeSlider(5, 3, 1, 100)
+    changeSlider(5, 5, 1, 100)
 
     grid.simplex = [new SimplexNoise()];
     grid.amp_sum = 1;
