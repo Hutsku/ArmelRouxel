@@ -130,9 +130,6 @@ $('#freqSlide').on('input', function() {
 $('#octSlide').on('input', function() {
     grid.octaves = this.value;
     $('#dv3').text(`(${this.value})`);
-    for (let n=0; n<this.value; n++) {
-        grid.simplex[n] = new SimplexNoise();
-    }
     grid.amp_sum = (1 - grid.amp**(this.value)) / (1 - grid.amp)
 });
 $('#distSlide').on('input', function() {
@@ -147,12 +144,12 @@ $('button.reset').click(function() {
     speed = 10 * (10**-5);
     grid.frequence = 1;
     grid.octaves = 5;
-    grid.size = 3;
-    grid.width = canvas.width/3;
-    grid.height = canvas.height/3;
+    grid.size = 5;
+    grid.width = canvas.width/5;
+    grid.height = canvas.height/5;
     grid.continuous = false;
 
     $('#continuous').prop('checked', false)
-    changeSlider(3, 10, 1, 5);
+    changeSlider(5, 5, 1, 5);
     grid.amp_sum = (1 - grid.amp**(grid.octaves)) / (1 - grid.amp);
 })

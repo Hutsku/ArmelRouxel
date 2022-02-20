@@ -23,7 +23,7 @@ class Grid {
 
         // On définit les differentes maps
         this.simplex = [] // Instance du bruit
-        for (let n=0; n<octaves; n++) {
+        for (let n=0; n<10; n++) {
             this.simplex[n] = new SimplexNoise();
         }
         this.frequence = frequence;
@@ -131,9 +131,6 @@ $('#freqSlide').on('input', function() {
 $('#octSlide').on('input', function() {
     grid.octaves = this.value;
     $('#dv3').text(`(${this.value})`);
-    for (let n=0; n<this.value; n++) {
-        grid.simplex[n] = new SimplexNoise();
-    }
     grid.amp_sum = (1 - grid.amp**(this.value)) / (1 - grid.amp)
 });
 $('#ballsSlide').on('input', function() {
@@ -150,16 +147,5 @@ $('button.reset').click(function() {
     grid.simplex = [new SimplexNoise()];
     grid.amp_sum = 1;
 
-    grid.balls = [];
-    for (let i=0; i<100; i++) {
-        grid.balls[i] = {
-            x: Math.floor(Math.random() * canvas.width),
-            y: Math.floor(Math.random() * canvas.height),
-            color: [
-                Math.floor(Math.random() * 255),
-                Math.floor(Math.random() * 255),
-                Math.floor(Math.random() * 255),
-            ]
-        }
-    }
+    grid.nb_balls = 100;
 })
