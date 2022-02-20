@@ -144,8 +144,6 @@ $('button.reset').click(function() {
     grid.octaves = 1;
     changeSlider(5, 5, 1, 100)
 
-    grid.simplex = [new SimplexNoise()];
     grid.amp_sum = 1;
-
     grid.nb_balls = 100;
 })
