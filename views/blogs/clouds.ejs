@@ -15,33 +15,74 @@
  
     <body>
         <main class="mb-5">
-            <div class="mainTitle text-center p-4"> <a href="/blogs"><i class="fas fa-home"></i></a> Démo - Nuages dynamiques </div>
-            <div class="mainContainer flex-column flex-md-row pt-5">
-                <div class="canvasContainer">
-                    <!--<canvas id="color" width="400" height="400"></canvas>-->
-                    <canvas id="grey" width="400" height="400" moz-opaque></canvas>
-                    <canvas id="curve" width="400" height="200" style="height: 200px;" moz-opaque></canvas>
+            <div class="mainTitle text-center"> <a href="/blogs"><i class="fas fa-home"></i></a> Nuages dynamiques </div>
+            <div class="mainContainer flex-column pt-5">
+                <div class="demoContent flex-column flex-md-row mb-4">
+                    <div class="canvasContainer">
+                        <!--<canvas id="color" width="400" height="400"></canvas>-->
+                        <canvas id="grey" width="400" height="400" moz-opaque></canvas>
+                        <canvas id="curve" width="400" height="200" style="height: 200px;" moz-opaque></canvas>
+                    </div>
+                    <div class="slideContainer col col-md-3">
+                        <span> Résolution <span class="displayValue" id="dv1">(5)</span></span>
+                        <input type="range" min="3" max="15" value="5" class="slider mt-2 mb-4" id="resSlide">
+                        <span> Vitesse <span class="displayValue" id="dv0">(5)</span></span>
+                        <input type="range" min="0" max="50" value="10" class="slider mt-2 mb-4" id="speedSlide">
+                        <span> Fréquence <span class="displayValue" id="dv2">(1)</span></span>
+                        <input type="range" min="1" max="20" value="1" class="slider mt-2 mb-4" id="freqSlide">
+                        <span> Octaves <span class="displayValue" id="dv3">(5)</span></span>
+                        <input type="range" min="1" max="10" value="5" class="slider mt-2 mb-4" id="octSlide">
+                        <!--<span> Redistribution <span class="displayValue" id="dv4">(1)</span></span>
+                        <input type="range" min="0" max="5" value="1" class="slider mt-2 mb-4" id="distSlide">-->
+
+                        <div class="form-check my-1">
+                            <input class="form-check-input" type="checkbox" value="1" id="continuous" checked="true">
+                            <label class="form-check-label" for="continuous"> Symetrie cylindrique </label>
+                        </div>
+
+                        <div class="text-center">
+                            <button class="reset btn btn-primary mt-3">Réinitialiser</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="slideContainer col col-md-3">
-                    <span> Résolution <span class="displayValue" id="dv1">(5)</span></span>
-                    <input type="range" min="3" max="15" value="5" class="slider mt-2 mb-4" id="resSlide">
-                    <span> Vitesse <span class="displayValue" id="dv0">(5)</span></span>
-                    <input type="range" min="0" max="50" value="10" class="slider mt-2 mb-4" id="speedSlide">
-                    <span> Fréquence <span class="displayValue" id="dv2">(1)</span></span>
-                    <input type="range" min="1" max="20" value="1" class="slider mt-2 mb-4" id="freqSlide">
-                    <span> Octaves <span class="displayValue" id="dv3">(5)</span></span>
-                    <input type="range" min="1" max="10" value="5" class="slider mt-2 mb-4" id="octSlide">
-                    <!--<span> Redistribution <span class="displayValue" id="dv4">(1)</span></span>
-                    <input type="range" min="0" max="5" value="1" class="slider mt-2 mb-4" id="distSlide">-->
 
-                    <div class="form-check my-1">
-                        <input class="form-check-input" type="checkbox" value="1" id="continuous" checked="true">
-                        <label class="form-check-label" for="continuous"> Symetrie cylindrique </label>
-                    </div>
+                <div class="textContent col col-md-7 m-auto">
+                    <div class="title" id="h1-1"> Explications techniques </div>
+                    <p> La partie interessante de cette démo est l'<b>évolution dynamique</b> du bruit (la couleur donnée est simplement un interpretation des niveau de gris, rien de fantastique). Souvenez-vous sur l'article principal, lorsque l'on créer un bruit en 2D il est statique est le seul moyen à priori de le faire bouger était d'effectuer une translation du plan. Touefois cela ne créait pas vraiment un dynamisme, juste un simple décalage.</p>
+                    <p> Ici l'astuce est de faire <b>bouger ce bruit 2D dans un espace 3D</b> (voir illustration ci-dessous), ou plutôt de créer un bruit 3D et de ne lire seulement qu'un plan de cette espace. On obtient alors l'equivalent d'un bruit 2D, toutefois en faisant <b>varier le 3ème axe</b> on peut modifier les valeurs de gradient du plan et de manière lisse et continue puisque le bruit est en 3D.</p>
+                    <p> Il y a également une option pour créer une <b>"symétrie cylindrique"</b>: les bords gauche et droit sont connectés entre eux. Là le principe est le même, on créer un bruit 3D et on selectionne seulement le plan circulaire correspondant à un certain rayon fixe du centre choisi. Pour créer le dynamisme on le fait ensuite <b>évoluer dans un espace 4D</b>. Mathématiquement, cela ne fait aucune difference. Vous noterez qu'on aurait également pu créer un symetrie "spherique" en connectant en plus des bords gauche et droits ceux du haut et du bas: il aurait fallut alors créer un tor dans un espace 4D puis le faire évoluer dans un espace 5D</p>
 
-                    <div class="text-center">
-                        <button class="reset btn btn-primary mt-3">Réinitialiser</button>
-                    </div>
+                    <!--<div class="img-gallery my-4">
+                        <div class="col-4">
+                            <div class="text-center">
+                                <img class="w-100" src="/img/noise1D.png">
+                            </div>
+                            <div class="container text-center p-2">
+                                <span class="w-100"> De l'aléatoire ... </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-center">
+                                <img class="w-100" src="/img/noise.png">
+                            </div>
+                            <div class="container text-center p-2">
+                                <span class="w-100"> ... naît le bruit ... </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-center">
+                                <img class="w-100" src="/img/map.png">
+                            </div>
+                            <div class="container text-center p-2">
+                                <span class="w-100"> ... puis un monde ! </span>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="title pt-3" id="h1-6"> Liens utiles </div>
+                    <ul>
+                        <li><a href="https://www.redblobgames.com/articles/noise/introduction.html">Noise Function Concepts</a></li>
+                        <li><a href="https://ronvalstar.nl/creating-tileable-noise-maps">Creating Tileable Noise Maps</a></li>
+                    </ul>
                 </div>
             </div>
         </main>

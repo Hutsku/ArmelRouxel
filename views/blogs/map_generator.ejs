@@ -15,75 +15,120 @@
  
     <body>
         <main class="mb-5">
-            <div class="mainTitle text-center p-4"> <a href="/blogs"><i class="fas fa-home"></i></a> Démo - Générateur de cartes </div>
-            <div class="mainContainer flex-column flex-md-row pt-5">
-                <div class="canvasContainer">
-                    <div id="c1" style="position: relative;">
-                        <canvas id="color" width="400" height="400"></canvas>
-                        <div class="d-none loader-container align-items-center justify-content-center">
-                            Génération de la carte
-                            <div class="loader ml-3"></div>
+            <div class="mainTitle text-center"> <a href="/blogs"><i class="fas fa-home"></i></a> Générateur de cartes </div>
+            <div class="mainContainer flex-column pt-5">
+                <div class="demoContent flex-column flex-md-row mb-4">
+                    <div class="canvasContainer">
+                        <div id="c1" style="position: relative;">
+                            <canvas id="color" width="400" height="400"></canvas>
+                            <div class="d-none loader-container align-items-center justify-content-center">
+                                Génération de la carte
+                                <div class="loader ml-3"></div>
+                            </div>
+                        </div>
+                        <div class="d-none d-md-block" id="c2">
+                            <canvas id="grey" width="400" height="400" moz-opaque></canvas>
+                        </div>                    
+                    </div>
+                    <div class="slideContainer col col-md-3">
+                        <span class="title"> Préset de carte </span>
+                        <select class="form-control my-2" id="preset">
+                            <option value="normal" selected> Basique </option>
+                            <option value="archipelagos"> Archipelles </option>
+                            <option value="landmass"> Continents </option>
+                        </select>
+
+                        <span class='mt-3 title'> Options de génération </span>
+                        <div class="form-check my-1">
+                            <input class="form-check-input" type="checkbox" value="1" id="trees" checked="true">
+                            <label class="form-check-label" for="continuous"> Arbres </label>
+                        </div>
+                        <div class="form-check my-1">
+                            <input class="form-check-input" type="checkbox" value="1" id="continuous">
+                            <label class="form-check-label" for="continuous"> Carte cyclique </label>
+                        </div>
+                        <div class="form-check my-1">
+                            <input class="form-check-input" type="checkbox" value="1" id="temp">
+                            <label class="form-check-label" for="temp"> Temperature </label>
+                        </div>
+
+                        <span class='mt-3 title'> Algorithmes de traitement </span>
+                        <div class="form-check my-1">
+                            <input class="form-check-input" type="radio" name="mapType" id="normal" value="normal" checked>
+                            <label class="form-check-label" for="normal"> Normal </label>
+                        </div>
+                        <div class="form-check my-1">
+                            <input class="form-check-input" type="radio" name="mapType" id="island" value="island">
+                            <label class="form-check-label" for="normal"> Island </label>
+                        </div>
+                        <div class="form-check my-1">
+                            <input class="form-check-input" type="radio" name="mapType" id="grand_lac" value="grand_lac">
+                            <label class="form-check-label" for="normal"> Lac Central </label>
+                        </div>
+                        <div class="form-check my-1">
+                            <input class="form-check-input" type="radio" name="mapType" id="surround_sea" value="surround_sea">
+                            <label class="form-check-label" for="temp"> Bordure Mer </label>
+                        </div>
+                        <div class="form-check my-1">
+                            <input class="form-check-input" type="radio" name="mapType" id="surround_land" value="surround_land">
+                            <label class="form-check-label" for="temp"> Bordure Terre </label>
+                        </div>
+
+                        <span class="mt-3 mb-2 title"> Variables de génération </span>
+                        <span class="subtitle"> Fréquence <span class="displayValue" id="dv1">(4)</span></span>
+                        <input type="range" min="1" max="20" value="4" class="slider mt-2 mb-4" id="freqSlide">
+                        <span class="subtitle"> Octaves <span class="displayValue" id="dv2">(8)</span></span>
+                        <input type="range" min="1" max="10" value="8" class="slider mt-2 mb-4" id="octSlide">
+                        <span class="subtitle"> Redistribution <span class="displayValue" id="dv3">(1)</span></span>
+                        <input type="range" min="0" max="5" value="1" class="slider mt-2 mb-4" id="distSlide">
+
+                        <div class="text-center">
+                            <button class="generate btn btn-primary mt-3">Générer</button>
                         </div>
                     </div>
-                    <div class="d-none d-md-block" id="c2">
-                        <canvas id="grey" width="400" height="400" moz-opaque></canvas>
-                    </div>                    
                 </div>
-                <div class="slideContainer col col-md-3">
-                    <span class="title"> Préset de carte </span>
-                    <select class="form-control my-2" id="preset">
-                        <option value="normal" selected> Basique </option>
-                        <option value="archipelagos"> Archipelles </option>
-                        <option value="landmass"> Continents </option>
-                    </select>
 
-                    <span class='mt-3 title'> Options de génération </span>
-                    <div class="form-check my-1">
-                        <input class="form-check-input" type="checkbox" value="1" id="trees" checked="true">
-                        <label class="form-check-label" for="continuous"> Arbres </label>
-                    </div>
-                    <div class="form-check my-1">
-                        <input class="form-check-input" type="checkbox" value="1" id="continuous">
-                        <label class="form-check-label" for="continuous"> Carte cyclique </label>
-                    </div>
-                    <div class="form-check my-1">
-                        <input class="form-check-input" type="checkbox" value="1" id="temp">
-                        <label class="form-check-label" for="temp"> Temperature </label>
-                    </div>
+                <div class="textContent col col-md-7 m-auto">
+                    <div class="title" id="h1-1"> Explications techniques </div>
+                    <p> Le générateur de carte est peut-être l'application la plus intuitive et la ludique du bruit. On interprête les valeurs du gradient directement <b>comme une altitude</b>, les valeurs basses étant comparées à la mer ou l'océan tandis que les valeurs hautes représentent les montagnes. On désigne ensuite des valeurs seuils pour choisir ce qui represente les plaines, collines etc. (ex: g < 0.5 --> mer, g < 0.7 --> collines et ainsi de suite).</p>
+                    <p> Toutefois notre carte, bien que fonctionnelle serait un peu simpliste. On va rajouter un peu de <b>variations sur le type de terrain</b> en créant des <b>"Biomes"</b>, zones climatiques différentes ou le terrain peut varier (par exemple un désert, marais ou plaine ont la même altitude). Pour cela on va créer en parallèle de notre premier bruit <b>un deuxième représentant le taux d'humidité</b> de notre carte: plus la valeur est haute plus il fait humide.<br/>
+                    On peut dès lors assembler les deux bruits pour créer nos biomes. J'ai également voulu gérer la temperature de la carte en prenant en compte l'éloignement aux pôles et l'altitude, mais le résultat est assez mitigé ...</p>
+                    <p> Pour finir il faut générer des <b>arbres éparpillés</b> un peu partout sur la carte. Pour cela, je n'ai pas utilisé les simplex noise comme pour les autres map mais une technique appelée les <b>"Disques de Poisson"</b>. Je ne vais pas vous détailler son fonctionnement mais vous pourrez retrouver une page détaillée dans les sources plus bas. Notez tout de même que cela permet de générer des points espacés de manière aléatoire sur une sorte de gaussienne (ce n'est pas le cas mais vous avez compris l'image). Dans notre générateur, l'espacement est géré par un joli algorithme (j'ai pris un polynome du 3ème ordre) qui <b>mélange nos bruits d'altitude et d'humidité</b> pour donner une loi de répartition des arbres sur la carte.<br/>
+                    À noter que pour les basses fréquences, la loi de répartitions pète un cable et génère des arbres de façon exponentielle ralentissant drastiquement les performances de votre machine ... (à régler)</p>
+                    <p> La méthode du bruit pour générer une carte est assez simple mais a malheureusement ses <b>limitations</b>: on ne peut pas vraiment influer sur la carte elle-même, seulement sur l'ensemble. C'est ainsi très dur de créer des rivières qui longent les montagnes par exemple, auquel cas il faudrait se pencher sur d'autres algorithmes.</p>
 
-                    <span class='mt-3 title'> Algorithmes de traitement </span>
-                    <div class="form-check my-1">
-                        <input class="form-check-input" type="radio" name="mapType" id="normal" value="normal" checked>
-                        <label class="form-check-label" for="normal"> Normal </label>
-                    </div>
-                    <div class="form-check my-1">
-                        <input class="form-check-input" type="radio" name="mapType" id="island" value="island">
-                        <label class="form-check-label" for="normal"> Island </label>
-                    </div>
-                    <div class="form-check my-1">
-                        <input class="form-check-input" type="radio" name="mapType" id="grand_lac" value="grand_lac">
-                        <label class="form-check-label" for="normal"> Lac Central </label>
-                    </div>
-                    <div class="form-check my-1">
-                        <input class="form-check-input" type="radio" name="mapType" id="surround_sea" value="surround_sea">
-                        <label class="form-check-label" for="temp"> Bordure Mer </label>
-                    </div>
-                    <div class="form-check my-1">
-                        <input class="form-check-input" type="radio" name="mapType" id="surround_land" value="surround_land">
-                        <label class="form-check-label" for="temp"> Bordure Terre </label>
-                    </div>
-
-                    <span class="mt-3 mb-2 title"> Variables de génération </span>
-                    <span class="subtitle"> Fréquence <span class="displayValue" id="dv1">(4)</span></span>
-                    <input type="range" min="1" max="20" value="4" class="slider mt-2 mb-4" id="freqSlide">
-                    <span class="subtitle"> Octaves <span class="displayValue" id="dv2">(8)</span></span>
-                    <input type="range" min="1" max="10" value="8" class="slider mt-2 mb-4" id="octSlide">
-                    <span class="subtitle"> Redistribution <span class="displayValue" id="dv3">(1)</span></span>
-                    <input type="range" min="0" max="5" value="1" class="slider mt-2 mb-4" id="distSlide">
-
-                    <div class="text-center">
-                        <button class="generate btn btn-primary mt-3">Générer</button>
-                    </div>
+                    <!--<div class="img-gallery my-4">
+                        <div class="col-4">
+                            <div class="text-center">
+                                <img class="w-100" src="/img/noise1D.png">
+                            </div>
+                            <div class="container text-center p-2">
+                                <span class="w-100"> De l'aléatoire ... </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-center">
+                                <img class="w-100" src="/img/noise.png">
+                            </div>
+                            <div class="container text-center p-2">
+                                <span class="w-100"> ... naît le bruit ... </span>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-center">
+                                <img class="w-100" src="/img/map.png">
+                            </div>
+                            <div class="container text-center p-2">
+                                <span class="w-100"> ... puis un monde ! </span>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="title pt-3" id="h1-6"> Liens utiles </div>
+                    <ul>
+                        <li><a href="https://www.redblobgames.com/maps/terrain-from-noise/">Making Maps With Noise Functions</a></li>
+                        <li><a href="https://ronvalstar.nl/creating-tileable-noise-maps">Creating Tileable Noise Maps</a></li>
+                        <li><a href='http://devmag.org.za/2009/05/03/poisson-disk-sampling/'>Poisson Disk Samplig</a></li>
+                    </ul>
                 </div>
             </div>
             
