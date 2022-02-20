@@ -8,7 +8,7 @@ class Sinus {
 
         // On définit les differents paramètres
         this.sin = [] // tableau de décalage aléatoire pour donner plus de valeurs aux octaves
-        for (let n=0; n<octaves; n++) {
+        for (let n=0; n<8; n++) {
             this.sin[n] = Math.random()*100;
         }
         this.frequence = frequence;
@@ -56,7 +56,7 @@ class Grid {
 
         // On définit les differentes maps
         this.simplex = [] // Instance du bruit
-        for (let n=0; n<octaves; n++) {
+        for (let n=0; n<8; n++) {
             this.simplex[n] = new SimplexNoise();
         }
         this.frequence = frequence;
@@ -78,8 +78,6 @@ class Grid {
         let width = canvas.width;
         let height = canvas.height;
         let context = canvas.getContext("2d");
-        context.fillStyle = 'rgb(255, 255, 255, 1)';
-        context.fillRect(0, 0, width, height);
 
         let value;
         let gradiant;
@@ -125,14 +123,8 @@ let context4 = perl2.getContext("2d");
 
 sinus1.update(sin1);
 sinus2.update(sin2);
-for (let n=0; n<20; n++) {
-    sinus2.sin[n] = Math.random()*100;
-}
 perlin1.update(perl1)
 perlin2.update(perl2)
-for (let n=0; n<20; n++) {
-    perlin2.simplex[n] = new SimplexNoise();
-}
 
 // Met la position des slides par défaut
 $('#ampSlide').val(50);

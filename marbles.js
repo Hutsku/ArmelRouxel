@@ -1,12 +1,15 @@
 import SimplexNoise from '/scripts/simplex-noise/dist/esm/simplex-noise.js';
 
 class Grid {
-    constructor(height, width, frequence, octaves, nb_balls=1) {
+    constructor(height, width, frequence, octaves, nb_balls, max_balls=300) {
         // Taille du cadre de génération
         this.height = height;
         this.width  = width;
+
+        // On précharge le nombre de boule max
+        this.nb_balls = nb_balls;
         this.balls = [];
-        for (let i=0; i<nb_balls; i++) {
+        for (let i=0; i<max_balls; i++) {
             this.balls[i] = {
                 x: Math.floor(Math.random() * width),
                 y: Math.floor(Math.random() * height),
@@ -41,7 +44,8 @@ class Grid {
         // Génère une grille par construction de bruits
         let px, py;
         let ny = t;
-        for (let ball of this.balls) {
+        for (let i=0; i<this.nb_balls; i++) {
+            let ball = this.balls[i];
             px = 0;
             py = 0;
             for (let n=0; n < this.octaves; n++) {
@@ -134,18 +138,7 @@ $('#octSlide').on('input', function() {
 });
 $('#ballsSlide').on('input', function() {
     $('#dv4').text(`(${this.value})`);
-    grid.balls = [];
-    for (let i=0; i<this.value; i++) {
-        grid.balls[i] = {
-            x: Math.floor(Math.random() * canvas.width),
-            y: Math.floor(Math.random() * canvas.height),
-            color: [
-                Math.floor(Math.random() * 255),
-                Math.floor(Math.random() * 255),
-                Math.floor(Math.random() * 255),
-            ]
-        }
-    }
+    grid.nb_balls = this.value;
 });
 
 $('button.reset').click(function() {

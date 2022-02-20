@@ -11,7 +11,7 @@ class Grid {
 
         // On définit les differentes maps
         this.simplex = [] // Instance du bruit
-        for (let n=0; n<octaves; n++) {
+        for (let n=0; n<10; n++) {
             this.simplex[n] = new SimplexNoise();
         }
         this.frequence = frequence;
@@ -83,7 +83,7 @@ let context = canvas.getContext("2d");
 let canvas2 = document.getElementById("curve");
 let context2 = canvas2.getContext("2d");
 
-let size = 3;
+let size = 5;
 const grid = new Grid(canvas.width/size, canvas.height/size, 1, 5, size=size)
 
 let timer;
@@ -112,6 +112,7 @@ function changeSlider(res, speed, freq, oct) {
     $('#dv0').text(`(${speed})`);
 }
 
+changeSlider(5, 5, 1, 5)
 $('#resSlide').on('input', function() {
     grid.size = this.value;
     grid.width = canvas.width/this.value;
@@ -153,9 +154,5 @@ $('button.reset').click(function() {
 
     $('#continuous').prop('checked', false)
     changeSlider(3, 10, 1, 5);
-
-    for (let n=0; n<octaves; n++) {
-        grid.simplex[n] = new SimplexNoise();
-    }
     grid.amp_sum = (1 - grid.amp**(grid.octaves)) / (1 - grid.amp);
 })
