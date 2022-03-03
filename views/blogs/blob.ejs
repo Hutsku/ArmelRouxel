@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Import CSS Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Import custom CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/style-blogs.css">
+
+        <title>Démo | Blob </title>
+    </head>
+ 
+    <body>
+        <main class="mb-5">
+            <div class="mainTitle text-center"> <a href="/blogs"><i class="fas fa-home"></i></a> Blob </div>
+            <div class="mainContainer flex-column pt-5">
+                <div class="demoContent flex-column flex-md-row mb-4">
+                    <div class="canvasContainer">
+                        <canvas id="3D" width="700" height="400" moz-opaque></canvas>
+                        <div class="tooltips fullscreen-button">
+                            <i class="fas fa-expand mr-3"></i>
+                            <span class="tooltiptext">Plein écran</span>
+                        </div>
+                    </div>
+                    <div class="slideContainer col col-md-3">
+                        <span> Vitesse <span class="displayValue" id="dv1">(50)</span></span>
+                        <input type="range" min="0" max="100" value="50" class="slider mt-2 mb-4" id="speedSlide">
+                        <span> Fréquence <span class="displayValue" id="dv2">(1)</span></span>
+                        <input type="range" min="1" max="20" value="1" class="slider mt-2 mb-4" id="freqSlide">
+                        <span> Octaves <span class="displayValue" id="dv3">(1)</span></span>
+                        <input type="range" min="1" max="10" value="1" class="slider mt-2 mb-4" id="octSlide">
+
+                        <div class="text-center">
+                            <button class="reset btn btn-primary mt-3">Réinitialiser</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="textContent col col-md-9 m-auto">
+                    <div class="title" id="h1-1"> Explications techniques </div>
+                    <p> Pour être honnête, c'est un des objectifs que je m'étais lancé quand j'ai voulu programmer des démos utilisant les bruits. Encore une fois, la logique va être assez similaire aux autres démos dynamique: on créer un <b>bruit dans un espace à n dimensions</b>, et on en calcule un plan que l'on fait varier au cours du temps.</p>
+                    <p> Ici j'avais plusieurs choix: créer un bruit 2D que l'on va ensuite appliquer sur la surface d'une sphère ou bien calculer le plan spherique d'un bruit en 3D. L'option 2D bien qu'elle semble valable va amener des complication inutiles. En effet, vous n'êtes peut-être pas sans savoir que dérouler sur une carte le plan d'un globe n'est jamais parfait notamment au niveau des pôles (<b>projection Mercator</b>). De plus, la continuité du bruit au niveau des pôles seraient également brisée.<br/>
+                    On prendra alors la deuxième option: <b>calculer le plan spherique d'un bruit en 3D</b> (variant dans un espace 4D ... eh oui ça devient compliqué !). Alors, chaque gradient calculé le long de cette sphère déterminera <b>à quel point la surface sera déformée</b> le long de l'axe du rayon de la sphère: pour un gradient nul la boule n'est pas modifié et pour un gradient de 1, elle l'est au maximum (selon une amplitude définie au préalable).
+                    
+                    <div class="title pt-3" id="h1-6"> Liens utiles </div>
+                    <ul>
+                       <li><a href="https://www.redblobgames.com/articles/noise/introduction.html">Noise Function Concepts</a></li>
+                        <li><a href="https://ronvalstar.nl/creating-tileable-noise-maps">Creating Tileable Noise Maps</a></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <!-- Import JS Bootstrap dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kchapelier/poisson-disk-sampling@2.2.2/build/poisson-disk-sampling.min.js"></script>
+    
+    <script src="/./three.js"></script>
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+    <script type="module" src="/modules/blob.js"></script>
+
+    <!-- Import Font Awesome -->
+    <script src="https://kit.fontawesome.com/5f21f19d3f.js"></script>
+
+</html>

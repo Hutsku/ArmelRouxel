@@ -45,33 +45,7 @@
                     <p> Pour gérer plusieurs billes à la fois, cela n'a rien de très compliqué: comme pour la première bille, on va placer notre position x ou y sur un <b>endroit aléatoire de notre bruit 1D</b>. Ainsi, les mouvements entre les billes semblent complètement différents même s'ils sont gérés sous les 2 même bruits.</p>
                     <p> Maintenant pour l'étape la plus mysterieuse pour vous j'imagine c'est celle du déplacement. Ça demande un peu plus d'abstraction mathematique mais rien de si compliqué, ça en est même eleguent: comme pour la démo "Nuages dynamique" dont le principe est complètement basé dessus, on va faire <b>bouger notre bruit 1D dans un plan 2D</b>. Pour être plus exacte, on génère un bruit 2D et on lit les coordonnée sur une ligne du plan dont un des axes varie dans le temps indépendement.</p>
                     <p> Certains d'entre vous pourraient penser qu'on pouvait s'en sortir avec un simple bruit 1D et un translation dans une des directions: c'est exacte. Toutefois, cela est valable seulement pour une boule. En effet, comme nous avons ici plusieurs billes placés sur le même bruit le mouvement de translation aurait créé un <b>phénomène de periodicité</b> entre les billes: chacune finirait par suivre le même mouvement à un moment donné.</p>
-
-                    <!--<div class="img-gallery my-4">
-                        <div class="col-4">
-                            <div class="text-center">
-                                <img class="w-100" src="/img/noise1D.png">
-                            </div>
-                            <div class="container text-center p-2">
-                                <span class="w-100"> De l'aléatoire ... </span>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="text-center">
-                                <img class="w-100" src="/img/noise.png">
-                            </div>
-                            <div class="container text-center p-2">
-                                <span class="w-100"> ... naît le bruit ... </span>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="text-center">
-                                <img class="w-100" src="/img/map.png">
-                            </div>
-                            <div class="container text-center p-2">
-                                <span class="w-100"> ... puis un monde ! </span>
-                            </div>
-                        </div>
-                    </div>-->
+                    
                     <div class="title pt-3" id="h1-6"> Liens utiles </div>
                     <ul>
                         <li><a href="https://www.redblobgames.com/articles/noise/introduction.html">Noise Function Concepts</a></li>

@@ -87,6 +87,9 @@ canvas {
     line-height: 27px;
 }
 
+.canvasContainer {
+    position: relative;
+}
 
 .textContent p {
     text-align: justify;
@@ -127,10 +130,35 @@ button {
     list-style: decimal;
 }
 
-/* ================= Tolltip ============== */
+/* ================= Fullscreen =========== */
 
-.blog-box i, .demo-box i {
+/* canvas principal */
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
 }
+/* slider box */
+.fullscreen.slideContainer {
+    position: fixed;
+    left: auto;
+    top: 20px;
+    right: 20px;
+}
+.fullscreen.fullscreen-button {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    right: auto;
+}
+/* MOBILE FULLSCREEN */
+@media (max-width: 768px) {
+    .fullscreen.slideContainer {
+        display: none;
+    }
+}
+
+/* ================= Tolltip ============== */
 
 .tooltips {
     position: absolute;
@@ -143,6 +171,27 @@ button {
 
     font-size: 25px;
     color: #fbfbfb;
+}
+.tooltips.grey {
+    color: grey;
+}
+
+.fullscreen-button {
+    position: absolute;
+    display: inline-block;
+    cursor: pointer;
+
+    color: grey;
+
+    z-index: 1;
+    top: 20px;
+    left: 20px;
+}
+.fullscreen-button i {
+    transition: 0.3s;
+}
+.fullscreen-button i:hover {
+    transform:  scale(1.2);
 }
 
 /* Tooltip text */

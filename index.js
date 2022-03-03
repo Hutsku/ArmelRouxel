@@ -64,6 +64,13 @@ app.get('/', function(req, res) {
     res.render('blogs/clouds.ejs');
 })
 
+.get('/demo/waves', function(req, res) {
+    res.render('blogs/wireframe_waves.ejs');
+})
+.get('/demo/blob', function(req, res) {
+    res.render('blogs/blob.ejs');
+})
+
 // ------------------ MUSIQUE ------------------------------
 
 .get('/music', function(req, res) {

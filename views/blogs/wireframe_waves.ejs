@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Import CSS Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Import custom CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/style-blogs.css">
+
+        <title>Démo | Vagues Wireframe </title>
+    </head>
+ 
+    <body>
+        <main class="mb-5">
+            <div class="mainTitle text-center"> <a href="/blogs"><i class="fas fa-home"></i></a> Vagues Wireframe </div>
+            <div class="mainContainer flex-column pt-5">
+                <div class="demoContent flex-column flex-md-row mb-4">
+                    <div class="canvasContainer">
+                        <canvas id="3D" width="700" height="400"></canvas>
+                        <div class="tooltips fullscreen-button">
+                            <i class="fas fa-expand mr-3"></i>
+                            <span class="tooltiptext">Plein écran</span>
+                        </div>
+                    </div>
+                    <div class="slideContainer col col-md-3">
+                        <span> Vitesse <span class="displayValue" id="dv1">(5)</span></span>
+                        <input type="range" min="0" max="100" value="5" class="slider mt-2 mb-4" id="speedSlide">
+                        <span> Fréquence <span class="displayValue" id="dv2">(3)</span></span>
+                        <input type="range" min="1" max="20" value="3" class="slider mt-2 mb-4" id="freqSlide">
+                        <span> Octaves <span class="displayValue" id="dv3">(1)</span></span>
+                        <input type="range" min="1" max="10" value="1" class="slider mt-2 mb-4" id="octSlide">
+
+                        <div class="text-center">
+                            <button class="reset btn btn-primary mt-3">Réinitialiser</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="textContent col col-md-9 m-auto">
+                    <div class="title" id="h1-1"> Explications techniques </div>
+                    <p> Bien que tout classe en 3D, le principe ne demeure pas moins tout à fait identique à celui de la démo <a href="/demo/clouds"><b>Nuages Dynamiques</b></a>. On utilise un noise en 2D que l'on projette dans un espace en 3D (ou plutôt on sélectionne un plan 2D dans le noise 3D). Déplacer ce plan 2D dans l'espace 3D nous permet d'obtenir les variation du bruit que l'on observe. Pour le reste, tout le fonctionnement est identique.
+                    
+                    <div class="title pt-3" id="h1-6"> Liens utiles </div>
+                    <ul>
+                       <li><a href="https://www.redblobgames.com/articles/noise/introduction.html">Noise Function Concepts</a></li>
+                        <li><a href="https://ronvalstar.nl/creating-tileable-noise-maps">Creating Tileable Noise Maps</a></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <!-- Import JS Bootstrap dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kchapelier/poisson-disk-sampling@2.2.2/build/poisson-disk-sampling.min.js"></script>
+    
+    <script src="/./three.js"></script>
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+    <script type="module" src="/modules/wireframe_waves.js"></script>
+
+    <!-- Import Font Awesome -->
+    <script src="https://kit.fontawesome.com/5f21f19d3f.js"></script>
+
+</html>
