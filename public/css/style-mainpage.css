@@ -49,6 +49,20 @@ a:hover {
 	transform: scale(1.03);
 }
 
+a.link-tab {
+	position: absolute;
+	color: white;
+	opacity: 0.8;
+}
+a.link-tab:hover {
+	color: white;
+	opacity: 0.6;
+	text-decoration: none;
+	}
+a.link-tab:focus {
+	opacity: 0.5;
+}
+
 /* MOBILE GRID */
 @media (max-width: 768px) {
 	html {

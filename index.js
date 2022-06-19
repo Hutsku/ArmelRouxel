@@ -70,6 +70,9 @@ app.get('/', function(req, res) {
 .get('/demo/blob', function(req, res) {
     res.render('blogs/blob.ejs');
 })
+.get('/demo/2d', function(req, res) {
+    res.render('blogs/2d.ejs');
+})
 
 // ------------------ MUSIQUE ------------------------------
 

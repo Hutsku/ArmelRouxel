@@ -16,44 +16,58 @@
     <body>
         <main class="mb-5">
             <div class="mainTitle text-center"> <a href="/blogs"><i class="fas fa-home"></i></a> Nuée de billes </div>
-            <div class="mainContainer flex-column pt-5">
-                <div class="demoContent flex-column flex-md-row mb-4">
-                    <div class="canvasContainer">
-                        <!--<canvas id="color" width="400" height="400"></canvas>-->
-                        <canvas id="grey" width="400" height="400" moz-opaque></canvas>
-                        <canvas id="curve" width="400" height="200" style="height: 200px;" moz-opaque></canvas>
-                    </div>
-                    <div class="slideContainer col col-md-3">
-                        <span> Vitesse <span class="displayValue" id="dv1">(5)</span></span>
-                        <input type="range" min="0" max="100" value="5" class="slider mt-2 mb-4" id="speedSlide">
-                        <span> Fréquence <span class="displayValue" id="dv2">(3)</span></span>
-                        <input type="range" min="1" max="20" value="3" class="slider mt-2 mb-4" id="freqSlide">
-                        <span> Octaves <span class="displayValue" id="dv3">(1)</span></span>
-                        <input type="range" min="1" max="10" value="1" class="slider mt-2 mb-4" id="octSlide">
-                        <span> Nombre de billes <span class="displayValue" id="dv4">(100)</span></span>
-                        <input type="range" min="1" max="300" value="100" class="slider mt-2 mb-4" id="ballsSlide">
+            <div class="mainContainer">
+                <div class="left-section col d-none d-md-block"></div>
 
-                        <div class="text-center">
-                            <button class="reset btn btn-primary mt-3">Réinitialiser</button>
+                <div class="middle-section col col-md-7">
+                    <div class="demoContent flex-column flex-md-row mb-4 pt-5" id="h1-1">
+                        <div class="canvasContainer">
+                            <!--<canvas id="color" width="400" height="400"></canvas>-->
+                            <canvas id="grey" width="400" height="400" moz-opaque></canvas>
+                            <canvas id="curve" width="400" height="200" style="height: 200px;" moz-opaque></canvas>
+                        </div>
+                        <div class="slideContainer col">
+                            <span> Vitesse <span class="displayValue" id="dv1">(5)</span></span>
+                            <input type="range" min="0" max="100" value="5" class="slider mt-2 mb-4" id="speedSlide">
+                            <span> Fréquence <span class="displayValue" id="dv2">(3)</span></span>
+                            <input type="range" min="1" max="20" value="3" class="slider mt-2 mb-4" id="freqSlide">
+                            <span> Octaves <span class="displayValue" id="dv3">(1)</span></span>
+                            <input type="range" min="1" max="10" value="1" class="slider mt-2 mb-4" id="octSlide">
+                            <span> Nombre de billes <span class="displayValue" id="dv4">(100)</span></span>
+                            <input type="range" min="1" max="300" value="100" class="slider mt-2 mb-4" id="ballsSlide">
+
+                            <div class="text-center">
+                                <button class="reset btn btn-primary mt-3">Réinitialiser</button>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="textContent">
+                        <div class="title" id="h1-2"> Explications techniques </div>
+                        <p> Ici malgré les apparences, j'utilise toujours un bruit ou plutôt <b>deux bruits à une dimension</b>: un pour la position x de la bille et l'autre vous l'aurez deviné pour la position y. La nature du bruit étant sous forme de gradient, on peut directement interpreter ses valeurs comme valeur de position (il n'y aura pas de "saut" puisque le gradient est continue).</p>
+                        <p> Pour gérer plusieurs billes à la fois, cela n'a rien de très compliqué: comme pour la première bille, on va placer notre position x ou y sur un <b>endroit aléatoire de notre bruit 1D</b>. Ainsi, les mouvements entre les billes semblent complètement différents même s'ils sont gérés sous les 2 même bruits.</p>
+                        <p> Maintenant pour l'étape la plus mysterieuse pour vous j'imagine c'est celle du déplacement. Ça demande un peu plus d'abstraction mathematique mais rien de si compliqué, ça en est même eleguent: comme pour la démo "Nuages dynamique" dont le principe est complètement basé dessus, on va faire <b>bouger notre bruit 1D dans un plan 2D</b>. Pour être plus exacte, on génère un bruit 2D et on lit les coordonnée sur une ligne du plan dont un des axes varie dans le temps indépendement.</p>
+                        <p> Certains d'entre vous pourraient penser qu'on pouvait s'en sortir avec un simple bruit 1D et un translation dans une des directions: c'est exacte. Toutefois, cela est valable seulement pour une boule. En effet, comme nous avons ici plusieurs billes placés sur le même bruit le mouvement de translation aurait créé un <b>phénomène de periodicité</b> entre les billes: chacune finirait par suivre le même mouvement à un moment donné.</p>
+                        
+                        <div class="title pt-3" id="h1-3"> Liens utiles </div>
+                        <ul>
+                            <li><a href="https://github.com/Hutsku/ArmelRouxel/blob/main/marbles.js">Code source</a></li>
+                            <li><a href="https://www.redblobgames.com/articles/noise/introduction.html">Noise Function Concepts</a></li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="textContent col col-md-7 m-auto">
-                    <div class="title" id="h1-1"> Explications techniques </div>
-                    <p> Ici malgré les apparences, j'utilise toujours un bruit ou plutôt <b>deux bruits à une dimension</b>: un pour la position x de la bille et l'autre vous l'aurez deviné pour la position y. La nature du bruit étant sous forme de gradient, on peut directement interpreter ses valeurs comme valeur de position (il n'y aura pas de "saut" puisque le gradient est continue).</p>
-                    <p> Pour gérer plusieurs billes à la fois, cela n'a rien de très compliqué: comme pour la première bille, on va placer notre position x ou y sur un <b>endroit aléatoire de notre bruit 1D</b>. Ainsi, les mouvements entre les billes semblent complètement différents même s'ils sont gérés sous les 2 même bruits.</p>
-                    <p> Maintenant pour l'étape la plus mysterieuse pour vous j'imagine c'est celle du déplacement. Ça demande un peu plus d'abstraction mathematique mais rien de si compliqué, ça en est même eleguent: comme pour la démo "Nuages dynamique" dont le principe est complètement basé dessus, on va faire <b>bouger notre bruit 1D dans un plan 2D</b>. Pour être plus exacte, on génère un bruit 2D et on lit les coordonnée sur une ligne du plan dont un des axes varie dans le temps indépendement.</p>
-                    <p> Certains d'entre vous pourraient penser qu'on pouvait s'en sortir avec un simple bruit 1D et un translation dans une des directions: c'est exacte. Toutefois, cela est valable seulement pour une boule. En effet, comme nous avons ici plusieurs billes placés sur le même bruit le mouvement de translation aurait créé un <b>phénomène de periodicité</b> entre les billes: chacune finirait par suivre le même mouvement à un moment donné.</p>
-                    
-                    <div class="title pt-3" id="h1-6"> Liens utiles </div>
-                    <ul>
-                        <li><a href="https://www.redblobgames.com/articles/noise/introduction.html">Noise Function Concepts</a></li>
-                    </ul>
+                <div class="right-section col d-none d-md-block">
+                    <div class="toc sticky-top sticky-offset">
+                        <div class="title pt-5"> Sommaire </div>
+                        <ul>
+                            <li><a href="#h1-1"> Démo </a></li>
+                            <li><a href="#h1-2"> Explications techniques </a></li>
+                            <li><a href="#h1-3"> Liens utiles </a></li>
+                        </li>
+                    </div>
                 </div>
             </div>
-            
-
         </main>
     </body>
 
