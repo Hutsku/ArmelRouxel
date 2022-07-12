@@ -210,7 +210,7 @@ init()
 
 /* ====================== CONTROL BUTTONS =================== */
 
-$('.instructionContainer button').click(function() {
+$('button#autoParam').click(function() {
     if (autoChangeParam) {
         autoChangeParam = false;
         $(this).removeClass('focus');
@@ -240,8 +240,8 @@ $(renderer.domElement).mousedown(function(event) {
 
             // On désactive la rotation automatique
             autoChangeParam = false;
-            $('.instructionContainer button').removeClass('focus');
-            $('.instructionContainer button').addClass('not-focus');
+            $('button#autoParam').removeClass('focus');
+            $('button#autoParam').addClass('not-focus');
             break;
     }
 })

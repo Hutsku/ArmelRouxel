@@ -175,6 +175,15 @@ button {
     top: 30px;
     right: auto;
 }
+.fullscreen#autoParam {
+    font: 400 0.95rem 'Courier New', monospace;
+    text-transform: lowercase;
+
+    position: fixed;
+    left: 30px;
+    top: 80px;
+    right: auto;
+}
 .fullscreen.fullscreen-button {
     position: fixed;
     left: 20px;
@@ -201,6 +210,12 @@ button {
         width: 100%;
         align-items: center;
         bottom: 50px;
+    }
+    .fullscreen#autoParam {
+        width: 130px;
+        left: 30px;
+        top: 35px;
+        right: auto;
     }
 }
 
