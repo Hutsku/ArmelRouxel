@@ -10,7 +10,7 @@ a:hover {
 	opacity: 0.8;
 }*/
 
-.navbuttonContainer a.btn {
+.navButton {
 	width: 200px;
 	opacity: 1;
 	background-color: transparent;
@@ -20,10 +20,17 @@ a:hover {
 	font: 400 0.95rem 'Courier New', monospace;
 	text-transform: lowercase;
 }
-.navbuttonContainer .btn:hover {
+.navButton:hover {
 	background-color: #ffffff80;
 }
-.navbuttonContainer .btn:focus {
+.navButton:focus {
+	background-color: white;
+	box-shadow: none;
+}
+.navButton.not-focus {
+	background-color: transparent;
+}
+.navButton.focus {
 	background-color: white;
 	box-shadow: none;
 }

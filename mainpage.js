@@ -173,7 +173,7 @@ function updateParameter(delta) {
     if (speed > 10**-3) speed = 10**-3;
 
     noise.frequence += 0.01 * delta.x
-    if (noise.frequence < 1) noise.frequence = 1;
+    if (noise.frequence < 0) noise.frequence = 0;
     if (noise.frequence > 10) noise.frequence = 10;
 
     $('#dv1').text((speed/10**-5).toFixed(2));
@@ -189,6 +189,14 @@ function animate(timeStamp) {
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
 
+    // Rotation automatique de la fréquence
+    if (autoChangeParam) {
+        let evolution = (Math.cos(timeStamp/5000) + 1) * 5
+        noise.frequence = evolution
+        $('#dv2').text((noise.frequence).toFixed(2));       
+    }
+
+
     // On met à jour le compteur de fps
     /*console.log(lastUpdateTS)
     if (timeStamp - lastUpdateTS >= 100) {
@@ -200,10 +208,26 @@ function animate(timeStamp) {
 }
 init()
 
+/* ====================== CONTROL BUTTONS =================== */
+
+$('.instructionContainer button').click(function() {
+    if (autoChangeParam) {
+        autoChangeParam = false;
+        $(this).removeClass('focus');
+        $(this).addClass('not-focus');
+    } else {
+        autoChangeParam = true;
+        $(this).addClass('focus');
+        $(this).removeClass('not-focus');
+    }
+})
+
 /* ====================== MOUSE CONTROL ===================== */
 
-let isDraggingLeft, isDraggingRight;
+let isDraggingLeft, isDraggingRight, isTouchHold;
+let autoChangeParam = true;
 let previousMousePosition = {x: 0, y: 0};
+
 $(renderer.domElement).mousedown(function(event) {
     switch (event.which) {
         case 1: // left button
@@ -213,8 +237,40 @@ $(renderer.domElement).mousedown(function(event) {
             break;
         case 3: // right button
             isDraggingRight = true;
+
+            // On désactive la rotation automatique
+            autoChangeParam = false;
+            $('.instructionContainer button').removeClass('focus');
+            $('.instructionContainer button').addClass('not-focus');
             break;
     }
+})
+.on('touchmove', function(event) {
+    // Adapation du "mousemove" de la version pc
+    let touch = event.touches[0];
+    let deltaMove = {
+        x: touch.pageX-previousMousePosition.x,
+        y: touch.pageY-previousMousePosition.y
+    };
+
+    if (!isTouchHold && mesh) {    
+        let deltaRotationQuaternion = new THREE.Quaternion()
+            .setFromEuler(new THREE.Euler(
+                Math.toRadians(deltaMove.y * 1),
+                Math.toRadians(deltaMove.x * 1),
+                0,
+                'XYZ'
+            ));
+        mesh.quaternion.multiplyQuaternions(deltaRotationQuaternion, mesh.quaternion);
+        axesHelper.quaternion.multiplyQuaternions(deltaRotationQuaternion, axesHelper.quaternion);
+    }
+
+    // Si on reste appuyé tout en bougeant, on simule un clique gauche
+    if (isTouchHold && mesh) {    
+        updateParameter(deltaMove)
+    }
+
+    previousMousePosition = {x: touch.pageX, y: touch.pageY};
 })
 .on('mousemove', function(event) {
     let deltaMove = {
@@ -243,4 +299,5 @@ $(renderer.domElement).mousedown(function(event) {
 $(document).on('mouseup', function(event) {
     isDraggingLeft  = false;
     isDraggingRight = false;
+    isTouchHold     = false;
 });
