@@ -163,7 +163,7 @@ button {
 
     position: fixed;
     left: auto;
-    top: 40px;
+    top: 30px;
     right: 50px;
 }
 .fullscreen.instructionContainer {
@@ -194,6 +194,13 @@ button {
 @media (max-width: 768px) {
     .fullscreen.slideContainer {
         display: none;
+    }
+    .fullscreen.navbuttonContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        bottom: 50px;
     }
 }
 
