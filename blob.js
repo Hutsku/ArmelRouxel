@@ -20,7 +20,6 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(canvas.devicePixelRatio);
 renderer.setSize($(canvas).width(), $(canvas).height());
 
-
 // On paramètre les différentes camera et leur ratio
 const camera = new THREE.PerspectiveCamera( 75, $(canvas).width() / $(canvas).height(), 0.1, 1000 );
 const controls = new THREE.OrbitControls( camera, renderer.domElement );

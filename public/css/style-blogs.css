@@ -68,7 +68,7 @@ body {
     font-weight: 700;
 }
 
-canvas {
+.canvasContainer canvas {
     background: white;
     padding: 0;
     margin: 0 auto;
@@ -99,6 +99,8 @@ canvas {
     display: flex;
     justify-content: center;
 }
+
+/* ================= Slider =========== */
 
 .slideContainer {
     display: flex;
@@ -145,10 +147,47 @@ button {
     top: 20px;
     right: 20px;
 }
+/* navbuttons box */
+.fullscreen.navbuttonContainer {
+    position: fixed;
+    bottom: 80px;
+    left: auto;
+    top: auto;
+}
+/* param box */
+.fullscreen.paramContainer {
+    display: flex;
+    flex-direction: column;
+    font: 400 0.95rem 'Courier New', monospace;
+    text-transform: lowercase;
+
+    position: fixed;
+    left: auto;
+    top: 40px;
+    right: 50px;
+}
+.fullscreen.instructionContainer {
+    font: 400 0.95rem 'Courier New', monospace;
+    text-transform: lowercase;
+
+    position: fixed;
+    left: 30px;
+    top: 30px;
+    right: auto;
+}
 .fullscreen.fullscreen-button {
     position: fixed;
     left: 20px;
     top: 20px;
+    right: auto;
+}
+.fullscreen.fpsCounter {
+    font: 400 0.95rem 'Courier New', monospace;
+    text-transform: lowercase;
+
+    position: fixed;
+    left: 30px;
+    top: 30px;
     right: auto;
 }
 /* MOBILE FULLSCREEN */
@@ -158,7 +197,7 @@ button {
     }
 }
 
-/* ================= Tolltip ============== */
+/* ================= Tooltip ============== */
 
 .tooltips {
     position: absolute;

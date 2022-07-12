@@ -39,7 +39,8 @@ app_init();
 console.log('Création des routes POST et GET')
 app.get('/', function(req, res) {
     // Renvoit par défaut vers la page principale
-    res.redirect('/blogs');
+    res.render('mainpage.ejs');
+    //res.redirect('/blogs');
 })
 
 // ------------------ BLOGS PROGRAMATION -------------------
@@ -86,31 +87,31 @@ app.get('/', function(req, res) {
     });
 })
 
-.get('/quiet_kid', function(req, res) {
+.get('/music/quiet_kid', function(req, res) {
     let gallery = fs.readdirSync('./public/img/quiet_kid');
     res.render('music/quiet_kid.ejs', {
         session: req.session,
         gallery: gallery
     });
 })
-.get('/makingof_quiet_kid', function(req, res) {
+.get('/music/makingof_quiet_kid', function(req, res) {
     res.render('music/makingof_qk.ejs', {
         session: req.session,
     });
 })
-.get('/another_light_out', function(req, res) {
+.get('/music/another_light_out', function(req, res) {
     let gallery = fs.readdirSync('./public/img/another_light_out');
     res.render('music/another_light_out.ejs', {
         session: req.session,
         gallery: gallery
     });
 })
-.get('/makingof_reach_that_light_out', function(req, res) {
+.get('/music/makingof_reach_that_light_out', function(req, res) {
     res.render('music/makingof_rtl.ejs', {
         session: req.session,
     });
 })
-.get('/reach_that_light', function(req, res) {
+.get('/music/reach_that_light', function(req, res) {
     let gallery = fs.readdirSync('./public/img/reach_that_light');
     res.render('music/reach_that_light.ejs', {
         session: req.session,

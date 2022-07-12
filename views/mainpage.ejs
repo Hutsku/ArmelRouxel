@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Import CSS Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Import custom CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/style-blogs.css">
+        <link rel="stylesheet" type="text/css" href="/css/style-mainpage.css">
+
+        <title>Page principale </title>
+    </head>
+ 
+    <body style="background: radial-gradient(#ffffff, #a8a8a8);">
+        <main>
+            <div class="mainContainer flex-column">
+                <div class="demoContent flex-column flex-md-row">
+                    <div class="canvasContainer">
+                        <canvas class="fullscreen" id="3D" oncontextmenu="return false;" moz-opaque></canvas>
+                    </div>
+                    <div class="fullscreen navbuttonContainer">
+                        <a class="btn" href="/blogs">Programmation</a>
+                        <a class="btn ml-5" href="/music">Musique</a>
+                    </div>
+                    <div class="fullscreen paramContainer">
+                        <span> Vitesse: <span class="displayValue ml-3" id="dv1">20.00</span></span>
+                        <span> Fréquence: <span class="displayValue" id="dv2">2.00</span></span>
+                        <!--<span> Octaves: <span class="displayValue ml-3" id="dv3">1</span></span>-->
+                    </div>
+                    <div class="fullscreen instructionContainer">
+                        <span> Clique droit:  paramètrage</span><br/>
+                        <span> Clique gauche: rotation</span>
+                    </div>
+                    <!--<span class="fullscreen fpsCounter"> framerate: <span class="displayValue" id="fps">60</span></span>-->
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <!-- Import JS Bootstrap dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kchapelier/poisson-disk-sampling@2.2.2/build/poisson-disk-sampling.min.js"></script>
+    
+    <script src="/./three.js"></script>
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/RGBELoader.js"></script>
+    <script src="//cdn.rawgit.com/mrdoob/three.js/master/examples/js/textures/FlakesTexture.js"></script>
+    <script type="module" src="/modules/mainpage.js"></script>
+
+    <!-- Import Font Awesome -->
+    <script src="https://kit.fontawesome.com/5f21f19d3f.js"></script>
+
+</html>

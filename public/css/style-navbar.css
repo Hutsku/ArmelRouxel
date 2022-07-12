@@ -133,6 +133,11 @@ small {
 	background-color: var(--button2-active);;
 }
 
+.audio-embed {
+	display: flex;
+	align-items: center;
+}
+
 .custom-select, .form-control {
 	border-radius: 0;
 }
