@@ -196,7 +196,6 @@ function animate(timeStamp) {
         $('#dv2').text((noise.frequence).toFixed(2));       
     }
 
-
     // On met à jour le compteur de fps
     /*console.log(lastUpdateTS)
     if (timeStamp - lastUpdateTS >= 100) {
