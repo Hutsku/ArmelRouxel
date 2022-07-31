@@ -86,7 +86,12 @@ app.get('/', function(req, res) {
         gallery_alo: gallery_alo
     });
 })
-
+.get('/music/demo', function(req, res) {
+    //let gallery = fs.readdirSync('./public/img/demo');
+    res.render('music/demo.ejs', {
+        session: req.session,
+    });
+})
 .get('/music/quiet_kid', function(req, res) {
     let gallery = fs.readdirSync('./public/img/quiet_kid');
     res.render('music/quiet_kid.ejs', {

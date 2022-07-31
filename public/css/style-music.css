@@ -1,0 +1,259 @@
+
+html { /* body won't work ¯\_(ツ)_/¯ */
+  scroll-snap-type: y mandatory;
+}
+
+/*a {
+    color: #a5692a !important;
+}
+a:hover {
+    opacity: 0.8;
+}*/
+
+/* ================= Initialisation des flèches de direction =============== */
+
+a.arrow-left, a.arrow-right {
+    position: fixed;
+    font-size: 30px;
+    color: white;
+    opacity: 0.4;
+    z-index: 1;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+a.arrow-down, a.arrow-up {
+    position: absolute;
+    font-size: 30px;
+    color: white;
+    opacity: 0.4;
+    z-index: 1;
+
+    left: 50%;
+    transform: translateX(-50%);
+}
+a.arrow-left { left: 15px; }
+a.arrow-right { right: 15px; }
+a.arrow-down { bottom: 15px; }
+a.arrow-up { top: 15px; }
+
+/* =================== Différentes sections ========================= */
+
+.background {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;    
+}
+.background.mainpage {
+    background-image: url("/img/quiet_kid/cover.jpg");
+    filter: brightness(0.4);
+}
+.background.demo {
+    background-image: url("/img/demo/cover.png");
+    filter: brightness(0.6);
+}
+.background.quiet-kid {
+    background-image: url("/img/quiet_kid/IMG_7221.jpg");
+    filter: brightness(0.4);
+}
+.background.another-light-out {
+    background-image: url("/img/another_light_out/cover.jpg");
+    filter: brightness(0.4);
+}
+.background.reach-that-light {
+    background-image: url("/img/reach_that_light/cover-breathe.jpg");
+    filter: brightness(0.4);
+}
+
+.mainpage-menu > div, .mainpage-grid > div {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    scroll-snap-align: start;
+}
+.mainpage-grid img, .gallery img {
+    transition: 0.5s;
+}
+.mainpage-grid img:hover, .gallery img:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+a.link-tab {
+    z-index: 2;
+    position: absolute;
+    color: white;
+    opacity: 0.8;
+
+    top: 30px; 
+    left: 30px;
+}
+a.link-tab:hover {
+    color: white;
+    opacity: 0.6;
+    text-decoration: none;
+    }
+a.link-tab:focus {
+    opacity: 0.5;
+}
+
+/* MOBILE GRID */
+@media (max-width: 768px) {
+    html {
+        scroll-snap-type: none;
+    }
+    #quietKid {
+        flex-direction: column;
+    }
+    #anotherLightOut {
+        flex-direction: column-reverse;
+    }
+    #reachThatLight {
+        flex-direction: column;
+    }
+    .mainpage-grid > div {
+        min-height: 0;
+    }
+}
+
+.footer {
+    min-height: 60px;
+}
+
+.header {
+    position: relative;
+    z-index: 1;
+
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.head-title {
+    color: #a5692a;
+    font-size: 60px;
+    filter:  drop-shadow(0 0 10px black);
+}
+.head-subtitle {
+    color: lightgrey;
+    font-size: 20px;
+}
+
+.title {
+    color: white;
+    font-size: 26px;
+    opacity: 0.9;
+}
+
+.album-desc, .album-tracklist {
+    color: grey;
+    letter-spacing: +1px;
+    line-height: 1.8;
+    opacity: 0.9;
+    text-align: justify;
+}
+.album-desc.bright, .album-tracklist.bright {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px black);
+}
+.track-title {
+    font-size: 20px;
+}
+.album-title {
+    color: black;
+    font-size: 30px;
+}
+.album-date {
+    color: grey
+}
+.album-about, .track-about {
+    color: white;
+    font-size: 14px;
+    text-transform: none;
+    text-align: justify;
+}
+.album-tracklist span {
+    cursor: pointer;
+    color: lightgrey;
+    height: 35px;
+    display: inline-block;
+}
+.album-tracklist span:hover {
+    color: white;
+}
+
+.making-of {
+    color: white;
+    text-transform: none;
+    text-align: justify;
+    font-size: 16px;
+
+    letter-spacing: +1px;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+.track-desc {
+    color: black;
+    letter-spacing: +1px;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+.grey {
+    color: lightgrey;
+}
+
+/* =============== MODAL ============== */
+
+.modal {
+    align-items: center;
+    padding-right: 0;
+    padding: 35px;
+}
+.modal.gallery.show {
+    display: flex !important;
+}
+
+.album-detail .modal-dialog {
+    margin:  0;
+    max-width: 100%;
+}
+.track-detail .modal-dialog {
+    max-width: 50%;
+}
+.track-detail .carousel-inner {
+    min-height: 500px;
+}
+.carousel-control-prev {
+    left: -100px;
+}
+.carousel-control-next {
+    right: -100px;
+}
+
+.modal-body {
+    padding: 0;
+}
+.modal-backdrop.show {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        padding: 10px;
+    }
+    .track-detail .modal-dialog {
+        max-width: 100%;
+    }
+    .carousel-control-prev {
+        left: 0;
+    }
+    .carousel-control-next {
+        right: 0;
+    }
+}
+
+/* ==================================== */

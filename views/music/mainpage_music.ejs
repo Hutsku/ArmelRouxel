@@ -13,7 +13,7 @@
         <!-- Import CSS Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <!-- Import custom CSS -->
-        <link rel="stylesheet" type="text/css" href="/css/style-mainpage.css">
+        <link rel="stylesheet" type="text/css" href="/css/style-music.css">
         <link rel="stylesheet" type="text/css" href="/css/style-navbar.css">
 
         <title>Armel Rouxel</title>
@@ -23,9 +23,11 @@
         <header>
         </header>
         <main>
+            <a href="/" class="link-tab"> < Page principale</a>
+            <a href="/music/demo" class="link-tab" style="left: auto; right: 30px;"> Démos ></a>
             <div class="background mainpage"></div>
             <div class="mainpage-menu container">
-                <div class="row w-100 m-0">
+                <div class="row w-100 m-0" id="main">
                     <div class="container" style="z-index:1;">
                         <div class="row justify-content-center">
                             <!--<span class="head-title">Quiet Kid</span>-->
@@ -36,10 +38,13 @@
                             <a href="/music/quiet_kid" class="btn btn-cart ml-3" role="button" name="add-cart"><i class="fas fa-search pr-2"></i> En savoir plus</a>
                         </div>   
                     </div>
+                    <a class="arrow-down" href="#quietKid"><i class="fas fa-angle-down"></i></a>
                 </div>
             </div>
             <div class="mainpage-grid container">
                 <div class="row m-0" id="quietKid">
+                    <a class="arrow-up d-md-block d-none" href="#main"><i class="fas fa-angle-up"></i></a>
+                    <a class="arrow-down d-md-block d-none" href="#anotherLightOut"><i class="fas fa-angle-down"></i></a>
                     <div class="container col-12 col-md p-0">
                         <div class="row m-0">
                             <div class="col p-2" data-toggle="modal" data-target="#quietKidModal">
@@ -65,6 +70,8 @@
                     </div>
                 </div>
                 <div class="row m-0" id="anotherLightOut">
+                    <a class="arrow-up d-md-block d-none" href="#quietKid"><i class="fas fa-angle-up"></i></a>
+                    <a class="arrow-down d-md-block d-none" href="#reachThatLight"><i class="fas fa-angle-down"></i></a>
                     <div class="container col p-0">
                         <div class="row m-0">
                             <div class="col-6 p-2 d-none d-md-block">
@@ -90,6 +97,7 @@
                     </div>
                 </div>
                 <div class="row m-0" id="reachThatLight">
+                    <a class="arrow-up d-md-block d-none" href="#anotherLightOut"><i class="fas fa-angle-up"></i></a>
                     <div class="container col p-0">
                         <div class="row m-0">
                             <div class="col p-2" data-toggle="modal" data-target="#reachThatLightModal">
