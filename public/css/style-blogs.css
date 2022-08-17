@@ -67,6 +67,11 @@ body {
     font-size: 20px;
     font-weight: 700;
 }
+.subtitle {
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 700;
+}
 
 .canvasContainer canvas {
     background: white;

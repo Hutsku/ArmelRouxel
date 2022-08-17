@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Import CSS Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- Import custom CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/style-blogs.css">
+
+        <title>Article - Pathfinding, Partie I: Introduction</title>
+    </head>
+ 
+    <body>
+        <main class="mb-5">
+            <div class="mainTitle text-center"> <a href="/blogs"><i class="fas fa-home"></i></a> Algorithme de recherche: Introduction </div>
+            <div class="mainContainer">
+                <div class="left-section col d-none d-md-block"></div>
+
+                <div class="middle-section col col-md-7">
+                    <div class="textContent">
+                        <div class="title pt-5" id="h1-1"> Présentation du problème </div>
+                        <p> La <b>recherche de chemin</b>, ou plus communément appelé "pathiding" dans la sphère informatique (je m'en tiendrai d'ailleurs à ce mot pour la suite, désolé pour l'anglicisme mais c'est plus court ...) est un terme qui peut vous sembler obscure et pourtant vous l'utilisez tout les jours, dans la vie réelle ! Il s'agit en verité de la recherche du <b>chemin le plus court</b> pour aller d'un point A à un point B. Simple non ? Même s'il y a un mur il suffit de le contourner, mais en informatique, comment mettre ça en place ? On ne peut pas simplement demander au petit bonhomme "Allez hop, trouve le chemin tout seul !", tout doit être dicté.</p>
+                        <p> C'est donc là qu'intervienne les différents <b>algorithmes de recherche de chemin</b>, chacun ayant des avantages et des défauts et donc une application précise, il n'existe pas d'algorithme ultime trouvant à cout sûr le <b>meilleur chemin</b> le plus rapidement possible ! Plongeons-nous dès à présent sur la première partie de ce qui constituera une série d'article sur le domaine du pathfinding.</p>
+
+                        <div class="img-gallery my-4">
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <img class="w-100" src="/img/path1.png">
+                                </div>
+                                <div class="container text-center p-2">
+                                    <span class="w-100"> Une grille ... </span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <img class="w-100" src="/img/path2.png">
+                                </div>
+                                <div class="container text-center p-2">
+                                    <span class="w-100"> ... des murs ... </span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="text-center">
+                                    <img class="w-100" src="/img/path3.png">
+                                </div>
+                                <div class="container text-center p-2">
+                                    <span class="w-100"> ... et un chemin ! </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="title pt-3" id="h1-2"> Les algorithmes de recherche </div>
+                        <p> Posons déjà les bases du problèmes à résoudre: nous souhaitons trouver le chemin le plus court pour aller d'un point A à un point B, le tout en perdant <b>le moins de temps possible</b> (ou n'a pas envie d'attendre une éternité avant la réponse !). Toutefois, il y a déjà un problème à résoudre en amont: de la même façon que nos yeux perçoivent les alentours, avec les differents obstacles, il va falloir les communiquer de la même façon à l'ordinateur. <br/>
+                        Nous allons pour l'instant créer l'environnement le plus simple qui soit, <b>le quadrillage</b> ! </p>
+
+                        <div class="subtitle pt-3" id="h2-1"> Une approche plutôt directe </div>
+                        <p> De tous les cas de figure possible, le plus simple est bien sûr quand il n'y a <b>pas d'obstacles</b> entre notre point A et B, et le chemin le plus court est donc ... ? Oui <b>la ligne droite</b>, bravo dans le fond ! Et ça heureusement, ce n'est pas très compliqué à faire même pour notre pauvre automate si on connaît les positions de chaque point. </p>
+
+                        <div class="exempleContainer row my-4">
+                            <div class="canvasContainer col" id="straightLine">
+                            </div>
+                        </div>
+
+                        <div class="subtitle pt-3" id="h2-2"> Droit dans le mur </div>
+                        <p> Bon je ne vais pas vous mentir que la ligne droite, c'était un peu la question en chocolat car si on ajoute un obstacle là ça bloque ... Quelqu'un à une idée pour pouvoir avancer ? Non ? Bon, dans un quadrillage on n'a pas le choix: on va <b>tester tous les chemins possible</b> ! <br/>
+                        Et pour ça, nous allons utiliser l'aglorithme dit <b>"Breadth First Search"</b>. Cet algorithme n'est pas limité au domaine du pathfinding et est d'ailleurs utilisé pour bien d'autre application mais ici, c'est le B.A.-BA du pathfinding. Le principe est simple: on part d'une case, tester les cases voisines, verifier si c'est un mur (auquel cas on abandonne le chemin) puis on enregistre le chemin et on passe aux cases suivante. N'hésitez pas à faire visualiser le processus pas à pas juste en dessous. </p>
+
+                        <div class="exempleContainer my-4">
+                            <div class="canvasContainer col" id="bfs">
+                            </div>
+                            <div class="slideContainer col" style="align-items: center;">
+                                <span> Algorithme Breadth-First Search </span>
+                                <input  style="width: 500px;" type="range" min="0" max="160" value="0" class="slider mt-2 mb-4" id="slider1">
+                            </div>
+                        </div>
+
+                        <div class="title pt-3" id="h1-3"> De l'importance du coût  </div>
+                        <p> Et ... voilà, c'est tout ? Après tout, on a bien trouvé un chemin qui semble même être le plus rapide. Toutefois, bien que cet algorithme soit puissant <b>il reste assez basique</b>. En effet, considerons le cas de figure suivant: Jacque doit rejoindre Julie qui se trouve de l'autre coté de la rivière. Jacque pourrait passer par le pont mais il se trouve bien plus loin sur la rive ! Quel serait donc le chemin le plus rapide, traverser la rivière bien que ça le ralentirait fortement ou prendre le temps de faire un détour pour aller sur le pont ? </p>
+                        <p> C'est là qu'entre en compte la notion de <b>"coût" d'un chemin</b>: en effet, chaque case va désormais un cout plus ou moins important selon si on est sur de l'herbe, un marais ou bien une colline par exemple, la vitesse de passage est différente. Et vous l'aurez peut-être remarqué, mais "Breadth First" ne prend pas du tout en compte le coût d'un chemin. <br/>
+                        Entre donc en scène <b>Dijkstra</b> ! (ouais pas facile à lire je sais) Quel est la différence ? Eh bien au lieu de choisir chaque chemin de la même façon, ces derniers seront désormais classé par ordre de priorité selon le coût actuel de chaque chemin. Ainsi lors de la recherche, l'algorithme va <b>prioriser ceux qui ont le moindre coût</b> et le chemin final ne sera donc plus celui le plus court en terme de distance, mais celui qui prend le moins de "temps" à parcourir (en verité, dans d'autre circonstance le coût d'un chemin pourrait representer autre chose que le temps de parcours).</p>
+
+                        <div class="exempleContainer row my-4">
+                            <div class="canvasContainer col" id="dijkstra">
+                            </div>
+                            <div class="slideContainer col" style="align-items: center;">
+                                <span> Algorithme Dijkstra </span>
+                                <input  style="width: 500px;" type="range" min="0" max="160" value="0" class="slider mt-2 mb-4" id="slider2">
+                            </div>
+                        </div>
+
+                        <div class="title pt-3" id="h1-4"> Heuristique, extatique ! </div>
+                        <p> Bien, donc on a réussi à trouver le chemin le plus court, puis maintenant on a même pris en compte des situations particulière avec le coût des chemin, qu'y a-t-il d'autre à faire ? Eh bien, il y a un dernier facteur que nous n'avons pas encore vraiment pris en compte: <b>le temps de calcul </b>! Eh oui, surtout si on doit faire ces calcul en temps réel ou pour pleins d'entités possibles, il est primordial de minimiser le temps de calcul. Vous avez vous-même peut-être déjà remarqué qu'on effectuait une recherche de chemin derrière le point A, bien que le point B soit devant lui. Stupide non ? Il y a une part de verité, mais il est vrai qu'on peut encore <b>optimiser le temps de calcul</b>. Introduisons alors les fonctions heuristique !</p>
+                        <p> Qu'est ce donc ? Simple: une fonction heuristique nous permet simplement de savoir à quel point nous sommes proche du point B (ici spatialement dans notre problème). Voyons tout de suite comment on peut l'implémenter.</p>
+
+                        <div class="subtitle pt-3" id="h2-3"> Mon GBF Greedy Best-First </div>
+                        <p> Tout comme Dijkstra permettait de prioriser les chemin ayant le chemin le moins couteux, <b>"Greedy Best-First"</b> est une autre variante de "Breadth First" qui priorise cette fois-ci les chemin <b>les plus proche du point d'arrivé</b>. Voyons comment il se débrouille par rapport Dijkstra (on revient sur un cas ou toutes les cases ont le même coût, mais ça ne change rien à la comparaison).</p>
+
+                        <div class="exempleContainer row my-4">
+                            <div class="canvasContainer col" id="gbf-plain">
+                            </div>
+                            <div class="slideContainer col" style="align-items: center;">
+                                <span> Algorithme Greedy Best-First </span>
+                                <input  style="width: 500px;" type="range" min="0" max="100" value="0" class="slider mt-2 mb-4" id="slider3">
+                            </div>
+                        </div>
+
+                        <p> Oh pas mal ! Sur un environnement dénué d'obstacle, le chemin est trouvé presque immédiatement ! Mais ce n'est pas très interressant me direz-vous: en effet, si il n'y a pas d'obstacle, on peut tout simplement aller en ligne droite. Essayez maintenant de rajouter quelques obstacles ... </p>
+
+                        <div class="exempleContainer row my-4">
+                            <div class="canvasContainer col" id="gbf">
+                            </div>
+                            <div class="slideContainer col" style="align-items: center;">
+                                <span> Algorithme Greedy Best-First </span>
+                                <input  style="width: 500px;" type="range" min="0" max="100" value="0" class="slider mt-2 mb-4" id="slider4">
+                            </div>
+                        </div>
+
+                        <p> Et là on peut commencer à voir les <b>différences entre les algorithmes</b>. S'il n'y a pas trop d'obstacle, Greedy Best-First va bien trouver un chemin avant Dijkstra mais il n'est pas idéal. Dijkstra quant à lui fidèle à lui même va prendre un peu plus de temps mais réussira tout de même à trouver le meilleur chemin.</p>
+
+                        <div class="subtitle pt-3" id="h2-4"> Descend du ciel A* ! </div>
+                        <p> Comment faire pour <b>fusionner l'efficacité de GBF et la fidelité de Dijkstra</b> ? Ça serait le saint Graal, l'algorithme parfait, adapté à toutes les situations ! Eh bien ne cherchez pas plus longtemps, il existe bel et bien et possède le doux nom de <b>A*</b> (à prononcer A-Star). Sans entrer dans les détails techniques, A* prend en compte le coût du chemin ET la distance à l'arrivée en bref le meilleur des deux mondes. Regardez plutôt: </p>
+
+                        <div class="exempleContainer row my-4">
+                            <div class="canvasContainer col" id="a*">
+                            </div>
+                            <div class="slideContainer col" style="align-items: center;">
+                                <span> Algorithme A* </span>
+                                <input  style="width: 500px;" type="range" min="0" max="100" value="0" class="slider mt-2 mb-4" id="slider5">
+                            </div>
+                        </div>
+
+                        <p> A* trouve bien le chemin plus rapidement que Dijkstra et trouve tout de même le plus court en distance réel. En fait, A* est tellement efficace que ça reste <b>le meilleur algorithme</b> dans un environnement qui contient pas trop de mur. Mais qu'en est-il des cas particuliers ? Eh bien je vous ai déjà présenté le problème du cas ou il n'y a pas de mur: la ligne droite restera toujours la plus rapide et la meilleur des options, pas de doutes là dessus. <br/>
+                        Et lorsqu'il y a beaucoup de mur, comme un labyrinthe par exemple ? C'est là que le bas blesse: les algorithme prenant en compte la distance à l'objectif ne sont <b>pas du tout avantagé</b> car comme vous le savez, le meilleur chemin pour trouver la sortie d'un labyrinthe se trouve peut-être à son opposé. Dans ce genre de situation, ici Dijkstra restera peut-être le meilleur à moins de trouver un algorithme specifiquement dédié aux labyrinthe.</p>
+
+                        <p> En fait, cela illustre bien le domaine de l'intelligence artificielle de manière générale: <b>il n'y a pas de "meilleur algorithme"</b>, seulement des cas ou certains marcheront mieux que d'autres et à nous d'identifier ces situations et d'adapter notre petit automate. c'est là qu'on voit la puissance de notre cerveau: on ne se pose même pas la question et mieux, on trouve tout seul la solution sans connaître au préalable la situation ! Enfin, je diverge ...
+
+                        <div class="title pt-3" id="h1-5"> Optimisation du chemin </div>
+                        <p> On entre dans la dernière section de notre article que je considererais comme "bonus". Elle n'est pas essentiel à la compréhension mais je l'ai trouvé suffisement importante pour l'y inclure, en plus de vous donner des potentielles pistes de reflexion.<br/>
+                        J'ai parlé plus haut de savoir identifier les différentes situations pour pouvoir y adapter notre algorithme. Ici, on ne va qu'en gratter la surface mais ça sera suffisant pour vous en donner un aperçu </p>
+                        <p> Nous en reparlerons plus tard dans la prochaine partie sur le pathfinding, mais vous avez peut-être remarqué que les chemin que nous avions faisaient parfois des sortes d'escalier au lieu de simplement aller en ligne droite. C'est une limitation du maillage en quadrillage, mais ça ne nous empeche pas d'essayer d'<b>optimiser un peu le chemin</b> !<br/>
+                        Le principe est simple: pour chaque point du chemin, on va verifier si on peut avoir une ligne de vue direct vers les prochains point sans qu'il y ai d'obstacle. Après tout notre cerveau fonctionne à peu près de la même manière. Si c'est la cas, alors on va en <b>ligne droite</b> vers le prochain point</p>
+
+                        <div class="exempleContainer my-4">
+                            <div class="canvasContainer col" id="linearize">
+                            </div>
+                            <div class="custom-control custom-switch text-center">
+                                <input type="checkbox" class="custom-control-input" id="switch1">
+                                <label class="custom-control-label" for="switch1">Activer la linéarisation</label>
+                            </div>
+                            <div class="custom-control custom-switch text-center">
+                                <input type="checkbox" class="custom-control-input" id="switch2">
+                                <label class="custom-control-label" for="switch2">Activer le mouvement</label>
+                            </div>
+                        </div>
+
+                        <p> Et voilà, on a un peu simplfié notre chemin ! On esquive bien les mur tout en prenant en ligne droite dans les espaces sans obstacles. Bien sûr cette optimisation de chemin reste ici limité et il y a <b>bien d'autre manière</b> d'éviter de faire ça en amont, comme en passant par un maillage polygonal, mais nous verront cela dans un prochain article ! </p>
+
+                        <div class="title pt-3" id="h1-6"> Pour aller plus loin </div>
+                        <p> Si la lecture vous a interessé et que vous souhaiteriez en savoir plus dessus, je vous invite à lire le magnifique article de Red Blob Games sur le même sujet (dont j'ai tiré en grande partie le miens), page de blogs qui traite également d'autres sujets sur lesquels je suis particulièrement interessés et qui viendront sans doute prochainement.<br/>
+                        <ul>
+                            <li><a href="https://www.redblobgames.com/pathfinding/a-star/introduction.html"> Introduction to the A* Algorithm </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="right-section col d-none d-md-block">
+                    <div class="toc sticky-top sticky-offset">
+                        <div class="title pt-5"> Sommaire </div>
+                        <ul>
+                            <li><a href="#h1-1"> Présentation du problème </a></li>
+                            <li><a href="#h1-2"> Les algorithmes de recherche </a></li>
+                            <ul>
+                                <li><a href="#h2-1"> Une approche plutôt directe </a></li>
+                                <li><a href="#h2-2"> Droit dans le mur </a></li>
+                            </ul>
+                            <li><a href="#h1-3"> De l'importance du coût </a></li>
+                            <li><a href="#h1-4"> Heuristique, extatique !</a></li>
+                            <ul>
+                                <li><a href="#h2-3"> Mon GBF Greedy Best-First </a></li>
+                                <li><a href="#h2-4"> Descend du ciel A* ! </a></li>
+                            </ul>
+                            <li><a href="#h1-5"> Optimisation du chemin </a></li>
+                            <li><a href="#h1-6"> Pour aller plus loin</a></li>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <!-- Import JS Bootstrap dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kchapelier/poisson-disk-sampling@2.2.2/build/poisson-disk-sampling.min.js"></script>
+    <!-- Import Font Awesome -->
+    <script src="https://kit.fontawesome.com/5f21f19d3f.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.54.0/dist/phaser.js"></script>
+    <script type="module" src="/modules/pathfinding/pathfinding_page1.js"></script>
+
+</html>

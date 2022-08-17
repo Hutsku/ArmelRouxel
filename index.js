@@ -23,8 +23,9 @@ function app_init () {
 
     app.use(express.static(__dirname + '/public'));
     app.use('/scripts', express.static(__dirname + '/node_modules/'));
-    app.use('/modules', express.static(__dirname));
+    app.use('/modules', express.static(__dirname + '/code_modules/'));
     app.use('/static', express.static(__dirname + '/public'));
+    app.use('/', express.static(__dirname));
     app.set('view engine', 'ejs');  
 
     console.log("> Création de l'app et cookies de session configurés.");
@@ -48,23 +49,22 @@ app.get('/', function(req, res) {
 .get('/blogs', function(req, res) {
     res.render('blogs/mainpage_blogs.ejs');
 })
-
 .get('/blogs/noise', function(req, res) {
     res.render('blogs/noise_exp.ejs');
+})
+.get('/blogs/pathfinding1', function(req, res) {
+    res.render('blogs/pathfinding1.ejs');
 })
 
 .get('/demo/map_generator', function(req, res) {
     res.render('blogs/map_generator.ejs');
 })
-
 .get('/demo/marbles', function(req, res) {
     res.render('blogs/marbles.ejs');
 })
-
 .get('/demo/clouds', function(req, res) {
     res.render('blogs/clouds.ejs');
 })
-
 .get('/demo/waves', function(req, res) {
     res.render('blogs/wireframe_waves.ejs');
 })
