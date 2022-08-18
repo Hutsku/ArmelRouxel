@@ -277,7 +277,7 @@ class Pathfinding extends Phaser.Scene {
     preload () {
         this.load.image('red', '/assets/red.png');
         this.load.image('ground', '/assets/platform.png');
-        this.load.image('white', '/assets/white.png');
+        this.load.image('white', '/assets/White.png');
         this.load.image('black', '/assets/black.png');
         this.load.image('grey', '/assets/grey.png');
         this.load.image('blue', '/assets/blue.png');
