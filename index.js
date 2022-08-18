@@ -47,7 +47,7 @@ app.get('/', function(req, res) {
 // ------------------ BLOGS PROGRAMATION -------------------
 
 .get('/blogs', function(req, res) {
-    res.render('blogs/mainpage_blogs.ejs');
+    res.render('blogs/mainpage.ejs');
 })
 .get('/blogs/noise', function(req, res) {
     res.render('blogs/noise_exp.ejs');
@@ -80,7 +80,7 @@ app.get('/', function(req, res) {
 .get('/music', function(req, res) {
     let gallery_qk = fs.readdirSync('./public/img/quiet_kid');
     let gallery_alo = fs.readdirSync('./public/img/another_light_out');
-    res.render('music/mainpage_music.ejs', {
+    res.render('music/mainpage.ejs', {
         session: req.session,
         gallery_qk: gallery_qk,
         gallery_alo: gallery_alo
