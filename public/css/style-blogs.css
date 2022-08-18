@@ -126,6 +126,19 @@ body {
     font-weight: 400;
 }
 
+.slideContainer.pathfinding {
+    align-items: center;
+}
+.slideContainer.pathfinding input.slider {
+    width: 500px;
+}
+/* MOBILE FULLSCREEN */
+@media (max-width: 768px) {
+    .slideContainer.pathfinding input.slider {
+        width: 100%;
+    }
+}
+
 button {
     text-transform: uppercase;
     font-size: 12px;
