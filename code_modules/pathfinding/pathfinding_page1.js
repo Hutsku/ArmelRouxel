@@ -728,7 +728,6 @@ let game7 = new Phaser.Game({
     },
     scene: scene7,
 });
-window.devicePixelRatio = 2;
 
 /* ================================= EVENEMENTS INPUT ======================================== */
 
