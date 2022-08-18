@@ -290,12 +290,16 @@ class Pathfinding extends Phaser.Scene {
         this.graphics  = this.add.graphics({ lineStyle: { width: 1, color: 0xaa00aa } });
 
         // Création des entités
-        this.player = this.entities.create(375, 105, 'red').setInteractive();
+        this.player = this.entities.create(375, 105, 'red').setInteractive({ 
+            cursor: 'grab' 
+        });
         this.player.displayWidth = this.size;
         this.player.scaleY = this.player.scaleX;
         this.player.setCollideWorldBounds(true);
 
-        let ennemySprite = this.entities.create(135, 195, 'black').setInteractive();
+        let ennemySprite = this.entities.create(135, 195, 'black').setInteractive({ 
+            cursor: 'grab' 
+        });
         ennemySprite.displayWidth = 29;
         ennemySprite.scaleY = ennemySprite.scaleX;
         ennemySprite.setCollideWorldBounds(true);
@@ -349,6 +353,7 @@ class Pathfinding extends Phaser.Scene {
         }
 
         // On gère les évenements souris
+        this.pointer   = this.input.activePointer;
         if (this.pointer.isDown && this.pointer.downElement == this.game.canvas && this.input.getDragState(this.pointer) != 4) {
             if (!this._pointerClick) {
                 let weight = this.grid.getNode(this.pointer.position).weight;

@@ -73,7 +73,7 @@
                         <div class="exempleContainer my-4">
                             <div class="canvasContainer col" id="bfs">
                             </div>
-                            <div class="slideContainer pathfinding col" style="align-items: center;">
+                            <div class="slideContainer pathfinding col">
                                 <span> Algorithme Breadth-First Search </span>
                                 <input type="range" min="0" max="160" value="0" class="slider mt-2 mb-4" id="slider1">
                             </div>
@@ -84,7 +84,7 @@
                         <p> C'est là qu'entre en compte la notion de <b>"coût" d'un chemin</b>: en effet, chaque case va désormais avoir un coût plus ou moins important selon si on est sur de l'herbe, un marais ou bien une colline par exemple, la vitesse de passage est différente. Et vous l'aurez peut-être remarqué, mais "Breadth First" ne prend pas du tout en compte le coût d'un chemin. <br/>
                         Entre donc en scène <b>Dijkstra</b> ! (ouais pas facile à lire je sais) Quel est la différence ? Eh bien au lieu de choisir chaque chemin de la même façon, ces derniers seront désormais classés par ordre de priorité selon leur coût total. Ainsi lors de la recherche, l'algorithme va <b>prioriser ceux qui ont le moindre coût</b> et le chemin final ne sera donc plus celui le plus court en terme de distance, mais celui qui prend le moins de "temps" à parcourir (en verité, dans d'autre circonstance le coût d'un chemin pourrait representer autre chose que le temps de parcours).</p>
 
-                        <div class="exempleContainer row my-4">
+                        <div class="exempleContainer my-4">
                             <div class="canvasContainer col" id="dijkstra">
                             </div>
                             <div class="slideContainer pathfinding col">
@@ -100,7 +100,7 @@
                         <div class="subtitle pt-3" id="h2-3"> Mon GBF Greedy Best-First </div>
                         <p> Tout comme Dijkstra permettait de prioriser les chemin ayant le chemin le moins couteux, <b>"Greedy Best-First"</b> est une autre variante de "Breadth First" qui priorise cette fois-ci les chemin <b>les plus proche du point d'arrivé</b>. Voyons comment il se débrouille par rapport Dijkstra (on revient sur un cas ou toutes les cases ont le même coût, mais ça ne change rien à la comparaison).</p>
 
-                        <div class="exempleContainer row my-4">
+                        <div class="exempleContainer my-4">
                             <div class="canvasContainer col" id="gbf-plain">
                             </div>
                             <div class="slideContainer pathfinding col">
@@ -111,7 +111,7 @@
 
                         <p> Oh pas mal ! Sur un environnement dénué d'obstacle, le chemin est trouvé presque immédiatement ! Mais ce n'est pas très interressant me direz-vous: en effet, si il n'y a pas d'obstacles, on peut tout simplement aller en ligne droite. Essayons maintenant de rajouter quelques obstacles ... </p>
 
-                        <div class="exempleContainer row my-4">
+                        <div class="exempleContainer my-4">
                             <div class="canvasContainer col" id="gbf">
                             </div>
                             <div class="slideContainer pathfinding col">
@@ -125,7 +125,7 @@
                         <div class="subtitle pt-3" id="h2-4"> Descend du ciel A* ! </div>
                         <p> Comment faire pour <b>fusionner l'efficacité de GBF et la fidelité de Dijkstra</b> ? Ça serait le saint Graal, l'algorithme parfait ! Eh bien ne cherchez pas plus longtemps, il existe bel et bien et possède le doux nom de <b>A*</b> (à prononcer A-Star). Sans entrer dans les détails techniques, A* prend en compte le coût du chemin ET la distance à l'arrivée en bref le meilleur des deux mondes. Regardez plutôt: </p>
 
-                        <div class="exempleContainer row my-4">
+                        <div class="exempleContainer my-4">
                             <div class="canvasContainer col" id="a*">
                             </div>
                             <div class="slideContainer pathfinding col">
