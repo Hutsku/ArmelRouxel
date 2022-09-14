@@ -38,12 +38,32 @@
                             <a href="/music/quiet_kid" class="btn btn-cart ml-3" role="button" name="add-cart"><i class="fas fa-search pr-2"></i> En savoir plus</a>
                         </div>   
                     </div>
-                    <a class="arrow-down" href="#quietKid"><i class="fas fa-angle-down"></i></a>
+                    <a class="arrow-down" href="#heartbeat"><i class="fas fa-angle-down"></i></a>
                 </div>
             </div>
             <div class="mainpage-grid container">
-                <div class="row m-0" id="quietKid">
+                <div class="row m-0" id="heartbeat">
                     <a class="arrow-up d-md-block d-none" href="#main"><i class="fas fa-angle-up"></i></a>
+                    <a class="arrow-down d-md-block d-none" href="#quietKid"><i class="fas fa-angle-down"></i></a>
+                    <div class="container col-12 col-md p-0">
+                        <div class="row m-0">
+                            <div class="col p-2" data-toggle="modal" data-target="#heartbeatModal">
+                                <img class="d-block w-100" src="/img/demo/cover-heartbeat.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container col p-0">
+                        <div class="row m-0">
+                            <div class="col-6 p-2">
+                                <a href="#heartbeat">
+                                    <img class="d-block w-100" src="/img/demo/tracklist.png">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0" id="quietKid">
+                    <a class="arrow-up d-md-block d-none" href="#heartbeat"><i class="fas fa-angle-up"></i></a>
                     <a class="arrow-down d-md-block d-none" href="#anotherLightOut"><i class="fas fa-angle-down"></i></a>
                     <div class="container col-12 col-md p-0">
                         <div class="row m-0">
@@ -125,6 +145,52 @@
             </div>
 
             <!-- ==================================== ALBUM MODAL ======================================== -->
+
+            <div class="modal fade album-detail" id="heartbeatModal" tabindex="-1" role="dialog" aria-labelledby="heartbeatLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="col modal-body" style="text-transform:none; font-weight: 500;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 15px;top: 10px;z-index: 1;">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="row m-0">
+                                <div class="col-12 col-md p-0">
+                                    <img class="d-block w-100" src="/img/demo/cover-heartbeat.png">
+                                </div>
+                                <div class="album-desc col-12 col-md p-3 pl-4">
+                                    <div class="row m-0">
+                                        <span class="album-title">Feel My Heart Beat (Démo)</span>
+                                    </div>
+                                    <div class="row m-0">
+                                        <span class="album-date">Septembre 2022</span>
+                                    </div>
+                                    <div class="w-100 border-bottom my-3"></div>
+                                    <div class="row m-0">
+                                        <span class="album-tracklist">
+                                            1 - The Start of Something Beautiful <br/>
+                                            2 - Trauma<br/>
+                                            3 - Radiance / Pulse<br/>
+                                            4 - The Light (Is Everywhere)<br/>
+                                            5 - Feel My Heart Beat<br/>
+                                            &emsp;I. We Are One<br/>
+                                            &emsp;II. Unrequited Love<br/>
+                                            &emsp;III. No Reason <br/>
+                                            6 - All Is Bright <br/>
+                                            7 - Hole In Me<br/>
+                                            8 - My Last Regrets<br/>
+                                        </span>
+                                    </div>
+                                    <div class="row m-0 mt-4 justify-content-center">
+                                        <a href="https://ffm.to/zopgpdx" target="_blank" class="btn btn-cart" role="button" name="add-cart"><i class="fas fa-play pr-md-2"></i> Écouter</a>
+                                        <a href="/music/demo" class="btn btn-cart ml-md-3 ml-2" role="button" name="add-cart"><i class="fas fa-search pr-md-2"></i> En savoir plus</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="modal fade album-detail" id="quietKidModal" tabindex="-1" role="dialog" aria-labelledby="quietKidLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
