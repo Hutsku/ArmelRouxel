@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+import { OrbitControls } from 'OrbitControls';
 import SimplexNoise from '/scripts/simplex-noise/dist/esm/simplex-noise.js';
 
 // Création des constantes
@@ -21,7 +23,7 @@ renderer.setSize($(canvas).width(), $(canvas).height());
 
 // On paramètre les cameras et leur ratio
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-const controls = new THREE.OrbitControls( camera, renderer.domElement );
+const controls = new OrbitControls( camera, renderer.domElement );
 //controls.update() must be called after any manual changes to the camera's transform
 camera.position.set(0, 20, 400);
 //camera.rotation.x = -Math.PI / 3;
