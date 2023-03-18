@@ -24,7 +24,7 @@ renderer.setSize($(canvas).width(), $(canvas).height());
 
 // On paramètre les différentes camera et leur ratio
 const camera = new THREE.PerspectiveCamera( 75, $(canvas).width() / $(canvas).height(), 0.1, 1000 );
-const controls = new THREE.OrbitControls( camera, renderer.domElement );
+const controls = new OrbitControls( camera, renderer.domElement );
 //controls.update() must be called after any manual changes to the camera's transform
 camera.position.set(0, 0, 200);
 controls.update();
