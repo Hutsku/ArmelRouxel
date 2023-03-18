@@ -1,3 +1,7 @@
+import * as THREE from 'three';
+import { OrbitControls } from 'OrbitControls';
+import { RGBELoader } from 'RGBELoader';
+import { FlakesTexture } from 'FlakesTexture';
 import SimplexNoise from '/scripts/simplex-noise/dist/esm/simplex-noise.js';
 
 class NoiseGenerator {
@@ -105,9 +109,9 @@ function init() {
     envmaploader = new THREE.PMREMGenerator(renderer);
 
     // Charge la map de reflection de la sphère
-    new THREE.RGBELoader().load('/img/empty_warehouse_01_1k.hdr', function(hdrmap) {
+    new RGBELoader().load('/img/empty_warehouse_01_1k.hdr', function(hdrmap) {
         let envmap = envmaploader.fromCubemap(hdrmap);
-        let texture = new THREE.CanvasTexture(new THREE.FlakesTexture());
+        let texture = new THREE.CanvasTexture(new FlakesTexture());
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
         texture.repeat.x = 10;
