@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+import { OrbitControls } from 'OrbitControls';
 import SimplexNoise from '/scripts/simplex-noise/dist/esm/simplex-noise.js';
 
 const TAU = 2 * Math.PI;
