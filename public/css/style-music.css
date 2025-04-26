@@ -67,6 +67,10 @@ a.arrow-up { top: 15px; }
     background-image: url("/img/reach_that_light/cover-breathe.jpg");
     filter: brightness(0.4);
 }
+.background.sleeper {
+    background-image: url("/img/you_beautiful_sleeper/single1.png");
+    filter: brightness(0.4);
+}
 
 .mainpage-menu > div, .mainpage-grid > div {
     position: relative;

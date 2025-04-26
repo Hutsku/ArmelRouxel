@@ -24,6 +24,7 @@ function app_init () {
     app.use(express.static(__dirname + '/public'));
     app.use('/scripts', express.static(__dirname + '/node_modules/'));
     app.use('/modules', express.static(__dirname + '/code_modules/'));
+    app.use('/json', express.static(__dirname + '/json_files/'));
     app.use('/static', express.static(__dirname + '/public'));
     app.use('/', express.static(__dirname));
     app.set('view engine', 'ejs');  
@@ -119,6 +120,13 @@ app.get('/', function(req, res) {
 .get('/music/reach_that_light', function(req, res) {
     let gallery = fs.readdirSync('./public/img/reach_that_light');
     res.render('music/reach_that_light.ejs', {
+        session: req.session,
+        gallery: gallery
+    });
+})
+.get('/music/new_album', function(req, res) {
+    let gallery = fs.readdirSync('./public/img/you_beautiful_sleeper');
+    res.render('music/you_beautiful_sleeper.ejs', {
         session: req.session,
         gallery: gallery
     });

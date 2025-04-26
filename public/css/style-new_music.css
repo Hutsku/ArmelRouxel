@@ -1,0 +1,287 @@
+
+html { /* body won't work ¯\_(ツ)_/¯ */
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+body {
+}
+
+/*a {
+    color: #a5692a !important;
+}
+a:hover {
+    opacity: 0.8;
+}*/
+
+/* ================= Initialisation des flèches de direction =============== */
+
+a.arrow-left, a.arrow-right {
+    position: absolute;
+    font-size: 30px;
+    color: white !important;
+    opacity: 0.2;
+    z-index: 1;
+
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: 0.3s;
+}
+a.arrow-down, a.arrow-up {
+    position: absolute;
+    font-size: 30px;
+    color: white !important;
+    opacity: 0.2;
+    z-index: 1;
+
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.3s;
+}
+a.arrow-left { left: 0px; }
+a.arrow-right { right: 0px; }
+a.arrow-down { bottom: 15px; }
+a.arrow-up { top: 15px; }
+a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
+    opacity: 1;
+}
+
+/* ========================== Images de fond ========================== */
+
+.background {
+    height: 110vh;
+    width:  100%;
+    position: fixed;
+
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;    
+    background-image: url("/img/you_beautiful_sleeper/single1.png");
+    filter: brightness(0.4);
+}
+
+/* ================================ CADRES =========================== */
+
+.page-content {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    scroll-snap-align: start;
+    justify-content: center;
+}
+
+.grid-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.collapsible {
+    width: 100%;
+    opacity: 1;
+    overflow: hidden;
+    transition: 1s;
+}
+.collapsible.collapsed {
+    width: 0;
+    opacity: 0;
+}
+
+.grid-content > div, .grid-content > a {
+    text-align: center;
+/*    padding: 0;*/
+}
+
+.text-content {
+    font-size: 12px;
+    font-family: "Frank Ruhl Hofshi";
+    text-transform: none;
+    letter-spacing: 0.2em;
+    color: white;
+    text-align: left;
+
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    transition: 0.3s;
+}
+
+.track-description {
+    display: flex;
+    flex-direction: row;
+}
+/*@media (max-width: 768px) {
+    .track-description {
+        flex-direction: column;
+    }
+}*/
+
+.credit {
+    flex-grow: 5;
+}
+#trackInfos .credit {
+    font-size: 10px;
+}
+
+.title {
+    color: white;
+    font-size: 20px;
+    font-family: "Frank Ruhl Hofshi";
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+
+/*    padding-top: 20px !important;
+    padding-bottom: 20px !important;*/
+}
+.title.highlight {
+    color: #f48a16;
+}
+
+.darkglass {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+}
+
+/* ============================ TRACK INFOS =============================== */
+
+.track-img {
+    display: flex;
+    height: 200px;
+    opacity: 1;
+
+    transition: opacity 0.3s, height 0.5s;
+}
+.track-img.collapsed {
+    height: 0;
+    opacity: 0;
+}
+
+/* Cadre */
+.track-infos {
+    opacity: 1;
+    transition: 0.3s;
+}
+.track-infos .text-content {
+    position: relative;
+    flex-basis: auto;
+    overflow: auto;
+    scrollbar-color: #f48a1673 transparent;
+    scrollbar-width: thin;
+
+    height: 320px;
+    transition: 0.3s;
+}
+#mobileTrackInfos .track-infos .text-content {
+    height: 400px;
+}
+.track-infos.collapsed {
+    opacity: 0;
+}
+.track-infos.collapsed .text-content, #mobileTrackInfos .track-infos.collapsed .text-content {
+    height: 0;
+    scrollbar-color: transparent transparent;
+}
+
+/* Text content span */
+.track-infos .text-content span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.track-infos .text-content span.active {
+    opacity: 1;
+}
+
+/* ============================= BUTTON ============================== */
+
+.btn-track {
+    width: 100px;
+    padding: 7px;
+
+    color: white;
+    font-size: 14px;
+    font-family: "Frank Ruhl Hofshi";
+    letter-spacing: 0.2em;
+    text-transform: none;
+
+    cursor: pointer;
+    opacity: 0.3;
+    transition: 0.2s;
+}
+.btn-track:hover {
+    background: #000000;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0) 100%);
+    backdrop-filter: blur(4px);
+}
+.btn-track.active {
+    opacity: 1;
+    background: #000000;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0) 100%);
+    backdrop-filter: blur(4px);
+}
+
+/* =========================== TRACKLIST ============================= */
+
+.track-title {
+    width: 450px;
+    padding: 7px;
+
+    color: white;
+    font-size: 20px;
+    font-family: "Frank Ruhl Hofshi";
+    letter-spacing: 0.2em;
+
+    cursor: pointer;
+/*    transition: 0.2s;*/
+}
+.track-title:hover {
+    background: #000000;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0) 100%);
+    backdrop-filter: blur(4px);
+
+    text-decoration: none;
+    color: white;
+}
+.track-title.active {
+    background: #000000;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0) 100%);
+/*    background: radial-gradient(circle,rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0) 100%);*/
+/*    background: rgba(0, 0, 0, 0.20);*/
+    backdrop-filter: blur(4px);
+    color: #f48a16;
+}
+
+/* =============================== PLAYER ============================ */
+
+.player-content {
+    position: relative;
+}
+.player-backdrop {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    backdrop-filter: blur(2px);
+
+    opacity: 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.player-backdrop:hover {
+    opacity: 1;
+}
+
+.player-backdrop i.fas {
+    font-size: 35px;
+}
