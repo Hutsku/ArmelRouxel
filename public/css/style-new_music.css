@@ -4,7 +4,8 @@ html { /* body won't work ¯\_(ツ)_/¯ */
   scroll-behavior: smooth;
 }
 
-body {
+main {
+    overflow: hidden;
 }
 
 /*a {
