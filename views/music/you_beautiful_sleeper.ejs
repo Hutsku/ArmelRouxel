@@ -28,7 +28,7 @@
             <div class="page-content container" id="main">
                 <div class="grid-content">
                     <div class="col-md-5 col-8 player-content p-2">
-                        <img class="d-block w-100 shadow rounded" src="/img/you_beautiful_sleeper/cover.png">
+                        <img class="d-block w-100 shadow rounded" src="/img/you_beautiful_sleeper/lofi/lofi-cover.jpg">
                         <div class="player-backdrop rounded">
                             <i class="fas fa-play"></i>
                             <!-- <span class="mt-4">Écouter</span> -->
@@ -36,6 +36,30 @@
                     </div>    
                     <div class="col-md-5 mt-3 title"> You Beautiful Sleeper </div>              
                 </div>
+                <a class="arrow-down" href="#tracklist"><i class="fas fa-caret-down"></i></a>
+            </div>
+
+            <div class="page-content container" id="albumInfos">
+                <div class="grid-content">   
+                    <div class="album-description darkglass">
+                        <div class="col col-md-4 p-0">
+                            <img class="d-none d-md-block w-100 shadow rounded" src="/img/you_beautiful_sleeper/lofi/lofi-back.jpg">
+                            <img class="d-block d-md-none w-100 shadow rounded" src="/img/you_beautiful_sleeper/livret/livret2.jpg">
+                        </div>
+                        <div class="col text-content justify-content-center align-items-center p-2 p-md-5">
+                            <span class="title my-4"> <i>You Beautiful Sleeper</i> </span>
+                            <span class="description"> 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec velit a orci mollis euismod. Donec varius volutpat odio non faucibus. Praesent aliquet a lectus quis ultricies. Etiam non rhoncus sem, sit amet suscipit lectus. Nunc vehicula lectus magna, vitae iaculis eros placerat eu. Ut eget vestibulum eros. Morbi vehicula nisi non posuere ullamcorper. Suspendisse potenti. In in pharetra leo. Aenean ultrices suscipit eleifend. </p>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col mt-4 ml-4 track-infos collapsed">
+                        <div class="text-content">]</span>
+                        </div>
+                    </div>             
+                </div>
+                <a class="arrow-up" href="#main"><i class="fas fa-caret-up"></i></a>
                 <a class="arrow-down" href="#tracklist"><i class="fas fa-caret-down"></i></a>
             </div>
 
@@ -59,7 +83,7 @@
                 <div class="grid-content d-none d-md-block">   
                     <div class="col track-description">
                         <div class="col-5 player-content p-2 ml-3">
-                            <img class="d-block w-100 shadow rounded" src="/img/you_beautiful_sleeper/cover.png">
+                            <img class="d-block w-100 shadow rounded" src="/img/you_beautiful_sleeper/cover.jpg">
                             <div class="player-backdrop rounded">
                                 <i class="fas fa-headphones-alt"></i>
                             </div>
@@ -83,8 +107,9 @@
                         </div>
                     </div>             
                 </div>
-                <a class="arrow-up" href="#main"><i class="fas fa-caret-up"></i></a>
+                <a class="arrow-up" href="#albumInfos"><i class="fas fa-caret-up"></i></a>
                 <a class="arrow-down d-md-none d-block" href="#mobileTrackInfos"><i class="fas fa-caret-down"></i></a>
+                <!-- <a class="arrow-down d-none d-md-block" href="#albumInfos"><i class="fas fa-caret-down"></i></a> -->
             </div>
 
             <!-- Mobile only, clone du cadre PC ci-dessus, avec son propre page-content -->
@@ -114,6 +139,7 @@
                     </div>             
                 </div>
                 <a class="arrow-up" href="#tracklist"><i class="fas fa-caret-up"></i></a>
+                <!-- <a class="arrow-down" href="#albumInfos"><i class="fas fa-caret-down"></i></a> -->
             </div>
         </main>
     </body>
@@ -140,7 +166,7 @@
             $('.track-description .credit').html(data['credit']);
             $('.track-infos span:nth-child(1)').html(data['lyrics']);
             $('.track-infos span:nth-child(2)').html(data['infos']);
-            $('.track-description img').attr('src', `/img/you_beautiful_sleeper/${data['cover']}`) 
+            $('.track-description img').attr('src', `/img/you_beautiful_sleeper/lofi/lofi-${data['cover']}`) 
         }
 
         // Charge les infos de la base de données, et on en affiche une par défaut

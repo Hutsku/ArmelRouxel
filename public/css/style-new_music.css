@@ -57,7 +57,7 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;    
-    background-image: url("/img/you_beautiful_sleeper/single1.png");
+    background-image: url("/img/you_beautiful_sleeper/background/background-single1.jpg");
     filter: brightness(0.4);
 }
 
@@ -112,11 +112,23 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
     display: flex;
     flex-direction: row;
 }
-/*@media (max-width: 768px) {
-    .track-description {
+
+.album-description {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.album-description .description {
+    text-align: center;
+    font-size: 14px;
+}
+/* MOBILE GRID */
+@media (max-width: 768px) {
+    .album-description {
         flex-direction: column;
+        width: 85%;
     }
-}*/
+}
 
 .credit {
     flex-grow: 5;
