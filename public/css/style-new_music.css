@@ -1,19 +1,26 @@
 
 html { /* body won't work ¯\_(ツ)_/¯ */
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+/*    scroll-snap-type: y mandatory;*/
+/*    scroll-behavior: smooth;*/
+/*    overflow-y: scroll;
+    overflow-x: hidden;*/
 }
 
 main {
-    overflow: hidden;
+/*    overflow-y: scroll;*/
+/*    overflow-x: hidden;*/
+/*    scroll-snap-type: y mandatory;*/
 }
 
-/*a {
-    color: #a5692a !important;
+.scrollsnap-container {
+    max-height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-snap-type: mandatory; /* for older browsers */
+    scroll-snap-points-y: repeat(100vh); /* for older browsers */
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
-a:hover {
-    opacity: 0.8;
-}*/
 
 /* ================= Initialisation des flèches de direction =============== */
 
