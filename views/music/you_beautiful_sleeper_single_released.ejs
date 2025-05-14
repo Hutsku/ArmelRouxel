@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <!-- favicon -->
+        <!--<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/favicon/site.webmanifest">-->
+        
+        <!-- Import CSS Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Import custom CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/style-new_music.css">
+
+        <title>You Beautiful Sleeper - Armel Rouxel</title>
+    </head>
+ 
+    <body>
+        <header>
+        </header>
+        <main>
+            <div id="background">
+                <div data-index=0 class="visible"></div>
+                <div data-index=1></div>
+                <div class="copy"></div>
+            </div>
+            
+
+            <div class="scrollsnap-container">
+                <div class="page-content container" id="main">
+                    <div class="grid-content">
+                        <div class="col-md-5 col-8 backdrop p-2">
+                            <img class="d-block w-100 shadow rounded" src="/img/you_beautiful_sleeper/lofi/lofi-single1.jpg">
+                            <div class="d-none d-md-flex backdrop-content rounded">
+                                <a class="backdrop-button my-2" href="#"><i class="fab fa-spotify ml-2"></i></i> Streaming</a>
+                                <a class="backdrop-button my-2" href="#tracklist" tabindex="2"><i class="fas fa-search ml-2"></i></i> Plus d'infos</a>
+                            </div>
+                        </div>    
+                        <div class="col-md-5 mt-3 title">A Few Years Late</div>
+                        <div class="col-md-5 mt-2 subtitle">Premier single du nouvel album</div>  
+                        <div class="d-flex d-md-none mt-4 flex-column">
+                            <a class="backdrop-button" href="#"><i class="fab fa-spotify ml-2"></i></i> Streaming</a>
+                            <a class="backdrop-button" href="#tracklist" tabindex="2"><i class="fas fa-search ml-2"></i></i> Plus d'infos</a>
+                        </div>           
+                    </div>
+                    <a class="arrow-down" href="#tracklist"><i class="fas fa-caret-down"></i></a>
+                </div>
+
+                <div class="page-content container" id="tracklist">
+                    <div class="grid-content">   
+                        <a class="col track-title rounded masked" tabindex="0" href="#mobileTrackInfos"></a>  
+                        <a class="col track-title rounded masked" tabindex="1" href="#mobileTrackInfos"></a> 
+                        <a class="col track-title rounded" tabindex="2" href="#mobileTrackInfos"> A Few Years Late </a> 
+                        <a class="col track-title rounded masked" tabindex="3" href="#mobileTrackInfos"></a> 
+                        <a class="col track-title rounded masked" tabindex="4" href="#mobileTrackInfos"></a> 
+                        <a class="col track-title rounded masked" tabindex="5" href="#mobileTrackInfos"></a> 
+                        <a class="col track-title rounded masked" tabindex="6" href="#mobileTrackInfos"></a> 
+                        <a class="col track-title rounded masked" tabindex="7" href="#mobileTrackInfos"></a> 
+                        <a class="col track-title rounded masked" tabindex="8" href="#mobileTrackInfos"></a> 
+                        <a class="col track-title rounded masked" tabindex="9" href="#mobileTrackInfos"></a> 
+                        <a class="col track-title rounded masked" tabindex="10" href="#mobileTrackInfos"></a> 
+                        <a class="col track-title rounded masked" tabindex="11" href="#mobileTrackInfos"></a>             
+                    </div>
+
+                    <!-- PC only, voir le cadre du dessous pour la version mobile (j'ai du faire un clone pour simplifier la mise en page) -->
+                    <div class="grid-content d-none d-md-block collapsible collapsed">   
+                        <div class="col track-description">
+                            <div class="col-5 backdrop p-2">
+                                <img class="d-block w-100 shadow rounded" src="/img/you_beautiful_sleeper/cover.jpg">
+                                <a href="#">
+                                    <div class="backdrop-content rounded">
+                                        <i class="backdrop-icon fas fa-headphones-alt"></i>
+                                    </div>
+                                </a>
+                            </div>  
+                            <div class="col-7 text-content p-2 p-3">
+                                <span class="title highlight mb-2"></span>
+                                <span class="credit"></span>
+                                <div class="button text-center">
+                                    <span class="px-3 btn-track" tabindex="0"><i class="fas fa-quote-right"></i> Paroles</span>
+                                    <span class="px-3 btn-track" tabindex="1"><i class="fas fa-question"></i> Conception</span>
+                                </div>
+                            </div> 
+                            <a class="arrow-left"><i class="fas fa-caret-left"></i></a>
+                            <a class="arrow-right"><i class="fas fa-caret-right"></i></a>
+                        </div>
+
+                        <div class="col ml-2 mt-3 track-infos collapsed">
+                            <div class="text-content">
+                                <span tabindex="0"></span>
+                                <span tabindex="1">[Work in progress ...]</span>
+                            </div>
+                        </div>             
+                    </div>
+                    <a class="arrow-up" href="#main"><i class="fas fa-caret-up"></i></a>
+                    <a class="arrow-down d-md-none d-block" href="#mobileTrackInfos"><i class="fas fa-caret-down"></i></a>
+                </div>
+
+                <!-- Mobile only, clone du cadre PC ci-dessus, avec son propre page-content -->
+                <div class="page-content container d-flex d-md-none" id="mobileTrackInfos">
+                    <div class="grid-content">   
+                        <div class="col track-description flex-column align-items-center">
+                            <div class="track-img mb-2">
+                                <img class="h-100 d-block shadow rounded" src="/img/you_beautiful_sleeper/cover.png">
+                            </div>  
+                            <div class="col text-content text-center">
+                                <span class="title highlight my-2"></span>
+                                <span class="credit"></span>
+                                <div class="button text-center mt-3">
+                                    <span class="px-3 btn-track" tabindex="0"><i class="fas fa-quote-right"></i> Paroles</span>
+                                    <span class="px-3 btn-track" tabindex="1"><i class="fas fa-question"></i> Conception</span>
+                                </div>
+                            </div> 
+                            <a class="arrow-left"><i class="fas fa-caret-left"></i></a>
+                            <a class="arrow-right"><i class="fas fa-caret-right"></i></a>
+                        </div>
+
+                        <div class="col mt-4 ml-4 track-infos collapsed">
+                            <div class="text-content">
+                                <span tabindex="0"></span>
+                                <span tabindex="1">[Work in progress ...]</span>
+                            </div>
+                        </div>             
+                    </div>
+                    <a class="arrow-up" href="#tracklist"><i class="fas fa-caret-up"></i></a>
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Import Font Awesome -->
+    <script src="https://kit.fontawesome.com/5f21f19d3f.js"></script>
+
+    <!-- <script type="module" src="/module/sleeper_db.js"></script> -->
+    <script type="text/javascript">
+
+        /* ================================ RANDOM STRING ================================= */
+
+        // Génère une chaine aléatoire
+        let charArray = 'abcdefghijklmnopqrstiuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$ù%/\\;           .,:!?§£@-{}[]#*+=°()|~éè€&';
+        function randomChar() {
+            return charArray[Math.floor(Math.random() * charArray.length)];
+        }
+        function randomString(length) {
+            let string = '';
+            for (let i = 0; i < length; i++) {
+                string += randomChar();
+            }
+            return string
+        }
+
+        // Génère un nom aléatoire pour les musiques non-sorties
+        $('.track-title.masked').each(function() {
+            let delta = 6;
+            let mean  = 15;
+            $(this).text(randomString(mean + Math.floor(Math.random() * 2*delta) - delta));
+        });
+
+        // Change sur intervalle aléatoire un caractère sur les noms des musiques
+        (function randomChangeTrack() {
+            let delta      = 0;
+            let mean       = 10;
+            let trackIndex = Math.floor(Math.random() * $('#tracklist .track-title').length);
+
+            $(`.track-title.masked[tabindex=${trackIndex}]`).text(function(index, string) {
+                let newString = string.split('');
+                newString[Math.floor(Math.random() * string.length)] = randomChar();
+                return newString.join('')
+            });
+
+            setTimeout(randomChangeTrack, mean + Math.floor(Math.random() * 2*delta) - delta)
+        }) ()
+
+        // Change sur intervalle aléatoire un caractère sur la description d'une musique
+        let maskedDescription;
+        (function randomChangeDescription() {
+            let delta      = 0;
+            let mean       = 10;
+
+            // On vérifie qu'on a bien sélectionné une musique masquée
+            if (!maskedDescription) {
+                setTimeout(randomChangeDescription, mean + Math.floor(Math.random() * 2*delta) - delta)
+            }
+            else {
+                $(`.track-description .credit`).text(function(index, string) {
+                    let newString = string.split('');
+                    newString[Math.floor(Math.random() * string.length)] = randomChar();
+                    return newString.join('')
+                });
+
+                setTimeout(randomChangeDescription, mean + Math.floor(Math.random() * 2*delta) - delta)
+            }
+
+        }) ()
+
+        /* ================================== BACKGROUND ================================= */
+
+        // Change l'image de fond toutes les xx secondes
+        let imageList = ['background/background-single1.jpg', 'background/background-single2.jpg', 'background/background-single3.jpg','background/background-back.jpg', 'livret/livret1.jpg', 'livret/livret2.jpg', 'livret/livret2.jpg', 'livret/livret-cover.jpg'];
+
+        // Images initiales
+        $('#background div').each(function(){
+            $(this).css('background-image', `url("/img/you_beautiful_sleeper/${imageList[Math.floor(Math.random() * imageList.length)]}")`);
+        });
+
+        $(`#background .copy`).css('background-image', $('#background .visible').css('background-image'));
+        setInterval(function() {
+            let backgroundIndex = $('#background div.visible').attr('data-index');
+            $(`#background div[data-index="${backgroundIndex}"]`).removeClass('visible');
+            $(`#background div[data-index="${1-backgroundIndex}"]`).addClass('visible');
+
+            // On change l'image un peu plus tard, histoire que la transition soit fluide
+            setTimeout(function() {
+                $(`#background div[data-index="${backgroundIndex}"]`)
+                .css('background-image', `url("/img/you_beautiful_sleeper/${imageList[Math.floor(Math.random() * imageList.length)]}")`);
+                $(`#background .copy`).css('background-image', $('#background .visible').css('background-image'));
+            }, 1000);
+        }, 10000);
+
+        /* ================================ TRACK INFOS ================================= */
+
+        // Met à jour les informations de la page selon la musiques à afficher
+        function changeTrackInfos(index) {
+            maskedDescription = $(`.track-title[tabindex=${index}]`).hasClass('masked');
+            $('.track-description .button').removeClass('hidden');
+            $('.track-description .credit').removeClass('masked');
+            if (maskedDescription) {
+                $('.track-description .button').addClass('hidden');
+                $('.track-description .credit').addClass('masked');
+            }
+
+
+            // On change le focus sur la tracklist
+            $('.track-title').removeClass('active');
+            $(`.track-title[tabindex=${index}]`).addClass('active');
+
+            // On remplace les infos sur le cadre d'info
+            let data = trackInfo[index];
+            $('.track-description .title').html(maskedDescription ? `Track ${index+1}` : data['name']);
+            $('.track-description .credit').html(maskedDescription ? randomString(300) : data['credit']);
+            $('.track-infos span:nth-child(1)').html(data['lyrics']);
+            $('.track-infos span:nth-child(2)').html(data['infos']);
+            $('.track-description img').attr('src', `/img/you_beautiful_sleeper/${maskedDescription ? 'lofi/lofi-back.jpg' : `lofi/lofi-${data['cover']}`}`); 
+        }
+
+        // Charge les infos de la base de données, et on en affiche une par défaut
+        let trackInfo;
+        $.getJSON('/json/sleeper_db.json', function(data) {
+            trackInfo = data;
+            // changeTrackInfos(0);
+        });
+
+        // Affiche les infos du single depuis le bouton principal
+        $('.backdrop-button[href="#tracklist"]').on('click', function() {
+            $('.grid-content').removeClass('collapsed');
+            changeTrackInfos(parseInt($(this).attr('tabindex')));
+        });
+
+        // Change les infos lorsque l'on clique sur une des musiques de la liste
+        $('.track-title').on('click', function() {
+            $('.grid-content').removeClass('collapsed');
+            changeTrackInfos(parseInt($(this).attr('tabindex')));
+        });
+
+        // Change les infos via les boutons gauche/droite
+        $('.track-description .arrow-left').on('click', function() {
+            let index = parseInt($('.track-title.active').attr('tabindex')) - 1;
+            changeTrackInfos(index < 0 ? 11 : index);
+        });
+        $('.track-description .arrow-right').on('click', function() {
+            let index = parseInt($('.track-title.active').attr('tabindex')) + 1;
+            changeTrackInfos(index > 11 ? 0 : index);
+        });
+
+        // Change les onglets paroles / notes
+        $('.btn-track').on('click', function() {
+            // Initialisation des variables
+            let targetIndex        = parseInt($(this).attr('tabindex'));
+            let activeIndexButton  = $('.btn-track.active').attr('tabindex');
+            let activeIndexContent = $('.track-infos span.active').attr('tabindex');
+
+            // Valeur par défaut des cadres
+            $('.btn-track').removeClass('active');
+            $('.track-infos span').removeClass('active');
+            $(`.track-infos span[tabindex="${targetIndex}"]`).addClass('active');
+            $('.track-img').addClass('collapsed');
+
+            // Affichage des boutons/cadres
+            if (!activeIndexButton) {$(this).addClass('active')}
+            if ($('.track-infos').hasClass('collapsed')) {
+                $('.track-infos').removeClass('collapsed');
+            }
+            else if (targetIndex == activeIndexButton) {
+                $('.track-infos').addClass('collapsed')
+                $('.track-img').removeClass('collapsed');
+            }
+            else {$(`.btn-track[tabindex="${targetIndex}"]`).addClass('active')}
+        });
+
+        // Switch l'embed streaming affiché
+        $('.embed-switch i').on('click', function() {
+            let target = $(this).attr('data-target');
+            $('.embed-switch i').removeClass('active');
+            $('.embed-container iframe').removeClass('active');
+            $(this).addClass('active');
+            $(`.embed-container iframe#${target}`).addClass('active');
+        });
+    </script>
+</html>
