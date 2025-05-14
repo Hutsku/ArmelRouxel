@@ -258,7 +258,7 @@
         });
 
         // Affiche les infos du single depuis le bouton principal
-        $('.backdrop-button[href="#tracklist"]').on('click', function() {
+        $('.backdrop-button[href="#tracklist"], .backdrop-button[href="#mobileTrackInfos"]').on('click', function() {
             $('.grid-content').removeClass('collapsed');
             changeTrackInfos(parseInt($(this).attr('tabindex')));
         });
