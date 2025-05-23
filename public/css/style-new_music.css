@@ -24,6 +24,15 @@ a:hover {
     scroll-behavior: smooth;
 }
 
+@font-face {
+    font-family: "NightWind";
+    src: url('font/NightWindSentSample.otf') format("opentype");
+}
+@font-face {
+    font-family: "Frank Ruhl Hofshi";
+    src: url('font/FrankRuhlHofshi-Regular.ttf') format("opentype");
+}
+
 /* ================= Initialisation des flèches de direction =============== */
 
 a.arrow-left, a.arrow-right {
@@ -64,7 +73,7 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
     height: 110vh;
     width:  100%;
 
-    filter: brightness(0.4);
+/*    filter: brightness(0.4);*/
 }
 #background div {
     height: 100%;
@@ -162,19 +171,25 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
     font-size: 10px;
 }
 
-.title {
+/*.title {
     color: white;
     font-size: 20px;
     font-family: "Frank Ruhl Hofshi";
     letter-spacing: 0.2em;
     text-transform: uppercase;
+}*/
+.title {
+    color: #b40000;
+    font-size: 35px;
+    font-family: "NightWind", "Frank Ruhl Hofshi";
+/*    letter-spacing: 0.1em;*/
+/*    text-transform: uppercase;*/
 }
 .title.highlight {
     color: #f48a16;
 }
 .subtitle {
-/*    color: #f48a16;*/
-    color: white;
+    color: #2c2c2c;
     font-size: 13px;
     font-family: "Frank Ruhl Hofshi";
     letter-spacing: 0.2em;
@@ -353,7 +368,7 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
     backdrop-filter: blur(2px);
 
     opacity: 0;
-/*    cursor: pointer;*/
+    cursor: pointer;
     transition: 0.3s;
 }
 .backdrop-content:hover {
@@ -386,44 +401,45 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
 /*    background-color: white;*/
 }
 
-/* ============================== STREAMING =========================== */
-
-.embed-player {
-    width: 600px;
+.hover-zoom {
+    transition: 0.5s;
 }
-
-.embed-container iframe {
-    display: none;
-}
-.embed-container iframe.active {
-    display: block;
-}
-
-.embed-switch i {
-    color: white;
-    font-size: 30px;
-    width: 60px;
-    height: 60px;
-
-    opacity: 0.4;
+.hover-zoom:hover {
     cursor: pointer;
-    transition: 0.3s;
-}
-.embed-switch i:hover {
-    opacity: 1;
-}
-.embed-switch i.active {
-    opacity: 1;
+    transform: scale(1.05);
 }
 
-.embed-switch img {
-    filter: invert(100%) sepia(0%) saturate(7489%) hue-rotate(162deg) brightness(106%) contrast(101%); /* white */
-    width: 40px;
-    height: 40px;
+/* ===================== IMG MAP ===================== */
+
+/*#imagemapPannel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
+#imagemapPannel .maparea {
+    max-height: 60vh;
+    opacity: 0;
+}
+#imagemapPannel .highlight {
+    position: absolute;
+    max-height: 60vh;
+    transition: 1s;
+}
+#imagemapPannel .highlight.hover {
+/*    filter: grayscale(100%);*/
+/*    transform: scale(1.03);*/
+    filter: grayscale(0%) drop-shadow(3px 3px 1px rgb(0, 0, 0, 0.25));
+    transform: translate(-4px, -4px);
+/*    filter: saturate(150%);*/
 }
 
-@media (max-width: 768px) {
-    .embed-player {
-        width: 300px;
-    }
+#imagemapPannel .highlight.reading {
+/*    filter: grayscale(100%);*/
+    filter: grayscale(100%) drop-shadow(3px 3px 1px rgb(0, 0, 0, 0.25));
+    transform: translate(-4px, -4px);
+/*    cursor: not-allowed;*/
+/*    filter: saturate(150%);*/
+}
+#imagemapPannel area.reading {
+    cursor: not-allowed;
 }
