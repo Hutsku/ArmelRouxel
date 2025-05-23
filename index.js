@@ -124,7 +124,7 @@ app.get('/', function(req, res) {
         gallery: gallery
     });
 })
-.get('/music/new_album', function(req, res) {
+.get('/music/you_beautiful_sleeper', function(req, res) {
     let gallery = fs.readdirSync('./public/img/you_beautiful_sleeper');
     let audio = fs.readdirSync('./public/audio/you_beautiful_sleeper/tease');
     res.render('music/you_beautiful_sleeper_teasing.ejs', {
