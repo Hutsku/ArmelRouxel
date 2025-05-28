@@ -41,8 +41,8 @@ app_init();
 console.log('Création des routes POST et GET')
 app.get('/', function(req, res) {
     // Renvoit par défaut vers la page principale
-    res.render('mainpage.ejs');
-    //res.redirect('/blogs');
+    // res.render('mainpage.ejs');
+    res.redirect('/music/you_beautiful_sleeper');
 })
 
 // ------------------ BLOGS PROGRAMATION -------------------
