@@ -32,7 +32,7 @@
                 <div class="page-content container" id="main">
                     <div class="grid-content">
                         <!-- <div class="col-md-5 col-8 backdrop p-2" id="imagemapPannel"> -->
-                        <div class="title-disclaimer">Clique pour écouter</div>
+                        <div class="title-disclaimer">Cliquer pour écouter <i class="fas fa-volume-up"></i></div>
                         <div class="container-fluid m-0 pt-4 text-center" id="imagemapPannel">
                             <img class="highlight" src="/img/you_beautiful_sleeper/logo2.png" name="logo">
                             <img class="maparea" src="/img/you_beautiful_sleeper/logo2.png" usemap="#image-map">
@@ -86,12 +86,16 @@
         }
 
         // Lors d'un click sur le logo, on lance un extrait audio au hasard
+        let currentAudioFileList = audioFileList.slice();
         $('#imagemapPannel').on("click",function() {
             if ($('.highlight').hasClass('reading')) return
-            let audioFile = audioFileList[Math.floor(Math.random() * audioFileList.length)]
+            let audioFile = currentAudioFileList.splice(Math.floor(Math.random() * currentAudioFileList.length), 1)[0];
             audioFile.play();
             $('.highlight, area').addClass('reading');
             audioFile.on('end', function(){ $('.highlight, area').removeClass('reading') });
+
+            // Si la liste est vide, on la re-copie
+            if (!currentAudioFileList.length) currentAudioFileList = audioFileList.slice()
         })
 
         /* ===================================== LOGO ==================================== */
