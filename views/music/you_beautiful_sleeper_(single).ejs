@@ -13,7 +13,7 @@
         <!-- Import CSS Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <!-- Import custom CSS -->
-        <link rel="stylesheet" type="text/css" href="/css/style-new_music.css">
+        <link rel="stylesheet" type="text/css" href="/css/style-album.css">
 
         <title>You Beautiful Sleeper - Armel Rouxel</title>
     </head>
@@ -68,16 +68,12 @@
                     <!-- PC only, voir le cadre du dessous pour la version mobile (j'ai du faire un clone pour simplifier la mise en page) -->
                     <div class="grid-content d-none d-md-block collapsible collapsed">   
                         <div class="col track-description">
-                            <div class="col-5 backdrop p-2">
+                            <div class="col-5 track-img m-2">
                                 <img class="d-block w-100 shadow rounded" src="/img/you_beautiful_sleeper/cover.jpg">
-                                <a href="#">
-                                    <div class="backdrop-content rounded">
-                                        <i class="backdrop-icon fas fa-headphones-alt"></i>
-                                    </div>
-                                </a>
+                                <a><i class="fas fa-headphones-alt"></i></a>
                             </div>  
                             <div class="col-7 text-content p-2 p-3">
-                                <span class="title highlight mb-2"></span>
+                                <span class="title mb-2"></span>
                                 <span class="credit"></span>
                                 <div class="button text-center">
                                     <span class="px-3 btn-track" tabindex="0"><i class="fas fa-quote-right"></i> Paroles</span>
@@ -96,18 +92,19 @@
                         </div>             
                     </div>
                     <a class="arrow-up" href="#main"><i class="fas fa-caret-up"></i></a>
-                    <a class="arrow-down d-md-none d-block" href="#mobileTrackInfos"><i class="fas fa-caret-down"></i></a>
+                    <a class="arrow-down d-md-none d-block hidden" href="#mobileTrackInfos"><i class="fas fa-caret-down"></i></a>
                 </div>
 
                 <!-- Mobile only, clone du cadre PC ci-dessus, avec son propre page-content -->
-                <div class="page-content container d-flex d-md-none" id="mobileTrackInfos">
+                <div class="page-content container d-flex d-md-none hidden" id="mobileTrackInfos">
                     <div class="grid-content">   
                         <div class="col track-description flex-column align-items-center">
                             <div class="track-img mb-2">
                                 <img class="h-100 d-block shadow rounded" src="/img/you_beautiful_sleeper/cover.png">
+                                <a><i class="fas fa-headphones-alt"></i></a>
                             </div>  
                             <div class="col text-content text-center">
-                                <span class="title highlight my-2"></span>
+                                <span class="title my-2"></span>
                                 <span class="credit"></span>
                                 <div class="button text-center mt-3">
                                     <span class="px-3 btn-track" tabindex="0"><i class="fas fa-quote-right"></i> Paroles</span>
@@ -139,6 +136,7 @@
     <script src="https://kit.fontawesome.com/5f21f19d3f.js"></script>
 
     <!-- <script type="module" src="/module/sleeper_db.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
     <script type="text/javascript">
 
         /* ================================ RANDOM STRING ================================= */
@@ -163,47 +161,42 @@
             $(this).text(randomString(mean + Math.floor(Math.random() * 2*delta) - delta));
         });
 
-        // Change sur intervalle aléatoire un caractère sur les noms des musiques
-        (function randomChangeTrack() {
-            let delta      = 0;
-            let mean       = 10;
-            let trackIndex = Math.floor(Math.random() * $('#tracklist .track-title').length);
+        /* ==================================== AUDIO ==================================== */
 
-            $(`.track-title.masked[tabindex=${trackIndex}]`).text(function(index, string) {
-                let newString = string.split('');
-                newString[Math.floor(Math.random() * string.length)] = randomChar();
-                return newString.join('')
-            });
+        // On charge les différents fichiers audio
+        let audioFiles = [];
+        for (src of ("<%- audio %>").split(',')) {
+            let index = src.split('-')[0] - 1;
+            if (!audioFiles[index]) audioFiles[index] = [];
+            audioFiles[index].push(new Howl({src: [`/audio/you_beautiful_sleeper/tease/${src}`]}));
+        }
 
-            setTimeout(randomChangeTrack, mean + Math.floor(Math.random() * 2*delta) - delta)
-        }) ()
+        // On copie chaque sous-liste sur une autre variable
+        let currentAudioFiles = [];
+        for (list of audioFiles) {
+            currentAudioFiles.push(list.slice());
+        }
 
-        // Change sur intervalle aléatoire un caractère sur la description d'une musique
-        let maskedDescription;
-        (function randomChangeDescription() {
-            let delta      = 0;
-            let mean       = 10;
+        // Lors d'un click sur le logo, on lance un extrait audio au hasard
+        $('.track-img').on("click",function() {
+            let trackImg = $(this);
+            if (!$(`.track-title.active`).hasClass('masked')) return
+            if (trackImg.hasClass('reading')) return
 
-            // On vérifie qu'on a bien sélectionné une musique masquée
-            if (!maskedDescription) {
-                setTimeout(randomChangeDescription, mean + Math.floor(Math.random() * 2*delta) - delta)
-            }
-            else {
-                $(`.track-description .credit`).text(function(index, string) {
-                    let newString = string.split('');
-                    newString[Math.floor(Math.random() * string.length)] = randomChar();
-                    return newString.join('')
-                });
+            let index = parseInt($('.track-title.active').attr('tabindex'));
+            let audioFile = currentAudioFiles[index].splice(Math.floor(Math.random() * currentAudioFiles[index].length), 1)[0];
+            audioFile.play();
+            trackImg.addClass('reading');
+            audioFile.on('end', function(){ trackImg.removeClass('reading') });
 
-                setTimeout(randomChangeDescription, mean + Math.floor(Math.random() * 2*delta) - delta)
-            }
-
-        }) ()
+            // Si la liste est vide, on la re-copie
+            if (!currentAudioFiles[index].length) currentAudioFiles[index] = audioFiles[index].slice()
+        })
 
         /* ================================== BACKGROUND ================================= */
 
         // Change l'image de fond toutes les xx secondes
-        let imageList = ['background/background-single1.jpg', 'background/background-single2.jpg', 'background/background-single3.jpg','background/background-back.jpg', 'livret/livret1.jpg', 'livret/livret2.jpg', 'livret/livret2.jpg', 'livret/livret-cover.jpg'];
+        let imageList = ['background/background-single1.jpg'];
 
         // Images initiales
         $('#background div').each(function(){
@@ -231,11 +224,19 @@
             maskedDescription = $(`.track-title[tabindex=${index}]`).hasClass('masked');
             $('.track-description .button').removeClass('hidden');
             $('.track-description .credit').removeClass('masked');
+            $('.track-img a').attr('target', '_blank');
             if (maskedDescription) {
+                $('.track-img a').removeAttr('target');
+                // On ferme la fenêtre d'infos si elle est ouverte
+                $('.track-infos').addClass('collapsed')
+                $('.track-img').removeClass('collapsed');
+                $('.btn-track').removeClass('active');
+                $('.track-infos span').removeClass('active');
+
+                // on cache les boutons
                 $('.track-description .button').addClass('hidden');
                 $('.track-description .credit').addClass('masked');
             }
-
 
             // On change le focus sur la tracklist
             $('.track-title').removeClass('active');
@@ -243,6 +244,7 @@
 
             // On remplace les infos sur le cadre d'info
             let data = trackInfo[index];
+            $('.track-img a').attr('href', maskedDescription ? '#' : data['link']);
             $('.track-description .title').html(maskedDescription ? `Track ${index+1}` : data['name']);
             $('.track-description .credit').html(maskedDescription ? randomString(300) : data['credit']);
             $('.track-infos span:nth-child(1)').html(data['lyrics']);
@@ -254,18 +256,21 @@
         let trackInfo;
         $.getJSON('/json/sleeper_db.json', function(data) {
             trackInfo = data;
-            // changeTrackInfos(0);
         });
 
         // Affiche les infos du single depuis le bouton principal
         $('.backdrop-button[href="#tracklist"], .backdrop-button[href="#mobileTrackInfos"]').on('click', function() {
             $('.grid-content').removeClass('collapsed');
+            $('#mobileTrackInfos').removeClass('hidden');
+            $('#tracklist a[href="#mobileTrackInfos"]').removeClass('hidden');
             changeTrackInfos(parseInt($(this).attr('tabindex')));
         });
 
         // Change les infos lorsque l'on clique sur une des musiques de la liste
         $('.track-title').on('click', function() {
             $('.grid-content').removeClass('collapsed');
+            $('#mobileTrackInfos').removeClass('hidden');
+            $('#tracklist a[href="#mobileTrackInfos"]').removeClass('hidden');
             changeTrackInfos(parseInt($(this).attr('tabindex')));
         });
 
@@ -305,12 +310,12 @@
         });
 
         // Switch l'embed streaming affiché
-        $('.embed-switch i').on('click', function() {
-            let target = $(this).attr('data-target');
-            $('.embed-switch i').removeClass('active');
-            $('.embed-container iframe').removeClass('active');
-            $(this).addClass('active');
-            $(`.embed-container iframe#${target}`).addClass('active');
-        });
+        // $('.embed-switch i').on('click', function() {
+        //     let target = $(this).attr('data-target');
+        //     $('.embed-switch i').removeClass('active');
+        //     $('.embed-container iframe').removeClass('active');
+        //     $(this).addClass('active');
+        //     $(`.embed-container iframe#${target}`).addClass('active');
+        // });
     </script>
 </html>
