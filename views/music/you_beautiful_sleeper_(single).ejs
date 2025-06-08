@@ -51,31 +51,32 @@
 
                 <div class="page-content container" id="tracklist">
                     <div class="grid-content">   
-                        <a class="col track-title rounded masked" tabindex="0" href="#mobileTrackInfos"></a>  
-                        <a class="col track-title rounded masked" tabindex="1" href="#mobileTrackInfos"></a> 
+                        <a class="col track-title rounded masked" tabindex="0" href="#mobileTrackInfos">Aimless Dream</a>  
+                        <a class="col track-title rounded masked" tabindex="1" href="#mobileTrackInfos">The Back of the Blade</a> 
                         <a class="col track-title rounded" tabindex="2" href="#mobileTrackInfos"> A Few Years Late </a> 
-                        <a class="col track-title rounded masked" tabindex="3" href="#mobileTrackInfos"></a> 
-                        <a class="col track-title rounded masked" tabindex="4" href="#mobileTrackInfos"></a> 
-                        <a class="col track-title rounded masked" tabindex="5" href="#mobileTrackInfos"></a> 
-                        <a class="col track-title rounded masked" tabindex="6" href="#mobileTrackInfos"></a> 
-                        <a class="col track-title rounded masked" tabindex="7" href="#mobileTrackInfos"></a> 
-                        <a class="col track-title rounded masked" tabindex="8" href="#mobileTrackInfos"></a> 
-                        <a class="col track-title rounded masked" tabindex="9" href="#mobileTrackInfos"></a> 
-                        <a class="col track-title rounded masked" tabindex="10" href="#mobileTrackInfos"></a> 
-                        <a class="col track-title rounded masked" tabindex="11" href="#mobileTrackInfos"></a>             
+                        <a class="col track-title rounded masked" tabindex="3" href="#mobileTrackInfos">Something About You</a> 
+                        <a class="col track-title rounded masked" tabindex="4" href="#mobileTrackInfos">Track 5</a> 
+                        <a class="col track-title rounded masked" tabindex="5" href="#mobileTrackInfos">The Fever</a> 
+                        <a class="col track-title rounded masked" tabindex="6" href="#mobileTrackInfos">Here Before</a> 
+                        <a class="col track-title rounded masked" tabindex="7" href="#mobileTrackInfos">So, It Came to This ?</a> 
+                        <a class="col track-title rounded masked" tabindex="8" href="#mobileTrackInfos">In My Blood</a> 
+                        <a class="col track-title rounded masked" tabindex="9" href="#mobileTrackInfos">Maniac</a> 
+                        <a class="col track-title rounded masked" tabindex="10" href="#mobileTrackInfos">A Little More</a> 
+                        <a class="col track-title rounded masked" tabindex="11" href="#mobileTrackInfos">The Sum of All</a>             
                     </div>
 
                     <!-- PC only, voir le cadre du dessous pour la version mobile (j'ai du faire un clone pour simplifier la mise en page) -->
                     <div class="grid-content d-none d-md-block collapsible collapsed">   
                         <div class="col track-description">
                             <div class="col-5 track-img m-2">
-                                <img class="d-block w-100 shadow rounded" src="/img/you_beautiful_sleeper/cover.jpg">
+                                <img class="d-block w-100 rounded" src="/img/you_beautiful_sleeper/cover.jpg">
                                 <a><i class="fas fa-headphones-alt"></i></a>
+                                <span class="disclaimer mt-2">Cliquer pour écouter <i class="fas fa-volume-up"></i></span>
                             </div>  
-                            <div class="col-7 text-content p-2 p-3">
+                            <div class="col-7 text-content pl-0 py-2 pr-4">
                                 <span class="title mb-2"></span>
                                 <span class="credit"></span>
-                                <div class="button text-center">
+                                <div class="button text-center mt-2">
                                     <span class="px-3 btn-track" tabindex="0"><i class="fas fa-quote-right"></i> Paroles</span>
                                     <span class="px-3 btn-track" tabindex="1"><i class="fas fa-question"></i> Conception</span>
                                 </div>
@@ -99,12 +100,13 @@
                 <div class="page-content container d-flex d-md-none hidden" id="mobileTrackInfos">
                     <div class="grid-content">   
                         <div class="col track-description flex-column align-items-center">
-                            <div class="track-img mb-2">
-                                <img class="h-100 d-block shadow rounded" src="/img/you_beautiful_sleeper/cover.png">
+                            <div class="track-img">
+                                <span class="disclaimer mb-2">Cliquer pour écouter <i class="fas fa-volume-up"></i></span>
+                                <img class="h-100 d-block rounded" src="/img/you_beautiful_sleeper/cover.png">
                                 <a><i class="fas fa-headphones-alt"></i></a>
                             </div>  
-                            <div class="col text-content text-center">
-                                <span class="title my-2"></span>
+                            <div class="col text-content">
+                                <span class="title text-center my-2"></span>
                                 <span class="credit"></span>
                                 <div class="button text-center mt-3">
                                     <span class="px-3 btn-track" tabindex="0"><i class="fas fa-quote-right"></i> Paroles</span>
@@ -223,7 +225,7 @@
         function changeTrackInfos(index) {
             maskedDescription = $(`.track-title[tabindex=${index}]`).hasClass('masked');
             $('.track-description .button').removeClass('hidden');
-            $('.track-description .credit').removeClass('masked');
+            $('.track-description').removeClass('masked');
             $('.track-img a').attr('target', '_blank');
             if (maskedDescription) {
                 $('.track-img a').removeAttr('target');
@@ -235,7 +237,7 @@
 
                 // on cache les boutons
                 $('.track-description .button').addClass('hidden');
-                $('.track-description .credit').addClass('masked');
+                $('.track-description').addClass('masked');
             }
 
             // On change le focus sur la tracklist
@@ -245,11 +247,11 @@
             // On remplace les infos sur le cadre d'info
             let data = trackInfo[index];
             $('.track-img a').attr('href', maskedDescription ? '#' : data['link']);
-            $('.track-description .title').html(maskedDescription ? `Track ${index+1}` : data['name']);
+            $('.track-description .title').html(maskedDescription ? randomString(10) : data['name']);
             $('.track-description .credit').html(maskedDescription ? randomString(300) : data['credit']);
             $('.track-infos span:nth-child(1)').html(data['lyrics']);
             $('.track-infos span:nth-child(2)').html(data['infos']);
-            $('.track-description img').attr('src', `/img/you_beautiful_sleeper/${maskedDescription ? 'lofi/lofi-back.jpg' : `lofi/lofi-${data['cover']}`}`); 
+            $('.track-description img').attr('src', `/img/you_beautiful_sleeper/${maskedDescription ? 'logo.png' : `lofi/lofi-${data['cover']}`}`); 
         }
 
         // Charge les infos de la base de données, et on en affiche une par défaut
