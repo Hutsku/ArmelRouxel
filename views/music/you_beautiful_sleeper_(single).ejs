@@ -35,8 +35,8 @@
                         <div class="col-md-5 col-8 backdrop p-2">
                             <img class="d-block w-100 shadow rounded" src="/img/you_beautiful_sleeper/lofi/lofi-single1.jpg">
                             <div class="d-none d-md-flex backdrop-content rounded">
-                                <a class="backdrop-button my-2" href="#"><i class="fab fa-spotify ml-2"></i></i> Streaming</a>
-                                <a class="backdrop-button my-2" href="#tracklist" tabindex="2"><i class="fas fa-search ml-2"></i></i> Plus d'infos</a>
+                                <a class="backdrop-button my-2" href="https://linktr.ee/arouxel" target="_blank"><i class="fas fa-music mr-1"></i> Streaming</a>
+                                <a class="backdrop-button my-2" href="#tracklist" tabindex="2"><i class="fas fa-search"></i> Plus d'infos</a>
                             </div>
                         </div>    
                         <div class="col-md-5 mt-3 title">A Few Years Late</div>
@@ -55,7 +55,7 @@
                         <a class="col track-title rounded masked" tabindex="1" href="#mobileTrackInfos">The Back of the Blade</a> 
                         <a class="col track-title rounded" tabindex="2" href="#mobileTrackInfos"> A Few Years Late </a> 
                         <a class="col track-title rounded masked" tabindex="3" href="#mobileTrackInfos">Something About You</a> 
-                        <a class="col track-title rounded masked" tabindex="4" href="#mobileTrackInfos">Track 5</a> 
+                        <a class="col track-title rounded masked" tabindex="4" href="#mobileTrackInfos">Innocence</a> 
                         <a class="col track-title rounded masked" tabindex="5" href="#mobileTrackInfos">The Fever</a> 
                         <a class="col track-title rounded masked" tabindex="6" href="#mobileTrackInfos">Here Before</a> 
                         <a class="col track-title rounded masked" tabindex="7" href="#mobileTrackInfos">So, It Came to This ?</a> 
@@ -70,8 +70,8 @@
                         <div class="col track-description">
                             <div class="col-5 track-img m-2">
                                 <img class="d-block w-100 rounded" src="/img/you_beautiful_sleeper/cover.jpg">
-                                <a><i class="fas fa-headphones-alt"></i></a>
-                                <span class="disclaimer mt-2">Cliquer pour écouter <i class="fas fa-volume-up"></i></span>
+                                <a href="#"><i class="fas fa-headphones-alt"></i></a>
+                                <!-- <span class="disclaimer mt-3">Cliquer pour écouter <i class="fas fa-volume-up"></i></span> -->
                             </div>  
                             <div class="col-7 text-content pl-0 py-2 pr-4">
                                 <span class="title mb-2"></span>
@@ -101,9 +101,9 @@
                     <div class="grid-content">   
                         <div class="col track-description flex-column align-items-center">
                             <div class="track-img">
-                                <span class="disclaimer mb-2">Cliquer pour écouter <i class="fas fa-volume-up"></i></span>
+                                <!-- <span class="disclaimer mb-2">Cliquer pour écouter <i class="fas fa-volume-up"></i></span> -->
                                 <img class="h-100 d-block rounded" src="/img/you_beautiful_sleeper/cover.png">
-                                <a><i class="fas fa-headphones-alt"></i></a>
+                                <a href='#'><i class="fas fa-headphones-alt"></i></a>
                             </div>  
                             <div class="col text-content mt-3">
                                 <span class="title text-center my-2"></span>
@@ -182,7 +182,7 @@
         // Lors d'un click sur le logo, on lance un extrait audio au hasard
         $('.track-img').on("click",function() {
             let trackImg = $(this);
-            if (!$(`.track-title.active`).hasClass('masked')) return
+            // if (!$(`.track-title.active`).hasClass('masked')) return
             if (trackImg.hasClass('reading')) return
 
             let index = parseInt($('.track-title.active').attr('tabindex'));
@@ -226,9 +226,9 @@
             maskedDescription = $(`.track-title[tabindex=${index}]`).hasClass('masked');
             $('.track-description .button').removeClass('hidden');
             $('.track-description').removeClass('masked');
-            $('.track-img a').attr('target', '_blank');
+            // $('.track-img a').attr('target', '_blank');
             if (maskedDescription) {
-                $('.track-img a').removeAttr('target');
+                // $('.track-img a').removeAttr('target');
                 // On ferme la fenêtre d'infos si elle est ouverte
                 $('.track-infos').addClass('collapsed')
                 $('.track-img').removeClass('collapsed');
@@ -246,7 +246,7 @@
 
             // On remplace les infos sur le cadre d'info
             let data = trackInfo[index];
-            $('.track-img a').attr('href', maskedDescription ? '#' : data['link']);
+            // $('.track-img a').attr('href', maskedDescription ? data['link'] : '#');
             $('.track-description .title').html(maskedDescription ? randomString(10) : data['name']);
             $('.track-description .credit').html(maskedDescription ? randomString(300) : data['credit']);
             $('.track-infos span:nth-child(1)').html(data['lyrics']);
