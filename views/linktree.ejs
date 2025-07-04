@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <!-- favicon -->
+         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/logo3/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/logo3/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/logo3/favicon-16x16.png">
+        <link rel="manifest" href="/favicon/logo3/site.webmanifest">
+        
+        <!-- Import CSS Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Import custom CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/style-linktree.css">
+
+        <title>Armel Rouxel | Linktree</title>
+    </head>
+ 
+    <body>
+        <header>
+        </header>
+        <main>
+            <div id="background"></div>
+
+            <div class="scrollsnap-container">
+                <div class="page-content container pt-5" id="main">
+                    <div class="grid-content my-4"> 
+                        <div class="title text-center"><%- linktree.title %></div>
+                        <div class="subtitle text-center"><%- linktree.subtitle %></div>             
+                    </div>
+
+                    <div class="grid-content" id="streaming">
+                        <div class="section-title"> Écouter sur ... </div>
+                        <% for (let streaming of linktree.streaming) { %>
+                            <a class="button" href="<%- streaming.url %>"><img src="/img/logo/<%- streaming.logo %>"/> <%- streaming.name %></a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Import Font Awesome -->
+    <script src="https://kit.fontawesome.com/5f21f19d3f.js"></script>
+
+    <script type="text/javascript">
+    // $('#background').css('background-image', 'url("/img/you_beautiful_sleeper/<%- linktree.background %>")')
+    </script>
+</html>

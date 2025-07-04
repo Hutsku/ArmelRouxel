@@ -45,6 +45,32 @@ app.get('/', function(req, res) {
     res.redirect('/music/you_beautiful_sleeper');
 })
 
+// ------------------------ LINKTREE -----------------------
+
+.get('/linktree', function(req, res) {
+    // Affiche le linktree par défaut
+    res.redirect('/linktree/a_few_years_late');
+})
+.get('/linktree/:linktree', function(req, res) {
+    // Affiche un des linktree spécifié sur le fichier linktree.json
+    // req.params.linktree
+    res.render('linktree.ejs', {
+        session: req.session,
+        linktree: {
+            "title": "A Few Years Late",
+            "subtitle": "Écouter mon dernier single \"A Few Years Late\" !",
+            "background": "background/background-single1.jpg",
+            "streaming" : [
+                {"name": "Spotify", "url": "https://open.spotify.com/artist/4Akt1h6sYpoRO0x4lSA53O", "logo": "spotify-icon.svg"},
+                {"name": "Apple Music", "url": "https://music.apple.com/fr/artist/armel-rouxel/1751508681", "logo": "apple_music-icon.svg"},
+                {"name": "Deezer", "url": "https://www.deezer.com/fr/artist/137074522", "logo": "deezer-icon.svg"},
+                {"name": "Youtube Music", "url": "https://music.youtube.com/channel/UCr8VQ0uxekk7Z21NDGCB20g", "logo": "youtube_music-icon.svg"},
+                {"name": "Tidal", "url": "https://tidal.com/artist/37681055", "logo": "tidal-icon.svg"}
+            ]
+        }
+    });
+})
+
 // ------------------ BLOGS PROGRAMATION -------------------
 
 .get('/blogs', function(req, res) {
