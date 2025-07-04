@@ -1,7 +1,7 @@
 {
     "a_few_years_late": {
         "title": "A Few Years Late",
-        "subtitle": "Écouter mon dernier single \"A Few Years Late\" !",
+        "subtitle": "Écouter mon dernier single !",
         "background": "background/background-single1.jpg",
         "streaming" : [
             {"name": "Spotify", "url": "https://open.spotify.com/artist/4Akt1h6sYpoRO0x4lSA53O", "logo": "spotify-icon.svg"},
