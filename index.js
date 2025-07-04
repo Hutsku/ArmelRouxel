@@ -5,17 +5,18 @@ let date = new Date()
 let date_string = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} ${date.getHours()+2}:${date.getMinutes()}:${date.getSeconds()}`
 console.log(`==================== ${date_string} ====================`)
 console.log('Initalisation du site web ...')
-var fs     = require('fs');
+let fs     = require('fs');
+let linktree = require('./json_files/linktree.json');
 
 // On importe tout les modules necessaires
 console.log('Importation des modules ...');
 const path     = require('path');
-var express    = require('express');
-var session    = require('express-session');
-var bodyParser = require("body-parser");
+let express    = require('express');
+let session    = require('express-session');
+let bodyParser = require("body-parser");
 
-var app;
-var urlencodedParser;
+let app;
+let urlencodedParser;
 function app_init () {
     // init app et configure les cookies de session
     app = express();
@@ -56,21 +57,7 @@ app.get('/', function(req, res) {
     // req.params.linktree
     res.render('linktree.ejs', {
         session: req.session,
-        linktree: {
-            "title": "A Few Years Late",
-            "subtitle": "Écouter mon dernier single !",
-            "background": "background/background-single1.jpg",
-            "streaming" : [
-                {"name": "Spotify", "url": "https://open.spotify.com/artist/4Akt1h6sYpoRO0x4lSA53O", "logo": "spotify-icon.svg"},
-                {"name": "Apple Music", "url": "https://music.apple.com/fr/artist/armel-rouxel/1751508681", "logo": "apple_music-icon.svg"},
-                {"name": "Deezer", "url": "https://www.deezer.com/fr/artist/137074522", "logo": "deezer-icon.svg"},
-                {"name": "Youtube Music", "url": "https://music.youtube.com/channel/UCr8VQ0uxekk7Z21NDGCB20g", "logo": "youtube_music-icon.svg"},
-                {"name": "Tidal", "url": "https://tidal.com/artist/37681055", "logo": "tidal-icon.svg"}
-            ],
-            "other": [
-                {"name": "Bandcamp", "url": "https://armelrouxel.bandcamp.com/", "logo": "bandcamp-icon2.svg"}
-            ]
-        }
+        linktree: linktree[req.params.linktree]
     });
 })
 

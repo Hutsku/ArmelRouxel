@@ -11,8 +11,7 @@
             {"name": "Tidal", "url": "https://tidal.com/artist/37681055", "logo": "tidal-icon.svg"}
         ],
         "other": [
-            {"name": "Bandcamp", "url": "https://armelrouxel.bandcamp.com/", "logo": "bandcamp-icon.svg"},
-            // {"name": "Spotify", "url": "https://open.spotify.com/artist/4Akt1h6sYpoRO0x4lSA53O", "logo": "spotify-icon.svg"}
+            {"name": "Bandcamp", "url": "https://armelrouxel.bandcamp.com/", "logo": "bandcamp-icon2.svg"}
         ]
     }
 }
