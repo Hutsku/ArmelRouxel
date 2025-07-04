@@ -15,12 +15,14 @@
     background-attachment: fixed;
     background-position: center;  
     background-image: url("/img/you_beautiful_sleeper/background2.jpg");
+    filter: brightness(0.8);
 }
 
 /* ============================== TEXTE ============================== */
 
 .title {
-    color: #B40000;
+/*    color: #B40000;*/
+    color: white;
     font-size: 22px;
     font-family: "Frank Ruhl Hofshi";
     letter-spacing: 0.2em;
@@ -30,7 +32,8 @@
 }
 
 .subtitle {
-    color: #2c2c2c;
+/*    color: #2c2c2c;*/
+    color: white;
     font-size: 15px;
     font-family: "Frank Ruhl Hofshi";
     letter-spacing: 0.2em;
@@ -40,7 +43,7 @@
 }
 
 .section-title {
-    color: #B40000;
+    color: white;
     font-size: 18px;
     font-family: "Frank Ruhl Hofshi";
     letter-spacing: 0.2em;
