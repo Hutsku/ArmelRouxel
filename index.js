@@ -58,7 +58,7 @@ app.get('/', function(req, res) {
         session: req.session,
         linktree: {
             "title": "A Few Years Late",
-            "subtitle": "Écouter mon dernier single \"A Few Years Late\" !",
+            "subtitle": "Écouter mon dernier single !",
             "background": "background/background-single1.jpg",
             "streaming" : [
                 {"name": "Spotify", "url": "https://open.spotify.com/artist/4Akt1h6sYpoRO0x4lSA53O", "logo": "spotify-icon.svg"},
@@ -66,6 +66,9 @@ app.get('/', function(req, res) {
                 {"name": "Deezer", "url": "https://www.deezer.com/fr/artist/137074522", "logo": "deezer-icon.svg"},
                 {"name": "Youtube Music", "url": "https://music.youtube.com/channel/UCr8VQ0uxekk7Z21NDGCB20g", "logo": "youtube_music-icon.svg"},
                 {"name": "Tidal", "url": "https://tidal.com/artist/37681055", "logo": "tidal-icon.svg"}
+            ],
+            "other": [
+                {"name": "Bandcamp", "url": "https://armelrouxel.bandcamp.com/", "logo": "bandcamp-icon2.svg"}
             ]
         }
     });

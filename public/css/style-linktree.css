@@ -75,19 +75,22 @@
 .button {
     position: relative;
     width: 500px;
-    background-color: white;
-    border: 2px solid white;    
+    background-color: rgb(255,255,255,0.95);
+    border: 2px solid rgb(255,255,255,0.95);  
+    border-radius: 2px;  
     padding: 15px;
     margin: 5px;
 
-    color: grey;
-    font-size: 18px;
+    color: #B40000;
+    font-size: 16px;
+    font-family: "Frank Ruhl Hofshi";
+    letter-spacing: 0.1em;
     text-align: center;
 
     transition: 0.3s;
 }
 .button:hover {
-    background-color: transparent;
+    background-color: rgb(255,255,255,0.25);
     color: white;
     text-decoration: none;
 }
@@ -95,7 +98,7 @@
 .button img {
     position: absolute;
     left: 15px;
-    top: 15px;
+    top: 13px;
     width: 30px;
 }
 .button:hover img {
@@ -107,4 +110,20 @@
     .button {
         max-width: 300px;
     }
+}
+
+/* ============================= FOOTER ============================== */
+
+#footer a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    font-size: 12px;
+    font-family: "Frank Ruhl Hofshi";
+    letter-spacing: 0.2em;
+
+    transition: 0.3s;
+}
+#footer a:hover {
+    opacity: 0.7;
 }

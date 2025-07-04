@@ -25,17 +25,28 @@
             <div id="background"></div>
 
             <div class="scrollsnap-container">
-                <div class="page-content container pt-5" id="main">
+                <div class="page-content container pt-3" id="main">
                     <div class="grid-content my-4"> 
                         <div class="title text-center"><%- linktree.title %></div>
                         <div class="subtitle text-center"><%- linktree.subtitle %></div>             
                     </div>
 
-                    <div class="grid-content" id="streaming">
+                    <div class="grid-content mb-3" id="streaming">
                         <div class="section-title"> Écouter sur ... </div>
                         <% for (let streaming of linktree.streaming) { %>
                             <a class="button" href="<%- streaming.url %>"><img src="/img/logo/<%- streaming.logo %>"/> <%- streaming.name %></a>
                         <% } %>
+                    </div>
+
+                    <div class="grid-content mb-3" id="other">
+                        <div class="section-title"> Voir aussi </div>
+                        <% for (let link of linktree.other) { %>
+                            <a class="button" href="<%- link.url %>"><img src="/img/logo/<%- link.logo %>"/> <%- link.name %></a>
+                        <% } %>
+                    </div>
+
+                    <div class="grid-content" id="footer">
+                        <a href="/"> — Revenir sur le site principal —</a>
                     </div>
                 </div>
             </div>
