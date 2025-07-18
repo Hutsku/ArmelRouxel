@@ -38,15 +38,17 @@
                         <% } %>
                     </div>
 
+                    <% if (linktree.hasOwnProperty('other')) { %>
                     <div class="grid-content mb-3" id="other">
                         <div class="section-title"> Voir aussi </div>
                         <% for (let link of linktree.other) { %>
                             <a class="button" href="<%- link.url %>"><img src="/img/logo/<%- link.logo %>"/> <%- link.name %></a>
                         <% } %>
                     </div>
+                    <% } %>
 
                     <div class="grid-content" id="footer">
-                        <a href="/"> — Revenir sur le site principal —</a>
+                        <a href="/">— Revenir sur le site principal —</a>
                     </div>
                 </div>
             </div>
