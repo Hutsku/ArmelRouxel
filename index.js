@@ -151,9 +151,9 @@ app.get('/', function(req, res) {
 })
 
 .get('/test-dev', function (req, res) {
-    let gallery = fs.readdirSync('./public/img/you_beautiful_sleeper');
+    let gallery = fs.readdirSync('./public/img/you_beautiful_sleeper/gallery');
     let audio = fs.readdirSync('./public/audio/you_beautiful_sleeper/tease');
-    res.render('music/you_beautiful_sleeper_(single).ejs', {
+    res.render('music/you_beautiful_sleeper_(album).ejs', {
         session: req.session,
         gallery: gallery,
         audio: audio

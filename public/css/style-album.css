@@ -3,15 +3,23 @@ html { /* body won't work ¯\_(ツ)_/¯ */
 }
 
 a {
-    color: inherit;
+    color: #f48a16;
 }
 a:hover {
-    color: inherit;
+    color: #f48a16;
     text-decoration: none;
 }
 
 .hidden {
     display: none !important;
+}
+
+.line {
+    border-bottom: 1px solid lightgrey;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .scrollsnap-container {
@@ -105,6 +113,14 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
     scroll-snap-align: start;
     justify-content: center;
 }
+#making-of {
+    align-items: start;
+    /*height: 1000px;*/
+}
+#making-of .grid-content {
+    margin-top: 75px;
+    margin-bottom: 75px;
+}
 
 .grid-content {
     display: flex;
@@ -157,11 +173,16 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
 .album-description, .album-buy {
     display: flex;
     flex-direction: row;
-/*    align-items: center;*/
 }
-.album-description .description, .album-stream-buy .description {
-    text-align: center;
+.album-makingof {
+    flex-direction: column;
+}
+.album-description .description, .album-stream-buy .description, .album-makingof .description {
+    text-align: justify;
     font-size: 14px;
+}
+.album-makingof .description {
+    font-size: 12px;
 }
 
 .title {
@@ -182,6 +203,10 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
     letter-spacing: 0.2em;
     text-transform: none;
 }
+/*.album-description .subtitle {
+    color: #f48a16;
+}*/
+
 .title-disclaimer {
     color: black;
     opacity: 0.2;
@@ -203,6 +228,11 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
         flex-direction: column;
         width: 85%;
     }
+}
+
+.darkglass {
+    background-color: rgb(0, 0, 0, 0.15);
+    backdrop-filter: blur(3px);
 }
 
 /* ============================ TRACK INFOS =============================== */
@@ -360,7 +390,7 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
 
 /* ============================= BUTTON ============================== */
 
-.btn-track, .link {
+.btn-track {
     width: 100px;
     padding: 7px;
 
@@ -374,7 +404,7 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
     opacity: 0.3;
     transition: 0.2s;
 }
-.btn-track:hover, .link:hover {
+.btn-track:hover{
     background: #000000;
     background: linear-gradient(90deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0) 100%);
     backdrop-filter: blur(4px);
@@ -386,14 +416,49 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
     backdrop-filter: blur(4px);
 }
 
-.link {
-    width: auto;
-    opacity: 1;
+.btn-link {
+    text-align: center;
+    width: fit-content;
+    padding: 15px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-color: #f58d15;
+
+    color: white;
+    font-size: 14px;
+    font-family: "Frank Ruhl Hofshi";
+    letter-spacing: 0.2em;
+
+    opacity: 0.7;
+    transition: 0.3s;
+    cursor: pointer;
 }
-.link:hover {
+.btn-link:hover {
+    color: white;
     text-decoration: none;
-    color: white
-/*    color: #f48a16; */
+    opacity: 1;
+    background-color: #f58d15;
+}
+
+.btn-title {
+    text-align: center;
+    width: 240px;
+    padding: 15px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-color: #f58d15;
+
+    color: white;
+    font-size: 16px;
+    font-family: "Frank Ruhl Hofshi";
+    letter-spacing: 0.2em;
+
+    transition: 0.3s;
+    cursor: pointer;
+}
+.btn-title:hover {
+    color: white;
+    text-decoration: none;
 }
 
 /* =========================== TRACKLIST ============================= */
@@ -436,6 +501,44 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
 }
 .track-title.masked.active {
     color: white;
+    opacity: 1;
+}
+
+/* ============================== AFFICHAGE CAROUSEL ==================== */
+
+.carousel-container {
+    flex-direction: column-reverse;
+}
+.carousel-indicators {
+    /*position: relative;*/
+    flex-direction: row;
+    /*justify-content: flex-start;*/
+
+    touch-action: pan-x;
+    overflow-x: scroll;
+}
+.carousel-indicators img {
+    cursor: pointer;
+    width: 60px;
+}
+
+/* ---- Affichage PC ---- */
+@media (min-width: 768px) { 
+    .carousel-container {
+        flex-direction: row;
+    }
+    .carousel-indicators {
+        /*flex-direction: column;*/
+        overflow-x: visible;
+        touch-action: none;
+    }
+}
+
+.carousel-indicators div {
+    opacity: 0.4;
+    transition: 0.3s;
+}
+.carousel-indicators div.active {
     opacity: 1;
 }
 
@@ -501,7 +604,7 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
 }
 .backdrop-button:hover {
     color: #484848;
-    background: linear-gradient(90deg,rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.15) 25%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.15) 75%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(90deg,rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 25%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.6) 75%, rgba(255, 255, 255, 0) 100%);
 }
 
 /* ===================== IMG MAP ===================== */

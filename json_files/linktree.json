@@ -2,7 +2,7 @@
     "artist": {
         "title": "Page d'artiste",
         "subtitle": "Écouter mes musiques sur toutes les plateformes !",
-        "background": "background/background-single1.jpg",
+        "background": "background/a_few_years_late.jpg",
         "streaming" : [
             {"name": "Spotify", "url": "https://open.spotify.com/artist/4Akt1h6sYpoRO0x4lSA53O", "logo": "spotify-icon.svg"},
             {"name": "Apple Music", "url": "https://music.apple.com/fr/artist/armel-rouxel/1751508681", "logo": "apple_music-icon.svg"},
@@ -17,7 +17,7 @@
     "a_few_years_late": {
         "title": "A Few Years Late",
         "subtitle": "Écouter mon dernier single !",
-        "background": "background/background-single1.jpg",
+        "background": "background/a_few_years_late.jpg",
         "streaming" : [
             {"name": "Spotify", "url": "https://open.spotify.com/intl-fr/track/7iE1JiBe0o5WZyepUmgRn8?si=f994eec10ee24747", "logo": "spotify-icon.svg"},
             {"name": "Apple Music", "url": "https://music.apple.com/fr/song/a-few-years-late/1827182583", "logo": "apple_music-icon.svg"},
