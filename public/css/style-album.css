@@ -32,6 +32,13 @@ a:hover {
     scroll-behavior: smooth;
 }
 
+.scroll-start {
+    scroll-snap-align: start;
+}
+.scroll-end {
+    scroll-snap-align: end;
+}
+
 @font-face {
     font-family: "NightWind";
     src: url('font/NightWindSentSample.otf') format("opentype");
@@ -120,6 +127,7 @@ a.arrow-up:hover, a.arrow-down:hover, a.arrow-right:hover, a.arrow-left:hover {
 #making-of .grid-content {
     margin-top: 75px;
     margin-bottom: 75px;
+    scroll-snap-type: y proximity;
 }
 
 .grid-content {
