@@ -5,11 +5,12 @@ let date = new Date()
 let date_string = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} ${date.getHours()+2}:${date.getMinutes()}:${date.getSeconds()}`
 console.log(`==================== ${date_string} ====================`)
 console.log('Initalisation du site web ...')
-let fs     = require('fs');
-let linktree = require('./json_files/linktree.json');
+let linktree_data = require('./json_files/linktree.json');
+let archive_data  = require('./json_files/archive.json');
 
 // On importe tout les modules necessaires
 console.log('Importation des modules ...');
+let fs         = require('fs');
 const path     = require('path');
 let express    = require('express');
 let session    = require('express-session');
@@ -50,14 +51,37 @@ app.get('/', function(req, res) {
 
 .get('/linktree', function(req, res) {
     // Affiche le linktree par défaut
-    res.redirect('/linktree/a_few_years_late');
+    res.redirect('/linktree/something_about_you');
 })
-.get('/linktree/:linktree', function(req, res) {
+.get('/linktree/:nom', function(req, res) {
     // Affiche un des linktree spécifié sur le fichier linktree.json
     // req.params.linktree
     res.render('linktree.ejs', {
         session: req.session,
-        linktree: linktree[req.params.linktree]
+        linktree: linktree_data[req.params.nom]
+    });
+})
+
+// ------------------------ ARCHIVE -----------------------
+
+.get('/archive', function(req, res) {
+    // Affiche l'archive par défaut
+    res.redirect('/archive/you_beautiful_sleeper');
+})
+.get('/archive/:nom', function(req, res) {
+    console.log('test')
+    // Affiche une des archives spécifié sur le fichier archive.json
+    // let data   = archive_data[req.params.nom]
+    // data.audio = fs.readdirSync(`./public/${data.audio_src}`);
+    // data.image = fs.readdirSync(`./public/${data.image_src}`);
+    // console.log(data)
+    res.render('archive.ejs', {
+        session: req.session,
+        archive: archive_data[req.params.nom],
+        files: {
+            'audio': fs.readdirSync(`./public/${archive_data[req.params.nom].audio_src}`),
+            'image': fs.readdirSync(`./public/${archive_data[req.params.nom].image_src}`)
+        }
     });
 })
 
@@ -72,7 +96,6 @@ app.get('/', function(req, res) {
 .get('/blogs/pathfinding1', function(req, res) {
     res.render('blogs/pathfinding1.ejs');
 })
-
 .get('/demo/map_generator', function(req, res) {
     res.render('blogs/map_generator.ejs');
 })

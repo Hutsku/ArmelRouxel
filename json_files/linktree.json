@@ -25,5 +25,17 @@
             {"name": "Youtube Music", "url": "https://music.youtube.com/watch?v=-0J0IiBVoQk&si=mTlfg_7Q1UkURpux", "logo": "youtube_music-icon.svg"},
             {"name": "Tidal", "url": "https://tidal.com/browse/track/448237649?u", "logo": "tidal-icon.svg"}
         ]
+    },
+    "something_about_you": {
+        "title": "Something About You",
+        "subtitle": "Écouter mon dernier single !",
+        "background": "background/something_about_you.jpg",
+        "streaming" : [
+            {"name": "Spotify", "url": "https://open.spotify.com/intl-fr/track/72eMNKo189mK9yYUgEhBF7?si=742eb479de194b04", "logo": "spotify-icon.svg"},
+            {"name": "Apple Music", "url": "https://music.apple.com/fr/song/something-about-you/1835894794", "logo": "apple_music-icon.svg"},
+            {"name": "Deezer", "url": "https://link.deezer.com/s/30SRvxaeiclflaCWBtLNA", "logo": "deezer-icon.svg"},
+            {"name": "Youtube Music", "url": "https://music.youtube.com/watch?v=3JwhZ9hbR7w&si=I4rj3DZtYRykh4Tk", "logo": "youtube_music-icon.svg"},
+            {"name": "Tidal", "url": "https://tidal.com/browse/track/456602704?u", "logo": "tidal-icon.svg"}
+        ]
     }
 }

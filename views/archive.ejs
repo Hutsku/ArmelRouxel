@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <!-- favicon -->
+         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/logo3/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/logo3/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/logo3/favicon-16x16.png">
+        <link rel="manifest" href="/favicon/logo3/site.webmanifest">
+        
+        <!-- Import CSS Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Import custom CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/style-linktree.css">
+
+        <title>Armel Rouxel | <%- archive.title %></title>
+    </head>
+ 
+    <body>
+        <header>
+        </header>
+        <main>
+            <div id="background"></div>
+
+            <div class="scrollsnap-container">
+                <div class="page-content container pt-3" id="main">
+                    <div class="grid-content my-4"> 
+                        <div class="title text-center"><%- archive.title %></div>
+                        <div class="description text-center"><%- archive.description %></div>             
+                    </div>
+
+                    <div class="grid-content mb-3" id="audio">
+                        <div class="section-title mb-3"> Démos et brouillon </div>
+                        <div class="d-flex flex-column">
+                        <% for (let audio of files.audio) { %>
+                            <div class="d-flex align-items-center mb-2">
+                                <audio controls src="/<%- archive.audio_src %>/<%- audio %>">
+                                    Your browser does not support the <code>audio</code> element.
+                                </audio>
+                                <span class="ml-2"><%- audio.split('.')[0] %></span>
+                            </div>
+                        <% } %>
+                        </div>
+                    </div>
+
+                    <div class="grid-content pb-5 mb-5" id="image">
+                        <div class="section-title mb-3"> Images d'archive</div>
+                        <div class="d-flex">
+                        <% for (let img of files.image) { %>
+                            <img class="col" src="/<%- archive.image_src %>/<%- img %>"/>
+                        <% } %>
+                        </div>
+                    </div>
+
+                    <div class="grid-content" id="footer">
+                        <a href="/">— Revenir sur le site principal —</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Import Font Awesome -->
+    <script src="https://kit.fontawesome.com/5f21f19d3f.js"></script>
+
+    <script type="text/javascript">
+    $('#background').css('background-image', 'url("/<%- archive.background %>")')
+    </script>
+</html>
