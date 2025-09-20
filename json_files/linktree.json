@@ -37,5 +37,17 @@
             {"name": "Youtube Music", "url": "https://music.youtube.com/watch?v=3JwhZ9hbR7w&si=I4rj3DZtYRykh4Tk", "logo": "youtube_music-icon.svg"},
             {"name": "Tidal", "url": "https://tidal.com/browse/track/456602704?u", "logo": "tidal-icon.svg"}
         ]
+    },
+    "here_before": {
+        "title": "Here Before",
+        "subtitle": "Écouter mon dernier single !",
+        "background": "background/here_before.jpg",
+        "streaming" : [
+            {"name": "Spotify", "url": "https://open.spotify.com/intl-fr/track/0wdiwz295IqpwKXNPvCYww?si=3ae893081bb9495f", "logo": "spotify-icon.svg"},
+            {"name": "Apple Music", "url": "https://music.apple.com/fr/album/here-before-single/1840313264", "logo": "apple_music-icon.svg"},
+            {"name": "Deezer", "url": "https://link.deezer.com/s/315XOqmAlqfauUU1Yax3l", "logo": "deezer-icon.svg"},
+            {"name": "Youtube Music", "url": "https://music.youtube.com/watch?v=qJHt12Q2HOc&si=iNQwh3E_5lAjupmJ", "logo": "youtube_music-icon.svg"},
+            {"name": "Tidal", "url": "https://tidal.com/browse/track/460818707?u", "logo": "tidal-icon.svg"}
+        ]
     }
 }

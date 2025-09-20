@@ -51,7 +51,7 @@ app.get('/', function(req, res) {
 
 .get('/linktree', function(req, res) {
     // Affiche le linktree par défaut
-    res.redirect('/linktree/something_about_you');
+    res.redirect('/linktree/here_before');
 })
 .get('/linktree/:nom', function(req, res) {
     // Affiche un des linktree spécifié sur le fichier linktree.json
