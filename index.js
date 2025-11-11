@@ -172,6 +172,15 @@ app.get('/', function(req, res) {
         audio: audio
     });
 })
+.get('/music/tease', function(req, res) {
+    let gallery = fs.readdirSync('./public/img/you_beautiful_sleeper');
+    let audio = fs.readdirSync('./public/audio/you_beautiful_sleeper/tease');
+    res.render('music/tease_sleeper.ejs', {
+        session: req.session,
+        gallery: gallery,
+        audio: audio
+    });
+})
 
 .get('/test-dev', function (req, res) {
     let gallery = fs.readdirSync('./public/img/you_beautiful_sleeper/gallery');
