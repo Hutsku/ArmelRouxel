@@ -14,6 +14,21 @@
             {"name": "Bandcamp", "url": "https://armelrouxel.bandcamp.com/", "logo": "bandcamp-icon2.svg"}
         ]
     },
+    "you_beautiful_sleeper": {
+        "title": "You Beautiful Sleeper",
+        "subtitle": "Écouter mon nouvel album !",
+        "background": "background/cover.jpg",
+        "streaming" : [
+            {"name": "Spotify", "url": "https://open.spotify.com/intl-fr/album/3MJQbcoXFbdryJ7txyxNfr?si=xYRvGbvQRMKy6v7AeVttwQ", "logo": "spotify-icon.svg"},
+            {"name": "Apple Music", "url": "https://music.apple.com/fr/album/you-beautiful-sleeper/1853928158", "logo": "apple_music-icon.svg"},
+            {"name": "Deezer", "url": "https://link.deezer.com/s/31GtAngdzkQQ7b7DsaZh3", "logo": "deezer-icon.svg"},
+            {"name": "Youtube Music", "url": "https://music.youtube.com/playlist?list=OLAK5uy_mxUCpmopDmuXEpaRAFduL3ZB3d2ULViAk&si=-1U6yIB2rhW_Cbgx", "logo": "youtube_music-icon.svg"},
+            {"name": "Tidal", "url": "https://tidal.com/album/475078776/u", "logo": "tidal-icon.svg"}
+        ],
+        "other": [
+            {"name": "Bandcamp", "url": "https://armelrouxel.bandcamp.com/album/you-beautiful-sleeper", "logo": "bandcamp-icon2.svg"}
+        ]
+    },
     "a_few_years_late": {
         "title": "A Few Years Late",
         "subtitle": "Écouter mon dernier single !",

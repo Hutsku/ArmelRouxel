@@ -51,7 +51,7 @@ app.get('/', function(req, res) {
 
 .get('/linktree', function(req, res) {
     // Affiche le linktree par défaut
-    res.redirect('/linktree/here_before');
+    res.redirect('/linktree/you_beautiful_sleeper');
 })
 .get('/linktree/:nom', function(req, res) {
     // Affiche un des linktree spécifié sur le fichier linktree.json
@@ -164,9 +164,9 @@ app.get('/', function(req, res) {
     });
 })
 .get('/music/you_beautiful_sleeper', function(req, res) {
-    let gallery = fs.readdirSync('./public/img/you_beautiful_sleeper');
+    let gallery = fs.readdirSync('./public/img/you_beautiful_sleeper/gallery');
     let audio = fs.readdirSync('./public/audio/you_beautiful_sleeper/tease');
-    res.render('music/you_beautiful_sleeper_(single).ejs', {
+    res.render('music/you_beautiful_sleeper_(album).ejs', {
         session: req.session,
         gallery: gallery,
         audio: audio
