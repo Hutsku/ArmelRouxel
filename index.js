@@ -165,10 +165,12 @@ app.get('/', function(req, res) {
 })
 .get('/music/you_beautiful_sleeper', function(req, res) {
     let gallery = fs.readdirSync('./public/img/you_beautiful_sleeper/gallery');
-    let audio = fs.readdirSync('./public/audio/you_beautiful_sleeper/tease');
+    let shop    = fs.readdirSync('./public/img/you_beautiful_sleeper/boxset');
+    let audio   = fs.readdirSync('./public/audio/you_beautiful_sleeper/tease');
     res.render('music/you_beautiful_sleeper_(album).ejs', {
         session: req.session,
         gallery: gallery,
+        shop: shop,
         audio: audio
     });
 })
